@@ -2,10 +2,12 @@ require('dotenv').config()
 const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
-// const cors = require("cors")
+const cors = require("cors")
+
 
 const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env
 
+const paymentCtrl = require('./controllers/PaymentCtrl')
 
 const app = express()
 
@@ -18,13 +20,22 @@ app.use(session({
 }))
 
 
-// massive({
-//   connectionString: CONNECTION_STRING,
-//   ssl: {rejectUnauthorized: false}
-// })
-// .then(db => {
-//   app.set('db', db)
-//   console.log("Database Connected")
-// }).catch(err => console.log(err))
+massive({
+  connectionString: CONNECTION_STRING,
+  ssl: {rejectUnauthorized: false}
+})
+.then(db => {
+  app.set('db', db)
+  console.log("Database Connected")
+  app.listen(SERVER_PORT, () => console.log(`Server listening on ${SERVER_PORT}`))
+}).catch(err => console.log(err))
 
-app.listen(SERVER_PORT, () => console.log(`Server listening on ${SERVER_PORT}`))
+
+
+app.use(cors())
+
+
+//Payment Ctrl
+app.post('/payment', cors(), paymentCtrl.addPayment)
+
+ 

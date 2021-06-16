@@ -2,29 +2,30 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
   register: async (req, res) => {
+    console.log('I\'ve got a user registration request here!')
     const db = req.app.get("db");
     const { usertype } = req.body;
     if (usertype === "student") {
       const { username, password, usertype} = req.body;
-      const [c_result] = await db.auth.c_check_username(username);
-      if (c_result) {
+      const [s_result] = await db.auth.s_check_username(username);
+      if (s_result) {
         return res.status(409).send("That username is already in use.");
       }
       const salt = bcrypt.genSaltSync(10);
       const hash = bcrypt.hashSync(password, salt);
-      const [user] = await db.auth.c_register_user(username, hash, usertype);
+      const [user] = await db.auth.s_register_user(username, hash, usertype);
       delete user.password;
       req.session.user = user;
     }
     if (usertype === "tutor") {
       const { username, password, usertype} = req.body;
-      const [p_result] = await db.auth.p_check_username(username);
-      if (p_result) {
+      const [t_result] = await db.auth.t_check_username(username);
+      if (t_result) {
         return res.status(409).send("That username is already in use.");
       }
       const salt = bcrypt.genSaltSync(10);
       const hash = bcrypt.hashSync(password, salt);
-      const [user] = await db.auth.p_register_user(username, hash, usertype);
+      const [user] = await db.auth.t_register_user(username, hash, usertype);
       delete user.password;
       req.session.user = user;
     }
@@ -36,7 +37,7 @@ module.exports = {
     const { username, password, usertype } = req.body;
 
     if (usertype === "student") {
-      const [user] = await db.auth.c_check_username(username);
+      const [user] = await db.auth.s_check_username(username);
       console.log("user:", user);
       if (!user) {
         return res.status(401).send("User not found.");
@@ -50,7 +51,7 @@ module.exports = {
     return res.status(200).send(req.session.user);
   }
     if (usertype === "tutor") {
-      const [user] = await db.auth.p_check_username(username);
+      const [user] = await db.auth.t_check_username(username);
       console.log("user:", user);
       if (!user) {
         return res.status(401).send("User not found.");

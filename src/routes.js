@@ -4,7 +4,7 @@ import Studentauth from './components/Studentauth'
 
 export default (
     <Switch>
-        <Route exact path = '/landing' component={Landing} />
+        <Route exact path = '/' component={Landing} />
         <Route path = '/Studentauth' component={Studentauth} />
     </Switch>
 )

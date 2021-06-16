@@ -4,7 +4,7 @@ module.exports = {
   register: async (req, res) => {
     const db = req.app.get("db");
     const { usertype } = req.body;
-    if (usertype === "client") {
+    if (usertype === "student") {
       const { username, password, usertype} = req.body;
       const [c_result] = await db.auth.c_check_username(username);
       if (c_result) {
@@ -16,7 +16,7 @@ module.exports = {
       delete user.password;
       req.session.user = user;
     }
-    if (usertype === "provider") {
+    if (usertype === "tutor") {
       const { username, password, usertype} = req.body;
       const [p_result] = await db.auth.p_check_username(username);
       if (p_result) {
@@ -35,7 +35,7 @@ module.exports = {
     const db = req.app.get("db");
     const { username, password, usertype } = req.body;
 
-    if (usertype === "client") {
+    if (usertype === "student") {
       const [user] = await db.auth.c_check_username(username);
       console.log("user:", user);
       if (!user) {
@@ -49,7 +49,7 @@ module.exports = {
     req.session.user = user;
     return res.status(200).send(req.session.user);
   }
-    if (usertype === "provider") {
+    if (usertype === "tutor") {
       const [user] = await db.auth.p_check_username(username);
       console.log("user:", user);
       if (!user) {

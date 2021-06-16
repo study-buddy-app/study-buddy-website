@@ -1,6 +1,6 @@
 import {Switch, Route} from 'react-router-dom'
-import Landing from './components/Landing'
-import Studentauth from './components/Studentauth' 
+import Landing from './components/landingPage/Landing'
+import Studentauth from './components/studentAuth/Studentauth' 
 
 export default (
     <Switch>

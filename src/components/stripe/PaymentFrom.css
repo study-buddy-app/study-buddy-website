@@ -1,0 +1,16 @@
+form{
+   background-color: gray;
+    width: 500px;
+    height: 200px;
+   margin-top: 20vh;
+}
+
+.payment-container{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.FormGroup{
+    height: 100px;
+}

@@ -8,8 +8,10 @@ const studentCtrl = require('./controllers/studentCtrl')
 const turorCtrl = require('./controllers/tutorCtrl')
 
 
+
 const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env
 
+const paymentCtrl = require('./controllers/PaymentCtrl')
 
 const app = express()
 
@@ -41,3 +43,7 @@ app.get('/auth/user', authCtrl.getUser)
 //student
 //tutor
 //session
+app.use(cors())
+//Payment Ctrl
+app.post('/payment', cors(), paymentCtrl.addPayment)
+

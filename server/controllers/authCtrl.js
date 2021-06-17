@@ -40,7 +40,7 @@ module.exports = {
       const [user] = await db.auth.s_check_username(username);
       console.log("user:", user);
       if (!user) {
-        return res.status(401).send("User not found.");
+        return res.status(401).send("Sorry but that username was not found.");
       }
       const isAuthenticated = bcrypt.compareSync(password, user.password);
       if (!isAuthenticated) {
@@ -54,7 +54,7 @@ module.exports = {
       const [user] = await db.auth.t_check_username(username);
       console.log("user:", user);
       if (!user) {
-        return res.status(401).send("User not found.");
+        return res.status(401).send("Sorry but that username was not found.");
       }
       const isAuthenticated = bcrypt.compareSync(password, user.password);
       if (!isAuthenticated) {

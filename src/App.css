@@ -1,8 +1,5 @@
-footer {
-  background-color: 264653;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
+.app {
+  background-color: #e9c46a;
+  width: 100vw;
+  height: 100vh;
 }

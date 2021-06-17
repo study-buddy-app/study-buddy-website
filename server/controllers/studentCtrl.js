@@ -2,7 +2,8 @@ module.exports = {
 updateStudent: (req,res) =>{
    const db = req.app.get('db')
    const {student_id} = req.params;
-    db.student.s_update_profile()
+   const {f_name, l_name,username,email,age} = req.body
+    db.student.s_update_profile(f_name, l_name,username,email,age)
     .then((profile)=>{
         res.status(200).send(profile)
     }).catch((err)=>{
@@ -11,7 +12,8 @@ updateStudent: (req,res) =>{
 },
 getTutors: (req,res) =>{
     const db = req.app.get('db')
-    db.student.s_get_tutors()
+    const {subjects} = req.body
+    db.student.s_get_tutors(subjects)
     .then((tutors)=>{
         res.status(200).send(tutors)
     }).catch((err)=>{

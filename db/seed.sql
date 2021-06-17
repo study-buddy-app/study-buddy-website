@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS tbl_tutor;
-DROP TABLE IF EXISTS tbl_session;
-DROP TABLE IF EXISTS tbl_subject;
 DROP TABLE IF EXISTS tbl_student;
-
+DROP TABLE IF EXISTS tbl_backpack;
+DROP TABLE IF EXISTS tbl_subject;
+DROP TABLE IF EXISTS tbl_session;
+DROP TABLE IF EXISTS tbl_tutor;
 
 CREATE TABLE tbl_student (
   student_id SERIAL PRIMARY KEY,
@@ -14,12 +14,19 @@ CREATE TABLE tbl_student (
   password VARCHAR(100)
 );
 
-CREATE TABLE tbl_subject (
-  subject_id SERIAL PRIMARY KEY,
+CREATE TABLE tbl_backpack (
+  backpack_id SERIAL PRIMARY KEY,
   tutor_id INT REFERENCES tbl_tutor(tutor_id),
   student_id INT REFERENCES tbl_student(student_id),
-  subject VARCHAR(300)
+  subject_id INT REFERENCES tbl_subject(subject_id)
+  active BOOL;
 );
+
+CREATE TABLE tbl_subject (
+subject_id SERIAL PRIMARY KEY,
+description VARCHAR(500)
+);
+
 
 CREATE TABLE tbl_session (
   session_id SERIAL PRIMARY KEY,
@@ -54,3 +61,6 @@ CREATE TABLE tbl_tutor (
 -- UPDATE some_table
 -- SET some_col = 'NEW VALUE GOES HERE!'
 -- WHERE some_condition;
+
+-- ALTER TABLE table_name
+-- RENAME TO new_table_name;

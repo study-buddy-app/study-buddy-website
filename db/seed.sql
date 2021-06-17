@@ -16,17 +16,17 @@ CREATE TABLE tbl_student (
 
 CREATE TABLE tbl_subject (
   subject_id SERIAL PRIMARY KEY,
-  tutor_id REFERENCES(tbl_tutor(tutor_id)),
-  student_id REFERENCES(tbl_student(student_id)),
-  subject Subject
+  tutor_id INT REFERENCES tbl_tutor(tutor_id),
+  student_id INT REFERENCES tbl_student(student_id),
+  subject VARCHAR(300)
 );
 
 CREATE TABLE tbl_session (
   session_id SERIAL PRIMARY KEY,
-  student_id REFERENCES(tbl_student(student_id)),
+  student_id INT REFERENCES tbl_student(student_id),
   date DATE,
-  tutor_id REFERENCES(tbl_tutor(tutor_id)),
-  start_time VARCHAR(300);
+  tutor_id INT REFERENCES tbl_tutor(tutor_id),
+  start_time VARCHAR(300),
   end_time VARCHAR(300)
 );
 

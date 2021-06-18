@@ -113,3 +113,19 @@ CREATE TABLE tbl_tutor (
 -- Area, Ethnic, Cultural, Gender, and Group Studies
 -- Aviation
 -- Biological and Biomedical Sciences
+
+-- EXAMPLE from Postman to update tutpr profile array:
+-- {
+--     "f_name": "Samwise",
+--     "l_name": "Gamgee",
+--     "username": "sam",
+--     "email": "thelonelyhobbit@yahoo.com",
+--     "age": 3,
+--     "subjects": "{Architecture , IT, Mathematics}"
+-- }
+
+-- SELECT f_name, l_name, email, subjects[1:1] FROM tbl_tutor
+-- WHERE '{Architecture}' IN (subjects[1:1])
+
+-- SELECT description, subject FROM tbl_subject
+-- WHERE subject = 'ENGINEERING';

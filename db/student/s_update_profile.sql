@@ -1,4 +1,7 @@
-INSERT INTO tbl_student
-(student_id, date,tutor_id,start_time,end_time)
-VALUES
-($1,$2,$3,$4);
+UPDATE tbl_student
+SET f_name = $1,
+    l_name = $2,
+    username = $3,
+    email = $4,
+    age = $5
+WHERE username = $3;

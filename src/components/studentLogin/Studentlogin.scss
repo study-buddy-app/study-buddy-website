@@ -1,0 +1,31 @@
+.loginform {
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  bottom: 300px;
+  margin-top: 50px;
+  background-color: #2a9d8f;
+  padding: 50px;
+}
+
+input {
+  display: list-item;
+  margin: auto;
+  justify-content: space-between;
+  width: 300px;
+  height: 30px;
+}
+p,
+h2,
+button,
+.registerlink {
+  margin-left: 50px;
+}
+button {
+  width: 100px;
+}
+.dropdown {
+  margin-left: 50px;
+  width: 300px;
+  height: 30px;
+}

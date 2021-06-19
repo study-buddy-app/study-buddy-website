@@ -4,7 +4,7 @@ const initialState = {
 
 const SET_BACKPACK = 'SET_BACKPACK'
 
-export function SET_BACKPACK(backpack){
+export function setBackpack(backpack){
     return{
         type: SET_BACKPACK,
         payload: backpack

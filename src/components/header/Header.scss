@@ -1,0 +1,54 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 10vh;
+    background-color:#264653;
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.35);
+    position: fixed;
+    z-index: 1;
+}
+
+h1{
+    color: aliceblue;
+}
+
+.H-secLeft{
+padding-left: 50px;
+}
+
+.searchBar{
+    margin-left: 10px;
+    margin-bottom: 20px;
+    margin-right: 200px;
+}
+
+input{
+    padding-left: 10px;
+    border: 2px solid black;
+    border-radius: 5%;
+    width: 100%;
+}
+
+.H-secRight{
+    justify-content: space-around;
+    flex-direction: row;
+    display: flex;
+}
+
+.links{
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 10px;
+}
+
+.links-home{
+    margin-left: 400px;
+    font-size: 10px;
+}
+
+.logo{
+    margin-top: 5px;
+}

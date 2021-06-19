@@ -6,6 +6,8 @@ const cors = require("cors")
 const authCtrl = require('./controllers/authCtrl')
 const studentCtrl = require('./controllers/studentCtrl')
 const tutorCtrl = require('./controllers/tutorCtrl')
+const backpackCtrl = require('./controllers/backpackCtrl')
+const subjectCtrl = require( './controllers/subjectCtrl')
 
 
 
@@ -53,3 +55,10 @@ app.use(cors())
 //Payment Ctrl
 app.post('/payment', cors(), paymentCtrl.addPayment)
 
+//subject
+app.get('/api/subject', subjectCtrl.getSubject)
+
+//backpack
+app.get('/api/backpack', backpackCtrl.getBackPack)
+app.post('/api/backpack/:subject_id', backpackCtrl.addToBackPack)
+app.delete('/api/backpack/:subject_id', backpackCtrl.deleteSubjectFromBackPack)

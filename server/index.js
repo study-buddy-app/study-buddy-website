@@ -6,7 +6,8 @@ const cors = require("cors")
 const authCtrl = require('./controllers/authCtrl')
 const studentCtrl = require('./controllers/studentCtrl')
 const turorCtrl = require('./controllers/tutorCtrl')
-
+const backpackCtrl = require('./controllers/backpackCtrl')
+const subjectCtrl = require( './controllers/subjectCtrl')
 
 
 const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env
@@ -43,7 +44,15 @@ app.get('/auth/user', authCtrl.getUser)
 //student
 //tutor
 //session
+
 app.use(cors())
 //Payment Ctrl
 app.post('/payment', cors(), paymentCtrl.addPayment)
 
+//subject
+app.get('/api/subject', subjectCtrl.getSubject)
+
+//backpack
+app.get('/api/backpack', backpackCtrl.getBackPack)
+app.post('/api/backpack/:subject_id', backpackCtrl.addToBackPack)
+app.delete('/api/backpack/:subject_id', backpackCtrl.deleteSubjectFromBackPack)

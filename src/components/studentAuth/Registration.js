@@ -24,7 +24,7 @@ const Registration = (props) => {
 
     const handleRegister = (e) => {
         e.preventDefault()
-        axios.post('/auth/register', { username, password, usertype, email, age, f_name, l_name})
+        axios.post('/auth/register', {username, password, usertype, email, age, f_name, l_name})
         .then((res) =>{
             console.log(res.data)
             dispatch(setUser(res.data))

@@ -1,13 +1,26 @@
 import {Link, withRouter} from 'react-router-dom'
-import '../header/Header.css'
+import '../header/Header.scss'
+
 
 
 const Header = () => {
     return (
     <header>
-            <Link to='/'><h1>HomePage</h1></Link>
-            <Link to='/Studentauth'><h1>Login</h1></Link>
-  </header>)
+      <div className='H-secLeft'>
+        <img className='logo' height='80%' width='20%' src='https://study-buddy-bucket.s3.us-east-2.amazonaws.com/Study+Buddy+logo+resize.png' alt='Study Buddy logo'/>
+      </div>
+      <div>
+        <input className='searchBar' placeholder='Search'/>
+      </div>
+
+      <div className='H-secRight'>
+        <Link className='links-home' to='/'><h1>HomePage</h1></Link>
+        <Link className='links' to='/Studentauth'><h1>Login</h1></Link>
+        <Link className='links' to='/Studentauth'><h1>Register</h1></Link>
+        <Link className='links' to='/Studentauth'><h1>About Us</h1></Link>
+      </div>
+  </header>
+  )
 }
 
     export default withRouter(Header)

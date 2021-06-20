@@ -1,6 +1,7 @@
 import React from "react"
 import "./Landing.scss"
 import Footer from '../footer/Footer'
+import {Link} from 'react-router-dom'
 
 const Landing = () => {
     return(
@@ -48,7 +49,7 @@ const Landing = () => {
             <h2>Sign up is easy. <bk/> 
                 Click the link below to get started </h2>
                 <h4>Must be 18 years old or older to join</h4>
-                <button className='landing-d1-btn'>Register Now</button>
+                <button className='landing-d1-btn'><Link to='/registration'>Register Now</Link></button>
                 </div>
                 <div>
                     <img height='80%' width='60%' src='https://study-buddy-bucket.s3.us-east-2.amazonaws.com/sign+up+d4+study+buddy.PNG' alt='sign up'/>

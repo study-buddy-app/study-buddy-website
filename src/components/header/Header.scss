@@ -6,16 +6,13 @@ header {
   width: 100%;
   background-color: #264653;
   box-shadow: 5px 0 20px rgba(0, 0, 0, 0.35);
-  position: sticky;
+  position: fixed;
   z-index: 1;
 }
-
-.link1,
-.link2,
-.link3 {
+.signin,
+.logout {
   color: white;
 }
-
 header {
   display: flex;
   justify-content: space-between;

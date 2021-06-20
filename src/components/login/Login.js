@@ -1,53 +1,74 @@
 import {useState} from 'react'
+// import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
+import {setUser} from '../../redux/authReducer'
+import {setBackpack} from '../../redux/backpackReducer'
+import {useDispatch} from 'react-redux'
 import axios from 'axios'
 import './Login.scss'
 
 
-const Studentlogin = () => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [usertype, setUsertype] = useState('')
-   
 
-    const handleLogin = (props) => {
-   
-      axios.post('/auth/login', {username, password,usertype})
-      .then((res) => {
-        console.log('USER DATA', res.data)
-      
-          props.history.push('/dashboard')
-      
-      })
-      .catch(err => console.log(err))
+
+const Login = (props) => {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  let [usertype, setUsertype] = useState('')
+ 
+  const dispatch = useDispatch()
+
+    const handleLogin = () => {
+
+    axios.post('/auth/login', {username, password, usertype})
+    .then((res) => {
+      console.log(res.data, 'logged in')
+      dispatch(setUser(res.data))
+      props.history.push('/dashboard')
+      console.log('this is data', res.data)
+      axios.get('/api/backpack')
+      .then((response) => {
+        dispatch(setBackpack(response.data)) 
+      })        
+    })
+    .catch(err => console.log(err))
+  }
+    
+  let handleOnChange = (e) => {
+    console.log('e', e)
+    if(setUsertype(e.target.value) === 'student'){   
+      setUsertype = "student"
+      console.log(e.target.value)
+    } else {
+      setUsertype = "tutor"
+      console.log(e.target.value)
     }
+  }
 
+  
   return(
 
     <div className= "loginform" >
-      <h2>Login</h2>
-      <p>email*</p>
-      <input value={username} onChange={(e) => setUsername(e.target.value)} />
+      <h2 className='login1' >Login</h2>
+      <p>user name*</p>
+      <input  className='input1' placeholder='user name'value={username} onChange={(e) => setUsername(e.target.value)} />
       <p>password*</p>
-      <input className = 'password' value={password} onChange={(e) => setPassword(e.target.value)} />
+      <input className='input2' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} />
       <p>user type*</p>
-      <select className = 'dropdown'>
-        <option selected value={usertype}>user type</option>
-        <option onClick ={setUsertype} value={usertype}>tutor</option>
-        <option  onClick ={setUsertype} value={usertype}>student</option>
+      <select className = 'dropdown' onChange={handleOnChange}>
+        <option   value='usertype' >user type</option>
+        <option   value= 'tutor'>tutor</option>
+        <option  value= 'student' >student</option>
       </select>
       <br></br>
       <br></br>
-      <div>
-      <button onClick ={handleLogin}>Login</button>
+      <div className='bottomform'>
+      <button className='login2'onClick ={handleLogin}>Login</button>
       <p>Don't have an account?</p>
-      <Link to='/registration'><h1>Register</h1></Link>
+      <Link className='registerlink' to='/registration'>Register</Link>
       </div>
-    </div>
-   
      
-     
+    </div>     
   )
 }
 
-export default Studentlogin
+export default Login

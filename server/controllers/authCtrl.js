@@ -35,10 +35,11 @@ module.exports = {
       return res.status(200).send(req.session.user);
   },
   login: async (req, res) => {
-    console.log("I've got a user login request here!");
+  
     const db = req.app.get("db");
     const { username, password, usertype } = req.body;
 
+      console.log({usertype})
     if (usertype === "student") {
       const [user] = await db.auth.s_check_username(username);
       console.log("user:", user);
@@ -71,6 +72,7 @@ module.exports = {
   logout: (req, res) => {
     req.session.destroy();
     return res.sendStatus(200);
+   
   },
   getUser: (req, res) => {
     if (!req.session.user) {

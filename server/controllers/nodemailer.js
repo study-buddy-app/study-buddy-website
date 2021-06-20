@@ -21,12 +21,12 @@ module.exports= (MAIL_TO)=>{
         }
       });
     
-      const message = `Welcome new Tribe member! This email confirms that now youwill be able to book any of Shida's Broom Closet services and see the meet up locations! check your email often for updates.`;
+      const message = `Hey! Your Study Buddy account is now confirmed. Thanks and Happy Studying!`;
     
       const mailOptions = {
         from: USER_EMAIL,
         to: MAIL_TO,
-        subject: "Shida's Broom Closet Confirmation Email",
+        subject: "Study Buddy Confirmation Email",
         html: `<p>${message}</p>`,
       };
     

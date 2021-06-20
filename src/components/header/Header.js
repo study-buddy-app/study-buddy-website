@@ -15,8 +15,8 @@ const Header = () => {
 
       <div className='H-secRight'>
         <Link className='links-home' to='/'><h1>HomePage</h1></Link>
-        <Link className='links' to='/Studentauth'><h1>Login</h1></Link>
-        <Link className='links' to='/Studentauth'><h1>Register</h1></Link>
+        <Link className='links' to='/studentlogin'><h1>Login</h1></Link>
+        <Link className='links' to='/registration'><h1>Register</h1></Link>
         <Link className='links' to='/Studentauth'><h1>About Us</h1></Link>
       </div>
   </header>

@@ -4,6 +4,8 @@ import {setUser} from '../../redux/authReducer'
 import {setBackpack} from '../../redux/backpackReducer'
 import { useDispatch } from 'react-redux'
 import '../studentAuth/Registration.scss'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -24,6 +26,7 @@ const Registration = (props) => {
 
     const handleRegister = (e) => {
         e.preventDefault()
+        notify()//<-- adding toast
         axios.post('/auth/register', {username, password, usertype, email, age, f_name, l_name})
         .then((res) =>{
             console.log(res.data)
@@ -62,6 +65,11 @@ const Registration = (props) => {
     const studentForm = () => {
         setWhichForm(true)
     }
+
+toast.configure()//<--toast funct
+  const notify= ()=>{
+    toast('Registration complete, please check your email for confirmation.')
+  }
 
     if(whichForm === null)return(
         <div div className='register'>

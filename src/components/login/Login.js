@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import './Studentlogin.scss'
+import './Login.scss'
 
 
 const Studentlogin = () => {

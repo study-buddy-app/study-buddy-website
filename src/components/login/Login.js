@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import './Studentlogin.scss'
+import './Login.scss'
 
 
 const Studentlogin = () => {
@@ -41,7 +41,7 @@ const Studentlogin = () => {
       <div>
       <button onClick ={handleLogin}>Login</button>
       <p>Don't have an account?</p>
-      <Link className='registerlink'>Register</Link>
+      <Link to='/registration'><h1>Register</h1></Link>
       </div>
     </div>
    

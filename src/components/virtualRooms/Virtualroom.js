@@ -1,10 +1,9 @@
 import React from 'react'
 
-
-export default function Tutorlogin() {
+export default function Virtualroom() {
     return (
         <div>
-           <h1>Tutor login</h1> 
+            <h1>virtual room</h1>
         </div>
     )
 }

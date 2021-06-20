@@ -1,11 +1,13 @@
 import {Link, withRouter} from 'react-router-dom'
 import '../header/Header.scss'
 
-
-
 const Header = () => {
     return (
     <header>
+
+            <Link className='link1' to='/'><h1>HomePage</h1></Link>
+            <Link className='link2' to='/login'><h1>Login</h1></Link>
+           
       <div className='H-secLeft'>
         <img className='logo' height='80%' width='20%' src='https://study-buddy-bucket.s3.us-east-2.amazonaws.com/Study+Buddy+logo+resize.png' alt='Study Buddy logo'/>
       </div>
@@ -21,6 +23,10 @@ const Header = () => {
       </div>
   </header>
   )
+
 }
 
     export default withRouter(Header)
+    
+
+    

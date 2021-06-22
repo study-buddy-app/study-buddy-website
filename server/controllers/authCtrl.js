@@ -50,6 +50,8 @@ module.exports = {
       if (!isAuthenticated) {
         return res.status(403).send("Incorrect Password or Username.");
     }
+    const [backpack] = await db.backpack.get_backpack(user.student_id)
+    user.backpack_id = backpack.backpack_id
     delete user.password;
     req.session.user = user;
     return res.status(200).send(req.session.user);
@@ -64,6 +66,8 @@ module.exports = {
       if (!isAuthenticated) {
         return res.status(403).send("Incorrect Password or Username.");
       }
+      const [backpack] = await db.backpack.get_backpack(user.tutor_id)
+      user.backpack_id = backpack.backpack_id
       delete user.password;
       req.session.user = user;
       return res.status(200).send(req.session.user);

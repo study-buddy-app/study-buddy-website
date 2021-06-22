@@ -8,9 +8,7 @@ import './Login.scss'
 
 
 
-const Logout = (props) =>{
-
-    
+const Logout = (props) =>{ 
 
     const handleLogout = () => {
     axios.delete("/auth/logout")
@@ -27,7 +25,7 @@ const Logout = (props) =>{
     return (
         <div>
              <>
-            {props.authReducer.user ? <Link className='logout' onClick={handleLogout}>Log out</Link> 
+            {props.authReducer.user ? <Link className='logout' onClick={handleLogout}>Logout</Link>
             :
             <Link     
             to='/login'

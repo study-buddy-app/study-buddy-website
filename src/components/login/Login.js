@@ -46,14 +46,14 @@ const Login = (props) => {
 
   
   return(
-
-    <div className= "loginform" >
+    <div className='login'> 
+    <div className= 'loginform'>
       <h2 className='login1' >Login</h2>
-      <p>user name*</p>
+      <p className='p1'>user name*</p>
       <input  className='input1' placeholder='user name'value={username} onChange={(e) => setUsername(e.target.value)} />
-      <p>password*</p>
+      <p className='p2'>password*</p>
       <input className='input2' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} />
-      <p>user type*</p>
+      <p className='p3'>user type*</p>
       <select className = 'dropdown' onChange={handleOnChange}>
         <option   value='usertype' >user type</option>
         <option   value= 'tutor'>tutor</option>
@@ -63,11 +63,14 @@ const Login = (props) => {
       <br></br>
       <div className='bottomform'>
       <button className='login2'onClick ={handleLogin}>Login</button>
-      <p>Don't have an account?</p>
+      <p className='p4'>Don't have an account?</p>
       <Link className='registerlink' to='/registration'>Register</Link>
-      </div>
-     
-    </div>     
+      </div> 
+    </div>  
+    <video className='videoTag' autoPlay loop muted>
+    <source src='https://res.cloudinary.com/dgaapgd2f/video/upload/v1624342211/Untitled_design_1_aeolkz.mp4' type='video/mp4' />
+    </video>  
+    </div> 
   )
 }
 

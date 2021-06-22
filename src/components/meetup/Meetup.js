@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Backpack() {
+export default function Meetup() {
     return (
         <div>
-            <h1>Backpack</h1>
+            <h1>Meetup</h1>
         </div>
     )
 }

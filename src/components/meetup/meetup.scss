@@ -1,0 +1,107 @@
+*,::before, ::after{
+    box-sizing: border-box;
+}
+.page_Container{
+width: 100vw;
+height: 100vh;
+display: flex;
+overflow-y: hidden;
+}
+.map_Container{
+    display: flex;
+    flex-direction: column;
+    width: 68vw;
+    height: 90%;
+    margin-top: 4rem;
+}  
+.schedule_container{
+    width: 20rem;
+    height: 90%;
+    margin-top: 4.75rem;
+    margin-left: 58px;
+}  
+.calendar_Container{
+    width:100%;
+    height: 38vh;
+}
+.event_Item{
+    display: flex;
+    justify-content:center;
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
+    height: 8%;
+    border-radius: 5px 5px;
+    margin-top: 0.75em;;
+    background-color: #FAF0CA;
+    padding: 0.5em;
+}
+.map{
+    margin-top:0.75em;
+    width: 94%;
+    height: 38vh;
+    margin-left: 58px;
+    border: 1px solid black;
+    background-image: url('../../assests/Google-Maps-Data.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.button{
+    width: 7.5em;
+    height: 2em;
+    border-radius: 5px 5px;
+}
+.map_button_Container{
+    display: flex;
+    width: 10em;
+}
+.event_btn_container{
+    display: flex;
+    justify-content: space-between;
+    height: 2.25rem;
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+}
+.locate_buddy{
+    display: flex;
+    flex-direction: row;
+    width: 94%;
+    height: 55%;
+    margin-left: 58px; 
+}
+.frmLabels{
+    width: 13%;
+    height: 85%;
+    margin-top: 2.75em;
+}
+.frm_new{
+    width: 50%;
+}
+.txtbox{
+    margin-top: 0.75em;
+    width: 20rem;
+    border-radius: 5px 5px;;
+}
+.txtTutorSearch{
+    margin-top: 4.5em;
+    margin-left: 2em;
+}
+.loc_Container{
+    width: 63.5%;
+    position: absolute;
+    height: 2em;
+    margin-top: 0.25em;
+}
+.frm_newEvent{
+    margin-top: 3em;
+}
+.btnSubmit{
+    margin-top: 1em;
+    float: right;
+}
+span{
+    display: flex;
+    font-size: 14px;
+    font-weight: 400;
+}

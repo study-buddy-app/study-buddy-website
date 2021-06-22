@@ -4,6 +4,7 @@ import Login from './components/login/Login'
 import Dashboard from './components/dashboard/Dashboard'
 import Virtualroom from './components/virtualRooms/Virtualroom'
 import Registration from './components/studentAuth/Registration'
+import Meetup from './components/meetup/meetup'
 
 
 export default (
@@ -13,6 +14,7 @@ export default (
         <Route path = '/Login' component={Login} />
         <Route path = '/registration' component={Registration} />
         <Route path = '/dashboard' component={Dashboard} />
-        <Route path = '/virtualroom' component={Virtualroom} />     
+        <Route path = '/virtualroom' component={Virtualroom} />
+        <Route path = '/meetup'     component={Meetup} />
     </Switch>
 )

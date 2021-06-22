@@ -4,8 +4,8 @@
 .page_Container{
 width: 100vw;
 height: 100vh;
+flex-wrap: wrap;
 display: flex;
-overflow-y: hidden;
 }
 .map_Container{
     display: flex;
@@ -46,6 +46,7 @@ overflow-y: hidden;
     background-position: center;
     background-repeat: no-repeat;
     background-size:cover;
+    box-shadow: -0px 1px 1px 1px rgb(109, 109, 109);
 }
 .button{
     width: 7.5em;
@@ -75,13 +76,13 @@ overflow-y: hidden;
     height: 85%;
     margin-top: 2.75em;
 }
-.frm_new{
+.frm_newEvent{
     width: 50%;
 }
 .txtbox{
     margin-top: 0.75em;
     width: 20rem;
-    border-radius: 5px 5px;;
+    border-radius: 5px 5px;
 }
 .txtTutorSearch{
     margin-top: 4.5em;
@@ -95,13 +96,41 @@ overflow-y: hidden;
 }
 .frm_newEvent{
     margin-top: 3em;
+    width: 36.5%;
+    float: right;
 }
 .btnSubmit{
-    margin-top: 1em;
+    margin-top: 0.75em;
     float: right;
+    margin-right: -0em;
 }
 span{
     display: flex;
     font-size: 14px;
     font-weight: 400;
+}
+.txtSubject, .txtSummary{
+    height: 2.25em;
+    border: 2px solid black;
+}
+.dtEnd.txtbox, .dtStart.txtbox{
+    margin-top:0;
+}
+.startlabel{
+    margin-top: -0.25em;
+}
+.endlabel{
+    margin-top:-1.5em;
+}
+.motto{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 25vh;
+    width: 100%;
+}
+.author{
+    margin-top: -2em;
 }

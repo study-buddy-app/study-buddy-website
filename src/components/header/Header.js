@@ -17,7 +17,7 @@ const Header = () => {
         <Link className='links' to='/studentlogin'><h1>Login</h1></Link>
         <Link className='links' to='/registration'><h1>Register</h1></Link>
         <Link className='links' to='/Studentauth'><h1>About Us</h1></Link>
-
+        <Link className='links' to ='/meetup'><h1>Meet Up</h1></Link>
         <Link className='links' to='/login'><h1>Login</h1></Link>
         <Link className='links'><h1>About Us</h1></Link>
 

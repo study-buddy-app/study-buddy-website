@@ -4,6 +4,8 @@ import {setUser} from '../../redux/authReducer'
 import {setBackpack} from '../../redux/backpackReducer'
 import { useDispatch } from 'react-redux'
 import '../studentAuth/Registration.scss'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -32,6 +34,7 @@ const Registration = (props) => {
             .then((response) => {
                 dispatch(setBackpack(response.data))
                 props.history.push('/')
+                notify()//<-- adding toast
             })
         })
     }
@@ -63,8 +66,13 @@ const Registration = (props) => {
         setWhichForm(true)
     }
 
+toast.configure()//<--toast funct
+  const notify= ()=>{
+    toast('Registration complete, please check your email for confirmation.')
+  }
+
     if(whichForm === null)return(
-        <div div className='register'>
+        <div div className='pick-tutor-student'>
            <div className='toggle-form' onClick={studentForm}><h3>Create Student Account</h3></div>
             <div className='toggle-form' onClick={tutorForm}><h3>Create Tutor Account</h3></div>
         </div>

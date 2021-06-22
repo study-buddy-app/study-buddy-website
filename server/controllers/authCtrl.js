@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const mailer= require('../controllers/nodemailer')
 
 module.exports = {
   register: async (req, res) => {
@@ -13,6 +14,8 @@ module.exports = {
     const hash = bcrypt.hashSync(password, salt)
     const [user] = await db.auth.s_register_user(username, hash, usertype, email, f_name, l_name, age)
     const [backpack] = await db.backpack.create_backpack(user.student_id)
+    const mailer_result= await mailer(email) //
+    console.log("this is the sent email",email, mailer_result)//
     delete user.password
     req.session.user = user 
     req.session.user.backpack_id = backpack.backpack_id
@@ -28,6 +31,8 @@ module.exports = {
       const hash = bcrypt.hashSync(password, salt);
       const [user] = await db.auth.t_register_user(username, hash, usertype, email, f_name, l_name, age)
       const [backpack] = await db.backpack.create_t_backpack(user.tutor_id)
+      const mailer_result= await mailer(email) //
+      console.log("this is the sent email",email, mailer_result)//
       delete user.password;
       req.session.user = user;
       req.session.user.backpack_id = backpack.backpack_id

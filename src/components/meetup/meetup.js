@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./meetup.scss";
- 
+import Google_maps from '../google-maps/Google_maps' 
+
 const Meetup = () => {
   const [tutorName, setTutorName] = useState();
   const [location, setLocation] = useState();
@@ -40,7 +41,9 @@ const Meetup = () => {
     <div>
       <main className="page_Container">
         <div className="map_Container">
-          <div className="map"></div>
+          <div className="map">
+          <Google_maps/>
+          </div>
           <div className="locate_buddy">
             <div className="tutor_search">
               <textarea

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./meetup.scss";
-
+ 
 const Meetup = () => {
   const [tutorName, setTutorName] = useState();
   const [location, setLocation] = useState();
@@ -10,32 +10,32 @@ const Meetup = () => {
   const [endTime, setEndTime] = useState();
   const [timezone, setTimeZone] = useState();
   const [subject, setSubject] = useState();
-
+ 
   useEffect(() => {}, []);
-
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
+ 
   const handleMeetupType = (e) =>{
       const meetupType = e.target.value
       setDescription(meetupType)
   }
-
+ 
   const handleSubjectChange =(e)=>{
         const selSubject = e.target.value
         setSubject(selSubject)
   };
-
+ 
   const handleStart =(e)=>{
       setStartTime(e.target.value)
   }
-
+ 
   const handleEnd =(e)=>{
       setEndTime(e.target.value)
   }
-
-
+ 
+ 
   return (
     <div>
       <main className="page_Container">
@@ -138,7 +138,7 @@ const Meetup = () => {
             <button className="btn_addEvent button">Today</button>
             <button className="btn_addEvent button">Del Event</button>
           </div>
-
+ 
           <div className="event_Item">
             <span>25</span> Meetup with George at 8pm
           </div>

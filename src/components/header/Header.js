@@ -16,11 +16,11 @@ const Header = () => {
       </div>
 
       <div className='H-secRight'>
-        <Link className='links' to='/'><h1>HomePage</h1></Link>
-        <Link className='links' to='/login'><h1>Login</h1></Link>
-        <Link className='links' to='/registration'><h1>Register</h1></Link>
-        <Link className='links' to='/aboutus'><h1>About Us</h1></Link>
-        <Link className='links' to ='/meetup'><h1>Meet Up</h1></Link> 
+        <Link className='links' to='/'><h3>HomePage</h3></Link>
+        <Link className='links' to='/login'><h3>Login</h3></Link>
+        <Link className='links' to='/registration'><h3>Register</h3></Link>
+        <Link className='links' to='/aboutus'><h3>About Us</h3></Link>
+        <Link className='links' to ='/meetup'><h3>Meet Up</h3></Link> 
       </div>
 
 

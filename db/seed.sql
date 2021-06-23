@@ -1,8 +1,15 @@
+DROP TABLE IF EXISTS tbl_tutor_subject_junction
 DROP TABLE IF EXISTS tbl_subject_backpack_junction
 DROP TABLE IF EXISTS tbl_backpack;
 DROP TABLE IF EXISTS tbl_subject;
 DROP TABLE IF EXISTS tbl_session;
 DROP TABLE IF EXISTS tbl_tutor;
+
+CREATE TABLE tbl_tutor_subject_junction(
+tutor_subject_id SERIAL PRIMARY KEY,
+tutor_id INT REFERENCES tbl_tutor(tutor_id),
+subject_id INT REFERENCES tbl_subject(subject_id)
+);
 
 CREATE TABLE tbl_subject_backpack_junction (
 subject_backpack_id SERIAL PRIMARY KEY,
@@ -34,7 +41,6 @@ description VARCHAR(500),
 subject VARCHAR(300)
 );
 
-
 CREATE TABLE tbl_session (
   session_id SERIAL PRIMARY KEY,
   student_id INT REFERENCES tbl_student(student_id),
@@ -52,7 +58,11 @@ CREATE TABLE tbl_tutor (
   email VARCHAR(50),
   age INT,
   subjects VARCHAR[],
-  password VARCHAR(100)
+  password VARCHAR(100),
+  usertype VARCHAR(100),
+  tutored_subjects VARCHAR[][],
+  city VARCHAR(50),
+  state VARCHAR(50)
 );
 
 -- ALTER TABLE z
@@ -114,7 +124,7 @@ CREATE TABLE tbl_tutor (
 -- Aviation
 -- Biological and Biomedical Sciences
 
--- EXAMPLE from Postman to update tutpr profile array:
+-- EXAMPLE from Postman to update tutor profile array:
 -- {
 --     "f_name": "Samwise",
 --     "l_name": "Gamgee",
@@ -124,8 +134,31 @@ CREATE TABLE tbl_tutor (
 --     "subjects": "{Architecture , IT, Mathematics}"
 -- }
 
--- SELECT f_name, l_name, email, subjects[1:1] FROM tbl_tutor
--- WHERE '{Architecture}' IN (subjects[1:1])
 
 -- SELECT description, subject FROM tbl_subject
 -- WHERE subject = 'ENGINEERING';
+
+-- INSERT INTO tbl_subject
+-- (description, subject)
+-- VALUES
+-- ('Art', 'ART'),
+-- ('Beauty Therapy', 'BEAUTY THERAPY'),
+-- ('Business and Economics', 'BUSINESS AND ECONOMICS'),
+-- ('MChild Care', 'MCHILD CARE'),
+-- ('Computer Science', 'COMPUTER SCIENCE'),
+-- ('Event Management', 'EVENT MANAGEMENT'),
+-- ('Forensic Investigation', 'FORENSIC INVESTIGATION'),
+-- ('General Management', 'GENERAL MANAGEMENT'),
+-- ('Graphic Design', 'GRAPHIC DESIGN'),
+-- ('Hospitality', 'HOSPITALITY'),
+-- ('Interior Design', 'INTERIOR DESIGN'),
+-- ('Journalism', 'JOURNALISM'),
+-- ('Mathematics', 'MATHEMATICS'),
+-- ('Nursing', 'NURSING'),
+-- ('Office Administration and Secretarial Studies', 'OFFICE ADMINISTRATION AND SECRETARIAL STUDIES'),
+-- ('Paralegal Studies', 'PARALEGAL STUDIES'),
+-- ('Photography', 'PHOTOGRAPHY'),
+-- ('Project Management', 'PROJECT MANAGEMENT'),
+-- ('Sport Studies and Coaching', 'SPORT STUDIES AND COACHING'),
+-- ('Technical Studies', 'TECHNICAL STUDIES'),
+-- ('Writing', 'WRITING')

@@ -1,3 +1,5 @@
+@import '../../scss/variables.scss';
+
 header {
   display: flex;
   justify-content: space-evenly;
@@ -9,7 +11,6 @@ header {
   position: fixed;
   z-index: 1;
 }
-
 h1 {
   color: aliceblue;
 }
@@ -51,4 +52,49 @@ h1 {
 
 .logo {
   margin-top: 5px;
+}
+
+.DropDown{
+  display: none;
+}
+
+#drop-item{
+  background-color: #264653;
+  color: black;
+  height: 30px;
+  width: 100vw;
+  @include FlexCenterAll(row);
+  position: relative;
+}
+
+#drop-item:hover{
+  color: blue;
+  cursor: pointer;
+}
+
+#dropdown-basic-button{
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 150px;
+}
+
+#ham-icon{
+  width: 19px;
+  height: 19px;
+}
+
+@media(max-width: 1142px){
+  .H-secRight{
+    display: none;
+  }
+  .H-secLeft{
+    display: none;
+  }
+  .DropDown{
+    @include FlexCenterAll(column)
+  }
 }

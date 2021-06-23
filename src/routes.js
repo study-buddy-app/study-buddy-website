@@ -9,6 +9,7 @@ import Meetup from './components/meetup/Meetup'
 import Qbot from './components/qbot/Qbot'
 
 
+
 export default (
     <Switch>
         <Route exact path = '/' component={Landing} />
@@ -19,5 +20,6 @@ export default (
         <Route path = '/aboutus' component={Aboutus} />   
         <Route path = '/meetup' component={Meetup} />
         <Route path = '/qbot' component={Qbot} />
+
     </Switch>
 )

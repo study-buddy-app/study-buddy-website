@@ -40,7 +40,7 @@ massive({
 //auth
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
-app.get('/auth/logout', authCtrl.logout)
+app.delete('/auth/logout', authCtrl.logout)
 app.get('/auth/user', authCtrl.getUser)
 //student
 app.put('/student/profile', studentCtrl.updateStudent)

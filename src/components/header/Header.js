@@ -16,12 +16,23 @@ const Header = () => {
       </div>
 
       <div className='H-secRight'>
+
+        <Link className='links-home' to='/'><h1>HomePage</h1></Link>
+        <Link className='links-aboutus' to= '/aboutus'><h1>About Us</h1></Link>
+        <Link className='links-logout' to='/'><h3 ><Logout /></h3></Link>
+      
+        
+
+        {/* <Link className='links' to='/registration'><h1>Register</h1></Link> */}
+        {/* <Link className='links' to='/login'><h1>Login</h1></Link>
+        <Link className='links'><h1>About Us</h1></Link> */}
         <Link className='links' to='/'><h1>HomePage</h1></Link>
         <Link className='links' to='/login'><h1>Login</h1></Link>
         <Link className='links' to='/registration'><h1>Register</h1></Link>
         <Link className='links' to='/aboutus'><h1>About Us</h1></Link>
         <Link className='links' to ='/meetup'><h1>Meet Up</h1></Link>
       </div>
+
 
       <div className="DropDown">
         <DropdownButton id="dropdown-basic-button" title={<h3 id="ham-icon"><GiHamburgerMenu/></h3>}> 

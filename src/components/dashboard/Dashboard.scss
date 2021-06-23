@@ -10,13 +10,17 @@
   background: url("https://res.cloudinary.com/dgaapgd2f/image/upload/v1624371922/EB4FB6E5-C68B-4672-A0E5-685C9AD564F5_4_5005_c_qg74np.jpg")
     center center/cover no-repeat;
   width: 100vw;
-  height: 200px;
+  height: 150px;
   margin-top: -50px;
 }
 
 .container {
+  background: white;
+  width: 100vw;
+  // height: 200vh;
   display: flex;
-  margin: auto;
+  margin-bottom: 95px;
+  padding: 50px;
 }
 .column1 {
   padding: 3rem;
@@ -24,8 +28,8 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  width: 60vw;
-  background-color: #dfd9c0;
+  width: 50vw;
+  background-color: #2a9d8f;
   margin-right: 50px;
   margin-bottom: 400px;
   // border-radius: 25px;
@@ -37,18 +41,21 @@
   margin-bottom: 700px;
   margin-left: -5px;
 }
+.userlogo {
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+  margin-top: 15px;
+}
 .greeting {
   // box-shadow: 1px 1px 1px 1px rgb(134, 130, 130);
-  background: whitesmoke;
+  background: white;
   display: flex;
-}
-.fa-user-circle {
-  margin-top: 30px;
-  margin-left: 30px;
 }
 
 .h1 {
   color: black;
+  margin-left: 50px;
 }
 
 .questionpage {
@@ -56,38 +63,46 @@
   height: 200px;
   padding: 20px;
   // box-shadow: 1px 1px rgb(134, 130, 130);
-  background: whitesmoke;
+  background: #e9c46a;
 }
 .askq {
   padding-left: 10px;
-  width: 200px;
-  height: 30px;
+  width: 250px;
+  height: 100px;
 }
 .subjectslist {
   // box-shadow: 1px 1px rgb(134, 130, 130);
-  overflow-y: scroll;
   background: whitesmoke;
-  width: 300px;
-  height: 300px;
+  overflow-y: scroll;
+  width: 250px;
+  height: 250px;
   padding: 20px;
+}
+.choose-subject {
+  background: white;
+  width: 250px;
+  height: 35px;
+  position: sticky;
+  z-index: 1;
+  top: 0px;
 }
 .onesubject:hover {
   box-shadow: 1px 1px 1px 1px rgb(134, 130, 130);
 }
 .block2 {
-  margin-left: 500px;
-  margin-top: -610px;
+  margin-left: 400px;
+  margin-top: -550px;
 }
 .virtual {
   // box-shadow: 1px 1px rgb(134, 130, 130);
-  background: white;
+  background: #e76f51;
   width: 300px;
   height: 200px;
   padding: 20px;
 }
 .meetup {
   // box-shadow: 1px 1px rgb(134, 130, 130);
-  background: whitesmoke;
+  background: #f4a261;
   width: 300px;
   height: 200px;
   padding: 20px;
@@ -99,14 +114,14 @@
   // border: 0.1px solid black;
   // border-radius: 25px;
   width: 20vw;
-  margin-left: 190px;
-  margin: auto;
+  margin-left: 100px;
+
   margin-bottom: 400px;
-  background-color: #dfd9c0;
+  background-color: #2a9d8f;
 }
 .backpack {
   // box-shadow: 1px 1px rgb(134, 130, 130);
-  background: whitesmoke;
+  background: white;
   width: 250px;
   height: 400px;
   padding: 20px;
@@ -130,9 +145,17 @@
 }
 .tutorsearch {
   // box-shadow: 1px 1px rgb(134, 130, 130);
-  background: whitesmoke;
   overflow-y: scroll;
-  width: 250px;
-  height: 250px;
+  background: whitesmoke;
+  width: 300px;
+  height: 300px;
   padding: 20px;
+}
+.choose-tutor {
+  position: sticky;
+  z-index: 1;
+  top: 0px;
+  background: white;
+  width: 250px;
+  height: 35px;
 }

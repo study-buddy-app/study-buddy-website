@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+} 
 
 .pick-tutor-student{
     width: 100%;
@@ -52,8 +53,7 @@
 .toggleBtn {
   cursor: pointer;
 }
-.toggleBtn:focus,
-.toggleBtn:hover {
+.toggleBtn:focus {
   color: blue;
 }
 

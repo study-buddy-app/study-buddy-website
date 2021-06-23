@@ -3,6 +3,7 @@ const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
 const cors = require("cors")
+
 const authCtrl = require('./controllers/authCtrl')
 const studentCtrl = require('./controllers/studentCtrl')
 const tutorCtrl = require('./controllers/tutorCtrl')
@@ -36,6 +37,31 @@ massive({
   app.listen(SERVER_PORT, () => console.log(`Server listening on ${SERVER_PORT}`))
 }).catch(err => console.log(err))
 
+//SOCKET IO 
+const server = require('http').createServer(app)//for socket io
+const io = require('socket.io')(server)//for socket io
+const { v4: uuidV4 } = require('uuid') //for socket io
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
+
+app.get('/', (req, res) => {
+  res.redirect(`/${uuidV4()}`)
+})
+
+app.get('/:room', (req, res) => {
+  res.render('room', { roomId: req.params.room })
+})
+
+io.on('connection', socket => {
+  socket.on('join-room', (roomId, userId) => {
+    socket.join(roomId)
+    socket.to(roomId).broadcast.emit('user-connected', userId)
+
+    socket.on('disconnect', () => {
+      socket.to(roomId).broadcast.emit('user-disconnected', userId)
+    })
+  })
+})
 //ENDPOINTS
 //auth
 app.post('/auth/register', authCtrl.register)

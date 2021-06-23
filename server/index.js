@@ -53,7 +53,7 @@ app.get('/tutor/subjects/:tutor_id', tutorCtrl.getSubjectsByTutor)
 app.get('/tutor/subjects', tutorCtrl.getTutorsByStateAndSubject)
 app.get('/tutor/subjects/:subject_id', tutorCtrl.getTutorsBySubject)
 app.delete('/tutor/subjects/:tutor_id', tutorCtrl.deleteSubject)
-app.put('/tutor/subjects/:tutor_id', tutorCtrl.addSubject)
+app.post('/tutor/subjects/:tutor_id', tutorCtrl.addSubject)
 
 //session
 app.use(cors())

@@ -49,6 +49,11 @@ app.post('/student/session/tutor', studentCtrl.addTutor)
 app.delete('/student/session/tutor', studentCtrl.deleteTutor)
 //tutor
 app.put('/tutor/profile', tutorCtrl.updateProfile)
+app.get('/tutor/subjects/:tutor_id', tutorCtrl.getSubjectsByTutor)
+app.get('/tutor/subjects', tutorCtrl.getTutorsByStateAndSubject)
+app.get('/tutor/subjects/:subject_id', tutorCtrl.getTutorsBySubject)
+app.delete('/tutor/subjects/:tutor_id', tutorCtrl.deleteSubject)
+app.put('/tutor/subjects/:tutor_id', tutorCtrl.addSubject)
 
 //session
 app.use(cors())
@@ -57,6 +62,7 @@ app.post('/payment', cors(), paymentCtrl.addPayment)
 
 //subject
 app.get('/api/subject', subjectCtrl.getSubject)
+
 
 //backpack
 app.get('/api/backpack', backpackCtrl.getBackPack)

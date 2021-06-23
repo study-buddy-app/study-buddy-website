@@ -151,7 +151,9 @@ const Meetup = () => {
         <h4>-No one</h4>
         </div>
         </div>
-        
+        <div className='chat_Container'>
+      
+        </div>
       </main>
     </div>
   );

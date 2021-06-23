@@ -1,6 +1,9 @@
 import {Link, withRouter} from 'react-router-dom'
 import '../header/Header.scss'
+import {GiHamburgerMenu} from 'react-icons/gi'
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 import Logout from '../login/logout'
+
 
 const Header = () => {
     return (
@@ -23,11 +26,17 @@ const Header = () => {
         <Link className='links' to='/registration'><h1>Register</h1></Link>
         <Link className='links' to='/login'><h1>Login</h1></Link>
         <Link className='links'><h1>About Us</h1></Link>
-
       </div>
-  </header>
-  )
 
+      <div className="DropDown">
+        <DropdownButton id="dropdown-basic-button" title={<h3 id="ham-icon"><GiHamburgerMenu/></h3>}> 
+            <Dropdown.Item id='drop-item' as={Link} to="/">HomePage</Dropdown.Item>
+            <Dropdown.Item id='drop-item' as={Link} to="/login">Login</Dropdown.Item>
+            <Dropdown.Item id='drop-item' as={Link} to="/packages">About Us</Dropdown.Item>
+        </DropdownButton>
+      </div>
+   </header>
+  )
 }
 
     export default withRouter(Header)

@@ -157,6 +157,6 @@ const Meetup = () => {
         </div>
       </main>
     </div>
-  );
+  ); 
 };
 export default Meetup;

@@ -31,6 +31,7 @@ const Buddy_Finder = () => {
   }, [state]);
 
   console.log("Tutorlist", tutorlist);
+  console.log('location', location)
 
   const handleSubmit = (e) => {
     e.preventDefault();

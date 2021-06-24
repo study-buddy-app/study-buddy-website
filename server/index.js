@@ -38,30 +38,40 @@ massive({
 }).catch(err => console.log(err))
 
 //SOCKET IO 
-const server = require('http').createServer(app)//for socket io
-const io = require('socket.io')(server)//for socket io
-const { v4: uuidV4 } = require('uuid') //for socket io
-app.set('view engine', 'ejs')
-app.use(express.static('public'))
-
-app.get('/', (req, res) => {
-  res.redirect(`/${uuidV4()}`)
+const server= require('http').createServer(app)
+const io= require ('socket.io')(server, {
+  cors:{
+      origin:'*',
+      methods:['GET', 'POST']
+  }
 })
 
-app.get('/:room', (req, res) => {
-  res.render('room', { roomId: req.params.room })
+app.use (cors())
+
+// const PORT= process.env.PORT || 5000
+
+app.get('/', (req,res)=>{
+  res.send('Server is running')
 })
 
-io.on('connection', socket => {
-  socket.on('join-room', (roomId, userId) => {
-    socket.join(roomId)
-    socket.to(roomId).broadcast.emit('user-connected', userId)
 
-    socket.on('disconnect', () => {
-      socket.to(roomId).broadcast.emit('user-disconnected', userId)
-    })
-  })
-})
+
+io.on('connection', (socket)=>{ //<-- establishes initial connection
+  socket.emit('me', socket.id) //<-- creates socket.id to user and signal
+
+  //HANDLER FUNCTIONS
+  socket.on("disconnect", () => {
+  socket.broadcast.emit("callEnded")
+});
+
+socket.on("callUser", ({ userToCall, signalData, from, name }) => {
+  io.to(userToCall).emit("callUser", { signal: signalData, from, name }); //<--the emitted signal data is sent to the front end -->( signal: signalData, from, name)
+});
+
+socket.on("answerCall", (data) => {
+  io.to(data.to).emit("callAccepted", data.signal)
+});
+});
 //ENDPOINTS
 //auth
 app.post('/auth/register', authCtrl.register)

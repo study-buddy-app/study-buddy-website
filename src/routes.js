@@ -2,7 +2,7 @@ import {Switch, Route} from 'react-router-dom'
 import Landing from './components/landingPage/Landing'
 import Login from './components/login/Login'
 import Dashboard from './components/dashboard/Dashboard'
-import Virtualroom from './components/virtualRooms/Virtualroom'
+import SocketApp from './components/VirtualRooms/SocketApp'
 import Registration from './components/studentAuth/Registration'
 
 
@@ -13,6 +13,6 @@ export default (
         <Route path = '/Login' component={Login} />
         <Route path = '/registration' component={Registration} />
         <Route path = '/dashboard' component={Dashboard} />
-        <Route path = '/virtualroom' component={Virtualroom} />     
+        <Route path = '/virtualrooms' component={SocketApp} />     
     </Switch>
 )

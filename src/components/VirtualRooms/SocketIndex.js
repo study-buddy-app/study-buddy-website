@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 import SocketApp from './SocketApp';
-import {ContextProvider} from '../src/SocketContext'
+import {ContextProvider} from './SocketContext'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

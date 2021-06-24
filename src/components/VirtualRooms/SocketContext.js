@@ -1,52 +1,103 @@
-import { Typography, AppBar } from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles'
+import React, { createContext, useState, useRef, useEffect} from 'react'
+import {io} from 'socket.io-client' //<-- in the video its socket.io-client so if it crashes change it 
+import Peer from 'simple-peer'
 
-import Notifications from './Components/Notifications'
-import Options from './Components/Options'
-import VideoPlayer from './Components/VideoPlayer'
-import {ChatEng} from './Components/ChatEng'
-import './App.css';
+//This is the logic for the entire application
 
-const useStyles= makeStyles((theme) =>({
-  appBar: {
-    borderRadius: 15,
-    margin: '30px 100px',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '600px',
-    border: '2px solid black',
+const socket = io('http://localhost:4040')
 
-    [theme.breakpoints.down('xs')]: {
-      width: '90%',
-    },
-  },
-  image: {
-    marginLeft: '15px',
-  },
-  wrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: '100%',
-  },
-}))
+const SocketContext= createContext();
 
-const App =() =>{
-  const classes= useStyles()
-  return (
-    <div className={classes.wrapper}>
-      <AppBar className={classes.appBar} position='static' color='inherit'>
-        <Typography variant='h2' align='center'>Video Chat</Typography>
-      </AppBar>
-      <VideoPlayer/>
-      <Options>
-        <Notifications/>
-      </Options>
-      <ChatEng/>
-    </div>
-  );
+
+const ContextProvider = ({children}) =>{
+
+    const [stream, setStream]= useState(null)
+    const [me, setMe]= useState('')
+    const [call, setCall]= useState ({})
+    const [callAccepted, setCallAccepted]= useState (false)
+    const [callEnded, setCallEnded]= useState(false)
+    const [name, setName] = useState('')
+
+    const myVideo= useRef()
+    const userVideo= useRef()
+    const connectionRef= useRef()
+
+    useEffect(()=>{
+        navigator.mediaDevices.getUserMedia({video: true, audio: true}) //<-- this asks user permission to use video and audio 
+            .then((currentStream)=>{ //<--this sends a promise to initializes the stream
+                setStream(currentStream)
+                myVideo.current.srcObject = currentStream
+            })
+        socket.on('me', (id)=> setMe(id) )//<--connects to the backend socket.emit('me', socket.id) grabs the unique connection ID and sets it to state
+
+        socket.on('callUser', ({from, name: callerName, signal})=>{ //<-- we are receiving a data object as a parameter
+            setCall({isReceivingCall: true, from, name:callerName, signal})
+        })
+    }, []) //<--Dont forget the empty dependency array or youll get and infinte loop
+
+    const answerCall= ()=>{
+        setCallAccepted(true)
+
+        const peer = new Peer({initiator: false, trickle: false, stream})
+        peer.on('signal',(data)=>{
+            socket.emit('answerCall', {signal: data, to: call.from})
+        })
+
+        peer.on ('stream', (currentStream)=>{
+            userVideo.current.srcObject= currentStream
+        })
+
+        peer.signal(call.signal) //<--coming from initial socket on line 29
+        
+        connectionRef.peer.current = peer //<-- current peer is sent to the peer inside of this connection under setCallAccepted(true) **coming up as undefined
+    }
+
+    const callUser = (id)=>{ 
+        const peer = new Peer({initiator: true, trickle: false, stream}) //<-- initiator is set to true because we are the person calling
+        peer.on('signal',(data)=>{
+            socket.emit('callUser', {userToCall: id, signalData: data, from: me, name}) //<-- we can copy and paste from the above answerCall but we just need to change a few things around
+        })
+
+        peer.on ('stream', (currentStream)=>{
+            userVideo.current.srcObject= currentStream
+        })
+
+        socket.on('callAccepted', (signal) =>{
+            setCallAccepted(true)
+
+            peer.signal(signal)
+        })
+
+        connectionRef.current=peer
+    }
+
+    const leaveCall = ()=>{ 
+        setCallEnded(true)
+        connectionRef.current.destroy= null()
+        window.location.reload()
+    }
+
+    return (
+        //The SocketContext.Provider makes all the information on the page globally accessible (passable to all components)
+        <SocketContext.Provider value={{
+            call,
+      callAccepted,
+      myVideo,
+      userVideo,
+      stream,
+      name,
+      setName,
+      callEnded,
+      me,
+      callUser,
+      leaveCall,
+      answerCall,
+        }}>
+            {children}
+        </SocketContext.Provider>
+    )
+
+
 }
 
-export default App;
+export { ContextProvider, SocketContext}

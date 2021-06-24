@@ -1,11 +1,11 @@
 import { Typography, AppBar } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles'
 
-import Notifications from './Components/Notifications'
-import Options from './Components/Options'
-import VideoPlayer from './Components/VideoPlayer'
-import {ChatEng} from './Components/ChatEng'
-import './App.css';
+import Notifications from './Notifications'
+import Options from './Options'
+import VideoPlayer from './VideoPlayer'
+import {ChatEng} from './ChatEng'
+import './VirtualRooms.scss';
 
 const useStyles= makeStyles((theme) =>({
   appBar: {
@@ -33,7 +33,7 @@ const useStyles= makeStyles((theme) =>({
   },
 }))
 
-const App =() =>{
+const SocketApp =() =>{
   const classes= useStyles()
   return (
     <div className={classes.wrapper}>
@@ -49,4 +49,4 @@ const App =() =>{
   );
 }
 
-export default App;
+export default SocketApp;

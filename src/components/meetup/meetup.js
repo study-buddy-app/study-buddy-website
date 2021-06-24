@@ -13,12 +13,14 @@ const Meetup = () => {
   const [timezone, setTimeZone] = useState();
   const [subject, setSubject] = useState();
 
-
+  const state ='TX';
+  const subject_id = 20;
 
   useEffect(() => {
-    const state ='TX';
-    const subject_id = 20;
-    axios.get('/api/tutor/state/subjects', [state, subject_id])
+
+    axios
+    .get(`/api/tutor/state/subjects`, 
+    {state, subject_id})
    .then((res)=>{
       setTutorList(res.data)
    })

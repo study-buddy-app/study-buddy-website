@@ -47,7 +47,7 @@ module.exports = {
   getTutorsByStateAndSubject: (req,res)=>{
     const db = req.app.get('db');
     const {state, subject_id} = req.body
-    console.log('I\'ve got a tutor and subjects request here!')
+    console.log('I\'ve got a tutor by state and subjects request here!')
     db.tutor.t_get_tutors_by_state_and_subject(state, subject_id)
     .then((tutors)=>{
       res.status(200).send(tutors);

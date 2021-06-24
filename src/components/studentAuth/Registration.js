@@ -33,7 +33,7 @@ const Registration = (props) => {
             axios.get('/api/backpack')
             .then((response) => {
                 dispatch(setBackpack(response.data))
-                props.history.push('/')
+                props.history.push('/stripe')
                 notify()//<-- adding toast
             })
         })
@@ -80,7 +80,7 @@ toast.configure()//<--toast funct
 
     if(whichForm === true)return (
         <div className='register'>
-                 <h1>Create Student Account</h1>
+                 <h1 className='create'>Create Student Account</h1>
             <div className='register-container'>
              <form className="register-form" onSubmit={handleRegister}>
                 <input  value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter username"required/>
@@ -95,13 +95,13 @@ toast.configure()//<--toast funct
                  </div>
              </form>    
              <br></br>
-             <div className='toggleBtn' onClick={tutorForm}><h3>Want to create a Tutor account? Click Here</h3></div>
+             <div className='toggleBtn' onClick={tutorForm}><h3 className='sky-h3'>Want to create a Tutor account? Click Here</h3></div>
              </div>
         </div>
     )
     if(whichForm === false)return (
         <div className='register'>
-                <h1>Create Tutor Account</h1>
+                <h1 className='create'>Create Tutor Account</h1>
               <div className='register-container'>
              <form className="register-form" onSubmit={handleRegister}>
                 <input  value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter username"required/>
@@ -116,7 +116,7 @@ toast.configure()//<--toast funct
             </div>
         </form>    
              <br></br>
-             <div className='toggleBtn' onClick={studentForm}><h3>Want to create a student account? Click Here</h3></div>
+             <div className='toggleBtn' onClick={studentForm}><h3 className='sky-h3'>Want to create a student account? Click Here</h3></div>
             </div>
         </div>
     )

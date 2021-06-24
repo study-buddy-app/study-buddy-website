@@ -6,14 +6,27 @@ import "./meetup.scss";
 const Meetup = () => {
   const [tutorName, setTutorName] = useState();
   const [location, setLocation] = useState();
+  const [tutorlist, setTutorList] = useState();
   const [description, setDescription] = useState();
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
   const [timezone, setTimeZone] = useState();
   const [subject, setSubject] = useState();
- 
-  useEffect(() => {}, []);
- 
+
+
+
+  useEffect(() => {
+    const state ='TX';
+    const subject_id = 20;
+    axios.get('/api/tutor/state/subjects', [state, subject_id])
+   .then((res)=>{
+      setTutorList(res.data)
+   })
+   .catch((err)=> console.log(err))
+  }, []);
+
+ console.log('Tutorlist', tutorlist)
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -49,7 +62,7 @@ const Meetup = () => {
                 rows="10"
                 cols="50"
                 placeholder="Enter a location and this area will show you the available tutors or study buddies. Click on the name to add it to the right."
-              ></textarea>
+              >{tutorlist}</textarea>
             </div>
             <div className="frmLabels"></div>
             <div className="loc_Container">

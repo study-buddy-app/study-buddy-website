@@ -37,7 +37,7 @@ module.exports = {
   getSubjectsByTutor: (req,res) =>{
     const db = req.app.get('db');
     const {tutor_id} = req.params
-    db.tutor.t_delete_subject_from_tutor(tutor_id)
+    db.tutor.t_get_subjects_by_tutorID(tutor_id)
     .then((subject)=>{
       res.status(200).send(subject);
     }).catch((err)=>{
@@ -47,7 +47,8 @@ module.exports = {
   getTutorsByStateAndSubject: (req,res)=>{
     const db = req.app.get('db');
     const {state, subject_id} = req.body
-    db.tutor.t_delete_subject_from_tutor(state, subject_id)
+    console.log('I\'ve got a tutor and subjects request here!')
+    db.tutor.t_get_tutors_by_state_and_subject(state, subject_id)
     .then((tutors)=>{
       res.status(200).send(tutors);
     }).catch((err)=>{
@@ -57,7 +58,7 @@ module.exports = {
   getTutorsBySubject: (req,res) =>{
     const db = req.app.get('db');
     const {subject_id} = req.body
-    db.tutor.t_delete_subject_from_tutor(subject_id)
+    db.tutor.t_get_tutors_by_subject(subject_id)
     .then((tutors)=>{
       res.status(200).send(tutors);
     }).catch((err)=>{

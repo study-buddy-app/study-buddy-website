@@ -26,8 +26,9 @@ import usePlacesAutocomplete, {
 //   import mapStyles from "./mapStyles";
 
 const libraries = ["places"]
-const mapContainerStyle = {
-    width: '100%',
+const mapContainerS',
+
+    width: '63.8vw',
     height: '37.8vh',
 };
 const center = {
@@ -70,9 +71,7 @@ export default function Google_maps(){
 
 
     return (
-    <div>
-      <Locate panTo={panTo} />
-      <Search panTo={panTo} />
+      <div>
 
         <GoogleMap 
         mapContainerStyle={mapContainerStyle} 
@@ -81,6 +80,8 @@ export default function Google_maps(){
         onClick={onMapClick}
         onLoad={onMapLoad}
         >
+        {/* <Locate panTo={panTo} /> */}
+        <Search panTo={panTo} />
           {markers.map((marker) => (
           <Marker
             key={`${marker.lat}-${marker.lng}`}

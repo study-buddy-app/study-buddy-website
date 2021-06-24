@@ -3,6 +3,7 @@ import axios from "axios";
 import "./meetup.scss";
 import Google from "../google-maps/Google_maps"
 
+
 const Meetup = () => {
   const [tutorName, setTutorName] = useState();
   const [location, setLocation] = useState();
@@ -55,7 +56,6 @@ const Meetup = () => {
       <main className="page_Container">
         <div className="map_Container">
           <div className="map">
-          <Google />
           </div>
           <div className="locate_buddy">
             <div className="tutor_search">

@@ -1,8 +1,8 @@
-
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./meetup.scss";
- 
+import Google from "../google-maps/Google_maps"
+
 const Meetup = () => {
   const [tutorName, setTutorName] = useState();
   const [location, setLocation] = useState();
@@ -12,51 +12,51 @@ const Meetup = () => {
   const [endTime, setEndTime] = useState();
   const [timezone, setTimeZone] = useState();
   const [subject, setSubject] = useState();
+  const [state, setState] = useState("TX")
 
-  const state ='TX';
+ 
   const subject_id = 20;
 
   useEffect(() => {
-
     axios
-    .get(`/api/tutor/state/subjects`, 
-    {state, subject_id})
-   .then((res)=>{
-      setTutorList(res.data)
-   })
-   .catch((err)=> console.log(err))
-  }, []);
+      .get('/api/tutor/state/subjects', {state, subject_id})
+      .then((res) => {
+        setTutorList(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [state]);
 
- console.log('Tutorlist', tutorlist)
+  console.log("Tutorlist", tutorlist);
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
- 
-  const handleMeetupType = (e) =>{
-      const meetupType = e.target.value
-      setDescription(meetupType)
-  }
- 
-  const handleSubjectChange =(e)=>{
-        const selSubject = e.target.value
-        setSubject(selSubject)
+
+  const handleMeetupType = (e) => {
+    const meetupType = e.target.value;
+    setDescription(meetupType);
   };
- 
-  const handleStart =(e)=>{
-      setStartTime(e.target.value)
-  }
- 
-  const handleEnd =(e)=>{
-      setEndTime(e.target.value)
-  }
- 
- 
+
+  const handleSubjectChange = (e) => {
+    const selSubject = e.target.value;
+    setSubject(selSubject);
+  };
+
+  const handleStart = (e) => {
+    setStartTime(e.target.value);
+  };
+
+  const handleEnd = (e) => {
+    setEndTime(e.target.value);
+  };
+
   return (
     <div>
       <main className="page_Container">
         <div className="map_Container">
-          <div className="map"></div>
+          <div className="map">
+          <Google />
+          </div>
           <div className="locate_buddy">
             <div className="tutor_search">
               <textarea
@@ -64,7 +64,9 @@ const Meetup = () => {
                 rows="10"
                 cols="50"
                 placeholder="Enter a location and this area will show you the available tutors or study buddies. Click on the name to add it to the right."
-              >{tutorlist}</textarea>
+              >
+                {tutorlist}
+              </textarea>
             </div>
             <div className="frmLabels"></div>
             <div className="loc_Container">
@@ -75,15 +77,21 @@ const Meetup = () => {
               ></input>
             </div>
             <form className="frm_newEvent">
-              <select className="txtSummary txtbox" onChange={(e)=>handleMeetupType(e)}>
+              <select
+                className="txtSummary txtbox"
+                onChange={(e) => handleMeetupType(e)}
+              >
                 <option value="Meeting Type">Choose a Meeting Type</option>
                 <option value="In Person">In Person</option>
                 <option value="Virtual">Virtual</option>
               </select>
-              <select className="txtSubject txtbox" onChange={(e) => handleSubjectChange(e)}>
+              <select
+                className="txtSubject txtbox"
+                onChange={(e) => handleSubjectChange(e)}
+              >
                 <option value="Choose a Field of Study">
                   Choose a Field of Study
-                </option >
+                </option>
                 <option value="Accounting and Finance">
                   Accounting and Finance
                 </option>
@@ -119,15 +127,16 @@ const Meetup = () => {
                 </option>
                 <option value="Writing">Writing</option>
               </select>
-              <div className='lblDate startlabel'>Start Date/Time</div>
+              <div className="lblDate startlabel">Start Date/Time</div>
               <input
                 type="datetime-local"
                 className="dtStart txtbox"
                 placeholder="Your Name"
                 onChange={(e) => handleStart(e)}
-              ></input><br/>
+              ></input>
+              <br />
               <br></br>
-            <div className='lblDate endlabel'>End Date/Time</div>
+              <div className="lblDate endlabel">End Date/Time</div>
               <input
                 type="datetime-local"
                 className="dtEnd txtbox"
@@ -139,7 +148,11 @@ const Meetup = () => {
                 className="txtTutor txtbox"
                 placeholder="Select a Tutor from the List"
               ></input>
-              <button onClick={handleSubmit} type="submit" className="btnSubmit button">
+              <button
+                onClick={handleSubmit}
+                type="submit"
+                className="btnSubmit button"
+              >
                 Add Event
               </button>
             </form>
@@ -148,14 +161,21 @@ const Meetup = () => {
         </div>
         <div className="schedule_container">
           <div className="calendar_Container">
-          <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showPrint=0&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showTz=1&amp;showTabs=0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+            <iframe
+              src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showPrint=0&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showTz=1&amp;showTabs=0"
+              width="100%"
+              height="100%"
+              frameborder="0"
+              scrolling="no"
+              title="calendar"
+            ></iframe>
           </div>
           <div className="event_btn_container">
             <button className="btn_addEvent button">Edit Event</button>
             <button className="btn_addEvent button">Today</button>
             <button className="btn_addEvent button">Del Event</button>
           </div>
- 
+
           <div className="event_Item">
             <span>25</span> Meetup with George at 8pm
           </div>
@@ -163,16 +183,15 @@ const Meetup = () => {
           <div className="event_Item"></div>
           <div className="event_Item"></div>
         </div>
-        <div className="motto"><h2>"With Study-Buddy my brain doesn't hurt as much!"</h2>
-        <div className='author'>
-        <h4>-No one</h4>
+        <div className="motto">
+          <h2>"With Study-Buddy my brain doesn't hurt as much!"</h2>
+          <div className="author">
+            <h4>-No one</h4>
+          </div>
         </div>
-        </div>
-        <div className='chat_Container'>
-      
-        </div>
+        <div className="chat_Container"></div>
       </main>
     </div>
-  ); 
+  );
 };
 export default Meetup;

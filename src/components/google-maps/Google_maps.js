@@ -27,8 +27,8 @@ import usePlacesAutocomplete, {
 
 const libraries = ["places"]
 const mapContainerStyle = {
-    width: '100vw',
-    height: '100vh',
+    width: '100%',
+    height: '37.8vh',
 };
 const center = {
     lat: 40.758480,

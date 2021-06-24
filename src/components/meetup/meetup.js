@@ -56,6 +56,7 @@ const Meetup = () => {
       <main className="page_Container">
         <div className="map_Container">
           <div className="map">
+            <Google_maps/>
           </div>
           <div className="locate_buddy">
             <div className="tutor_search">

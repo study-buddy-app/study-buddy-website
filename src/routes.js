@@ -5,7 +5,7 @@ import Dashboard from './components/dashboard/Dashboard'
 import Virtualroom from './components/virtualRooms/Virtualroom'
 import Registration from './components/studentAuth/Registration'
 import Aboutus from './components/aboutus/Aboutus'
-import Meetup from './components/meetup/meetup'
+import Buddy from './components/buddy_finder/buddy_finder'
 import Qbot from './components/qbot/Qbot'
 import StripeContainer from './components/stripe/StripeContainer'
 
@@ -19,7 +19,7 @@ export default (
         <Route path = '/dashboard' component={Dashboard} />
         <Route path = '/virtualroom' component={Virtualroom} />   
         <Route path = '/aboutus' component={Aboutus} />   
-        <Route path = '/meetup' component={Meetup} />
+        <Route path = '/buddyup' component={Buddy} />
         <Route path = '/qbot' component={Qbot} />
         <Route path= '/stripe' component={StripeContainer}/>
 

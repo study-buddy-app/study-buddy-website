@@ -95,7 +95,7 @@ const Buddy_Finder = () => {
                 onChange={(e) => handleSubjectChange(e)}
               >
                 <option value="Choose a Field of Study">
-                  Choose a Field of Study
+                  Choose a Field of Study 
                 </option>
                 <option value="Accounting and Finance">
                   Accounting and Finance

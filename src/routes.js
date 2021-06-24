@@ -5,9 +5,9 @@ import Dashboard from './components/dashboard/Dashboard'
 import Virtualroom from './components/virtualRooms/Virtualroom'
 import Registration from './components/studentAuth/Registration'
 import Aboutus from './components/aboutus/Aboutus'
-import Meetup from './components/meetup/Meetup'
+// import Meetup from './components/meetup/Meetup'
 import Qbot from './components/qbot/Qbot'
-
+import buddy_finder from './components/buddy_finder/buddy_finder'
 
 
 export default (
@@ -18,7 +18,7 @@ export default (
         <Route path = '/dashboard' component={Dashboard} />
         <Route path = '/virtualroom' component={Virtualroom} />   
         <Route path = '/aboutus' component={Aboutus} />   
-        <Route path = '/meetup' component={Meetup} />
+        <Route path = '/meetup' component={buddy_finder} />
         <Route path = '/qbot' component={Qbot} />
 
     </Switch>

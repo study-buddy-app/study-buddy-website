@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./buddy_finder.scss";
+import "../meetup/meetup.scss";
 import Google_maps from "../google-maps/Google_maps"
 
 
@@ -14,7 +14,7 @@ const Buddy_Finder = () => {
   const [timezone, setTimeZone] = useState();
   const [subject, setSubject] = useState();
   const [state, setState] = useState("")
-
+ 
  
 
   // const subject_id = 20;
@@ -59,7 +59,7 @@ const Buddy_Finder = () => {
       <main className="page_Container">
         <div className="map_Container">
           <div className="map">
-            <Google_maps/>
+            <Google_maps setLocation={setLocation}/>
           </div>
           <div className="locate_buddy">
             <div className="tutor_search">
@@ -74,7 +74,7 @@ const Buddy_Finder = () => {
             </div>
             <div className="frmLabels"></div>
             <div className="loc_Container">
-              <input
+              <input value={location} onChange={(e) => setLocation(e.target.value)}
                 type="text"
                 className="txtLocation txtbox"
                 placeholder="Location"

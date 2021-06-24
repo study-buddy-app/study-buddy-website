@@ -23,10 +23,11 @@ import usePlacesAutocomplete, {
   } from "@reach/combobox";
   import "@reach/combobox/styles.css";
 
+
 //   import mapStyles from "./mapStyles";
 
 const libraries = ["places"]
-const mapContainerS ={
+const mapContainerStyle ={
     width: '63.8vw',
     height: '37.8vh',
 };
@@ -35,7 +36,7 @@ const center = {
     lng: -111.888138,
 };
 
-export default function Google_maps(){
+export default function Google_maps(props){
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries,
@@ -71,7 +72,6 @@ export default function Google_maps(){
 
     return (
       <div>
-
         <GoogleMap 
         mapContainerStyle={mapContainerStyle} 
         zoom={8}
@@ -79,24 +79,24 @@ export default function Google_maps(){
         onClick={onMapClick}
         onLoad={onMapLoad}
         >
-        {/* <Locate panTo={panTo} /> */}
-        <Search panTo={panTo} />
+          {/* <Locate panTo={panTo} /> */}
+          <Search panTo={panTo} setLocation={props.setLocation} />
           {markers.map((marker) => (
-          <Marker
+            <Marker
             key={`${marker.lat}-${marker.lng}`}
             position={{ lat: marker.lat, lng: marker.lng }} 
             onClick={() => {
-                setSelected(marker);
+              setSelected(marker);
             }}
             />
-          ))}
+            ))}
 
          {selected ? (
-         <InfoWindow 
-         position={{lat: selected.lat, lng: selected.lng }} 
-         onCloseClick={() => {
+           <InfoWindow 
+           position={{lat: selected.lat, lng: selected.lng }} 
+           onCloseClick={() => {
              setSelected(null);
-         }}>
+            }}>
             <div>
              <h2>Marked</h2>   
              <p>Marked {formatRelative(selected.time, new Date())}</p>
@@ -110,8 +110,8 @@ export default function Google_maps(){
 function Locate({ panTo }) {
     return (
       <button
-        className="locate"
-        onClick={() => {
+      className="locate"
+      onClick={() => {
           navigator.geolocation.getCurrentPosition(
             (position) => {
               panTo({
@@ -128,7 +128,7 @@ function Locate({ panTo }) {
     );
   }
 
-  function Search({ panTo }) {
+  function Search({ panTo, setLocation }) {
     const {
       ready,
       value,
@@ -151,6 +151,7 @@ function Locate({ panTo }) {
     const handleSelect = async (address) => {
       setValue(address, false);
       clearSuggestions();
+      setLocation(address)
   
       try {
         const results = await getGeocode({ address });

@@ -63,7 +63,6 @@ app.post('/payment', cors(), paymentCtrl.addPayment)
 //subject
 app.get('/api/subject', subjectCtrl.getSubject)
 
-
 //backpack
 app.get('/api/backpack', backpackCtrl.getBackPack)
 app.post('/api/backpack/:subject_id', backpackCtrl.addToBackPack)

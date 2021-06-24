@@ -50,7 +50,7 @@ app.delete('/student/session/tutor', studentCtrl.deleteTutor)
 //tutor
 app.put('/api/tutor/profile', tutorCtrl.updateProfile)
 app.get('/api/tutor/subjects/:tutor_id', tutorCtrl.getSubjectsByTutor)
-app.get('/api/tutor/state/subjects', tutorCtrl.getTutorsByStateAndSubject)
+app.put('/api/tutor/state/subjects', tutorCtrl.getTutorsByStateAndSubject)
 app.get('/api/tutor/subjects/:subject_id', tutorCtrl.getTutorsBySubject)
 app.delete('/api/tutor/subjects/:tutor_id', tutorCtrl.deleteSubject)
 app.post('/api/tutor/subjects/:tutor_id', tutorCtrl.addSubject)

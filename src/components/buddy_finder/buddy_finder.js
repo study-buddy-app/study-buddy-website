@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./buddy_finder.scss";
 import Google_maps from "../google-maps/Google_maps"
+import {Link} from 'react-router-dom'
 
 
 const Buddy_Finder = () => {
@@ -17,8 +18,6 @@ const Buddy_Finder = () => {
   const [popList, setPopList] = useState();
 
  
-
-
 
   useEffect(() => {
     let subject_id = subject
@@ -37,10 +36,15 @@ const Buddy_Finder = () => {
     })
     .catch((err)=> console.log(err))
   },[])
-console.log(popList)
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  const handleOnClick = (e) =>{
+    setTutorName(e.target.title)
+  }
+  
 
   const handleMeetupType = (e) => {
     const meetupType = e.target.value;
@@ -68,7 +72,7 @@ console.log(popList)
     setState(getState)
   }
 
-console.log('state value', state)
+
   return (
     <div>
       <main className="page_Container">
@@ -80,11 +84,11 @@ console.log('state value', state)
             <div className="tutor_search">
 
               <div className='tutors_ByLocation' >
-              {tutorlist?.map((item, index)=>{ 
+              {tutorlist?.map((item)=>{ 
                   return (
                     <table className='tblTutors'>
-                      <tr>
-                        <td key={item.subject_id}>{item.f_name}</td>
+                      <tr >
+                        <td onClick ={handleOnClick} title={item.f_name+' '+item.l_name}>{item.f_name}</td>
                         <td key={item.subject_id}>{item.l_name}</td>
                         <td key={item.subject_id}>{item.email}</td>
                         <td key={item.subject_id}>{item.city},</td>
@@ -97,6 +101,7 @@ console.log('state value', state)
             <div className="frmLabels"></div>
             <div className="loc_Container">
               <input onChange ={(e)=>locationOnChange(e)}
+                
                 type="text"
                 className="txtLocation txtbox"
                 placeholder="Location"
@@ -113,6 +118,7 @@ console.log('state value', state)
               </select>
               <select
                 className="txtSubject txtbox"
+                
                 onChange={(e) => handleSubjectChange(e)}
               >
                 <option value="Choose a Field of Study">
@@ -120,7 +126,7 @@ console.log('state value', state)
                 </option>
                 {popList?.map((topic)=>{
                   return(
-                    <option key ={topic.subject_id} value={topic.subject_id}>{topic.subject}</option>
+                    <option key ={topic.subject_id} value={topic.subject_id} >{topic.subject}</option>
                   )
                 })}
               </select>
@@ -144,6 +150,7 @@ console.log('state value', state)
                 type="text"
                 className="txtTutor txtbox"
                 placeholder="Select a Tutor from the List"
+                defaultValue={tutorName}
               ></input>
               <button
                 onClick={handleSubmit}

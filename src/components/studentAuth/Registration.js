@@ -15,6 +15,8 @@ const Registration = (props) => {
     const [f_name, setF_name] = useState('')
     const [l_name, setL_name] = useState('')
     const [age, setAge] = useState('')
+    const [state, setState] = useState('')
+    const [city, setCity] = useState('')
     const [password, setPassword] = useState('')
     const [usertype, setUsertype] = useState('')
     const dispatch = useDispatch()
@@ -26,7 +28,7 @@ const Registration = (props) => {
 
     const handleRegister = (e) => {
         e.preventDefault()
-        axios.post('/auth/register', {username, password, usertype, email, age, f_name, l_name})
+        axios.post('/auth/register', {username, password, usertype, email, age, f_name, l_name, state, city})
         .then((res) =>{
             console.log(res.data)
             dispatch(setUser(res.data))
@@ -86,6 +88,8 @@ toast.configure()//<--toast funct
                 <input  value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter username"required/>
                 <input  value={f_name} onChange={(e) => setF_name(e.target.value)} placeholder="Enter first name"required/>
                 <input  value={l_name} onChange={(e) => setL_name(e.target.value)} placeholder="Enter last name"required/>
+                <input  value={state} onChange={(e) => setState(e.target.value)}  placeholder="Enter State" maxlength="2" required/>
+                <input  value={city} onChange={(e) => setCity(e.target.value)} placeholder="Enter City"required/>
                 <input  value={age} onChange={(e) => setAge(e.target.value)} placeholder="Submit age must be 18+" type="number"  required/>
                 <input  value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter Email" type="email" required/>
                 <input  value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password" type="password" required/>
@@ -107,6 +111,8 @@ toast.configure()//<--toast funct
                 <input  value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter username"required/>
                 <input  value={f_name} onChange={(e) => setF_name(e.target.value)} placeholder="Enter first name"required/>
                 <input  value={l_name} onChange={(e) => setL_name(e.target.value)} placeholder="Enter last name"required/>
+                <input  value={state} onChange={(e) => setState(e.target.value)} placeholder="Enter State" maxlength="2" required/>
+                <input  value={city} onChange={(e) => setCity(e.target.value)} placeholder="Enter City"required/>
                 <input  value={age} onChange={(e) => setAge(e.target.value)} placeholder="Submit age must be 18+" type="number"  required/>
                 <input  value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter Email" type="email" required/>
                 <input  value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password" type="password" required/>

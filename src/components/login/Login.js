@@ -52,7 +52,7 @@ const Login = (props) => {
       <p className='p1'>user name*</p>
       <input  className='input1' placeholder='user name'value={username} onChange={(e) => setUsername(e.target.value)} />
       <p className='p2'>password*</p>
-      <input className='input2' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+      <input className='input2' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)}  type="password" />
       <p className='p3'>user type*</p>
       <select className = 'dropdown' onChange={handleOnChange}>
         <option   value='usertype' >user type</option>

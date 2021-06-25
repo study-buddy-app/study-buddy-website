@@ -46,7 +46,7 @@ const Login = (props) => {
 
   
   return(
-    <div className='login'> 
+    <div className='login'>   
     <div className= 'loginform'>
       <h2 className='login1' >Login</h2>
       <p className='p1'>user name*</p>
@@ -66,11 +66,12 @@ const Login = (props) => {
       <p className='p4'>Don't have an account?</p>
       <Link className='registerlink' to='/registration'>Register</Link>
       </div> 
-    </div>  
-    <video className='videoTag' autoPlay loop muted>
-    <source src='https://res.cloudinary.com/dgaapgd2f/video/upload/v1624342211/Untitled_design_1_aeolkz.mp4' type='video/mp4' />
-    </video>  
-    </div> 
+    </div>
+    <video className='videoTag' poster='poster.jpg' autoPlay loop muted>
+      <source src='https://res.cloudinary.com/dgaapgd2f/video/upload/v1624342211/Untitled_design_1_aeolkz.mp4' type='video/mp4' />s
+      </video>
+    </div>
+  
   )
 }
 

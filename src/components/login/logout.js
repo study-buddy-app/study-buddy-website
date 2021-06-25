@@ -4,8 +4,8 @@ import axios from 'axios'
 import {setUser} from '../../redux/authReducer'
 import { withRouter, Link } from 'react-router-dom'
 import './Login.scss'
-import { Dropdown } from 'react-bootstrap';
-import { DropdownButton } from 'react-bootstrap';
+
+
 
 
 
@@ -27,11 +27,13 @@ const Logout = (props) =>{
     return (
         <div>
              <>
-            {props.authReducer.user ? <Link className='logout' onClick={handleLogout}>Logout</Link>
+            {props.authReducer.user ? <Link className='nav-links' onClick={handleLogout}><h3>Logout</h3></Link>
             :
             <Link     
             to='/login'
-           ><h3 className='signin'>Sign In</h3></Link> }               
+            className='nav-links'
+            onClick={props.closeMobileMenu}
+           ><h3>Sign In</h3></Link> }               
         </>
         </div>
     )

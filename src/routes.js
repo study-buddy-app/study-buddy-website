@@ -5,8 +5,8 @@ import Dashboard from './components/dashboard/Dashboard'
 import Virtualroom from './components/virtualRooms/Virtualroom'
 import Registration from './components/studentAuth/Registration'
 import Aboutus from './components/aboutus/Aboutus'
-import meetup from './components/meetup/meetup'
-import Qbot from './components/qbot/Qbot'
+import Meetup from './components/meetup/meetup'
+import Tutordash from './components/tutorDash/Tutordash'
 
 
 
@@ -18,8 +18,9 @@ export default (
         <Route path = '/dashboard' component={Dashboard} />
         <Route path = '/virtualroom' component={Virtualroom} />   
         <Route path = '/aboutus' component={Aboutus} />   
-        <Route path = '/meetup' component={meetup} />
-        <Route path = '/qbot' component={Qbot} />
+        <Route path = '/meetup' component={Meetup} />
+        <Route path = '/tutordash' component={Tutordash} />
+       
 
     </Switch>
 )

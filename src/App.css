@@ -1,8 +1,15 @@
-.app {
-  background-color: whitesmoke;
-  min-width: 100vw;
-  min-height: 200vh;
+/* .app {
+  background-color: pink;
+  width: 100vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+
+@media (max-width: 800px) {
+  .app {
+    width: 200vw;
+    height: 200vh;
+  }
+} */

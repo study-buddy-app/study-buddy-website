@@ -104,15 +104,18 @@ const Meetup = () => {
                 <option value="Technical Studies">
                   Technical Studies (plumbing, electrical work, etc.)
                 </option>
+               
                 <option value="Writing">Writing</option>
               </select>
+              <br/><br/>
               <div className='lblDate startlabel'>Start Date/Time</div>
               <input
                 type="datetime-local"
                 className="dtStart txtbox"
                 placeholder="Your Name"
                 onChange={(e) => handleStart(e)}
-              ></input><br/>
+              ></input>
+              <br/><br/>
               <br></br>
             <div className='lblDate endlabel'>End Date/Time</div>
               <input
@@ -121,12 +124,14 @@ const Meetup = () => {
                 placeholder="Your Name"
                 onChange={(e) => handleEnd(e)}
               ></input>
+              <br/><br/>
               <input
                 type="text"
                 className="txtTutor txtbox"
                 placeholder="Select a Tutor from the List"
               ></input>
-              <button onClick={handleSubmit} type="submit" className="btnSubmit button">
+              <br/><br/>
+              <button onClick={handleSubmit} type="submit" className="btnSubmit">
                 Add Event
               </button>
             </form>
@@ -138,9 +143,9 @@ const Meetup = () => {
           <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showPrint=0&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showTz=1&amp;showTabs=0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
           </div>
           <div className="event_btn_container">
-            <button className="btn_addEvent button">Edit Event</button>
-            <button className="btn_addEvent button">Today</button>
-            <button className="btn_addEvent button">Del Event</button>
+            <button className="btn_addEvent">Edit</button>
+            <button className="btn_addEvent">Today</button>
+            <button className="btn_addEvent">Delete</button>
           </div>
  
           <div className="event_Item">
@@ -155,10 +160,11 @@ const Meetup = () => {
         <h4>-No one</h4>
         </div>
         </div>
-        <div className='chat_Container'>
       
-        </div>
       </main>
+      {/* <div className='chat_Container'>
+      
+      </div> */}
     </div>
   );
 };

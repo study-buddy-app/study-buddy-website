@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Backpack() {
+export default function Qbot() {
     return (
         <div>
-            <h1>Backpack</h1>
+            <h1>Q & A page</h1>
         </div>
     )
 }

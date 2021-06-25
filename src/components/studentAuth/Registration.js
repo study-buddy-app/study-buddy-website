@@ -26,7 +26,6 @@ const Registration = (props) => {
 
     const handleRegister = (e) => {
         e.preventDefault()
-        notify()//<-- adding toast
         axios.post('/auth/register', {username, password, usertype, email, age, f_name, l_name})
         .then((res) =>{
             console.log(res.data)
@@ -34,7 +33,8 @@ const Registration = (props) => {
             axios.get('/api/backpack')
             .then((response) => {
                 dispatch(setBackpack(response.data))
-                props.history.push('/')
+                props.history.push('/stripe')
+                notify()//<-- adding toast
             })
         })
     }
@@ -72,7 +72,7 @@ toast.configure()//<--toast funct
   }
 
     if(whichForm === null)return(
-        <div div className='register'>
+        <div div className='pick-tutor-student'>
            <div className='toggle-form' onClick={studentForm}><h3>Create Student Account</h3></div>
             <div className='toggle-form' onClick={tutorForm}><h3>Create Tutor Account</h3></div>
         </div>
@@ -80,7 +80,7 @@ toast.configure()//<--toast funct
 
     if(whichForm === true)return (
         <div className='register'>
-                 <h1>Create Student Account</h1>
+                 <h1 className='create'>Create Student Account</h1>
             <div className='register-container'>
              <form className="register-form" onSubmit={handleRegister}>
                 <input  value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter username"required/>
@@ -95,13 +95,13 @@ toast.configure()//<--toast funct
                  </div>
              </form>    
              <br></br>
-             <div className='toggleBtn' onClick={tutorForm}><h3>Want to create a Tutor account? Click Here</h3></div>
+             <div className='toggleBtn' onClick={tutorForm}><h3 className='sky-h3'>Want to create a Tutor account? Click Here</h3></div>
              </div>
         </div>
     )
     if(whichForm === false)return (
         <div className='register'>
-                <h1>Create Tutor Account</h1>
+                <h1 className='create'>Create Tutor Account</h1>
               <div className='register-container'>
              <form className="register-form" onSubmit={handleRegister}>
                 <input  value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter username"required/>
@@ -116,7 +116,7 @@ toast.configure()//<--toast funct
             </div>
         </form>    
              <br></br>
-             <div className='toggleBtn' onClick={studentForm}><h3>Want to create a student account? Click Here</h3></div>
+             <div className='toggleBtn' onClick={studentForm}><h3 className='sky-h3'>Want to create a student account? Click Here</h3></div>
             </div>
         </div>
     )

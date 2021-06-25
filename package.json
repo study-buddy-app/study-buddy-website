@@ -5,8 +5,13 @@
   "main": "server/index.js",
   "proxy": "http://localhost:4040",
   "dependencies": {
+<<<<<<< HEAD
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
+=======
+    "@reach/combobox": "^0.15.1",
+    "@react-google-maps/api": "^2.2.0",
+>>>>>>> origin
     "@stripe/react-stripe": "^7.0.0-beta.0",
     "@stripe/react-stripe-js": "^1.4.1",
     "@stripe/stripe-js": "^1.15.0",
@@ -16,30 +21,44 @@
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "date-fns": "^2.22.1",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+<<<<<<< HEAD
     "googleapis": "^78.0.0",
+=======
+    "googleapis": "^39.2.0",
+>>>>>>> origin
     "massive": "^6.9.0",
     "node-sass": "^6.0.0",
     "nodemailer": "^6.6.2",
     "nodemon": "^2.0.7",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
+<<<<<<< HEAD
     "react-chat-engine": "^1.10.4",
     "react-copy-to-clipboard": "^5.0.3",
+=======
+    "react-bootstrap-dropdown": "^0.3.0",
+>>>>>>> origin
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-toastify": "^7.0.4",
+<<<<<<< HEAD
     "simple-peer": "^9.11.0",
     "socket.io": "^4.1.2",
     "socket.io-client": "^4.1.2",
     "stripe": "^8.154.0",
     "uuid": "^8.3.2",
+=======
+    "stripe": "^8.154.0",
+    "use-places-autocomplete": "^1.9.3",
+>>>>>>> origin
     "web-vitals": "^1.1.2"
   },
   "scripts": {

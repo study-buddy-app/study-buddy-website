@@ -76,7 +76,7 @@ socket.on("answerCall", (data) => {
 //auth
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
-app.get('/auth/logout', authCtrl.logout)
+app.delete('/auth/logout', authCtrl.logout)
 app.get('/auth/user', authCtrl.getUser)
 //student
 app.put('/student/profile', studentCtrl.updateStudent)
@@ -84,7 +84,12 @@ app.get('/student/session/tutors', studentCtrl.getTutors)
 app.post('/student/session/tutor', studentCtrl.addTutor)
 app.delete('/student/session/tutor', studentCtrl.deleteTutor)
 //tutor
-app.put('/tutor/profile', tutorCtrl.updateProfile)
+app.put('/api/tutor/profile', tutorCtrl.updateProfile)
+app.get('/api/tutor/subjects/:tutor_id', tutorCtrl.getSubjectsByTutor)
+app.put('/api/tutor/state/subjects', tutorCtrl.getTutorsByStateAndSubject)
+app.get('/api/tutor/subjects/:subject_id', tutorCtrl.getTutorsBySubject)
+app.delete('/api/tutor/subjects/:tutor_id', tutorCtrl.deleteSubject)
+app.post('/api/tutor/subjects/:tutor_id', tutorCtrl.addSubject)
 
 //session
 app.use(cors())

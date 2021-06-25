@@ -1,0 +1,14 @@
+$font: Arial,Verdana,sans-serif;
+$font-weights: (
+    'regular': 400,
+    'medium': 500,
+    "bold": 700
+);
+
+
+@mixin FlexCenterAll($direct){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:$direct;
+}

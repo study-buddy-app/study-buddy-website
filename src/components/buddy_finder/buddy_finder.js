@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "../meetup/meetup.scss";
+import "../buddy_finder/buddy_finder.scss";
 import Google_maps from "../google-maps/Google_maps"
 import {Link} from 'react-router-dom'
 

@@ -1,0 +1,87 @@
+*,::before, ::after{
+    box-sizing: border-box;
+}
+.page_Container{
+width: 100vw;
+height: 100vh;
+border: 1px solid red;
+display: flex;
+}
+.map_Container{
+    display: flex;
+    flex-direction: column;
+    width: 68vw;
+    height: 90%;
+    margin-top: 4rem;
+    border: 1px solid blue;
+}
+.schedule_container{
+    width: 20rem;
+    height: 90%;
+    margin-top: 4rem;
+    border: 1px solid brown;
+    margin-left: 58px;
+}
+.calendar_Container{
+    width:100%;
+    height: 38vh;
+    border: 1px solid black;
+}
+.event_Item{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 8%;
+    border-radius: 5px 5px;
+    margin-top: 3px;
+    background-color: orange;
+}
+.map{
+    width: 94%;
+    height: 38vh;
+    margin-left: 58px;
+    border: 1px solid black;
+}
+.button{
+    width: 7.5em;
+    height: 2em;
+    border-radius: 5px 5px;
+}
+.map_button_Container{
+    display: flex;
+    width: 10em;
+    border: 1px solid orange;
+}
+.event_btn_container{
+    display: flex;
+    justify-content: space-between;
+}
+.locate_buddy{
+    display: flex;
+    flex-direction: row;
+    width: 94%;
+    height: 55%;
+    margin-left: 58px;
+    border: 1px solid black;
+}
+.frmLabels{
+    width: 13%;
+    height: 85%;
+    margin-top: 2.75em;
+    border: 1px solid blue;
+
+}
+.frm_new{
+    width: 50%;
+}
+.txtbox{
+    margin-top: 0.5em;
+    width: 20rem;
+    border-radius: 5px 5px;;
+}
+.txtTutorSearch{
+    margin-top: 3.25em;
+}
+.txtLocation{
+    justify-self: center;
+}

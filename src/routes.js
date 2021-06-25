@@ -2,7 +2,7 @@ import {Switch, Route} from 'react-router-dom'
 import Landing from './components/landingPage/Landing'
 import Login from './components/login/Login'
 import Dashboard from './components/dashboard/Dashboard'
-import Virtualroom from './components/virtualRooms/Virtualroom'
+import SocketApp from './components/VirtualRooms/SocketApp'
 import Registration from './components/studentAuth/Registration'
 import Aboutus from './components/aboutus/Aboutus'
 import Buddy from './components/buddy_finder/buddy_finder'
@@ -15,7 +15,7 @@ export default (
         <Route path = '/login' component={Login} />
         <Route path = '/registration' component={Registration} />
         <Route path = '/dashboard' component={Dashboard} />
-        <Route path = '/virtualroom' component={Virtualroom} />   
+        <Route path = '/virtualrooms' component={SocketApp} />       
         <Route path = '/aboutus' component={Aboutus} />   
         <Route path = '/buddyup' component={Buddy} />
         <Route path = '/qbot' component={Qbot} />

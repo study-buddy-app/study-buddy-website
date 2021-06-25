@@ -2,7 +2,7 @@ import {Switch, Route} from 'react-router-dom'
 import Landing from './components/landingPage/Landing'
 import Login from './components/login/Login'
 import Dashboard from './components/dashboard/Dashboard'
-import SocketApp from './components/virtualRooms/SocketApp'
+import SocketApp from '../src/components/VirtualRooms/SocketApp';
 import Registration from './components/studentAuth/Registration'
 import Aboutus from './components/aboutus/Aboutus'
 import Tutordash from './components/tutorDash/Tutordash'

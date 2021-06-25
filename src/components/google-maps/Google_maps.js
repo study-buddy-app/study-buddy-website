@@ -27,7 +27,8 @@ import usePlacesAutocomplete, {
 //   import mapStyles from "./mapStyles";
 
 const libraries = ["places"]
-const mapContainerStyle ={
+const mapContainerStyle = {
+
     width: '63.8vw',
     height: '37.8vh',
 };

@@ -54,6 +54,7 @@ const Buddy_Finder = () => {
   const handleSubjectChange = (e) => {
     const selSubject = e.target.value;
     setSubject(selSubject);
+    setTutorName('')
   };
  
 

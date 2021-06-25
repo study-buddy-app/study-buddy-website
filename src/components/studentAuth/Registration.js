@@ -35,7 +35,8 @@ const Registration = (props) => {
             axios.get('/api/backpack')
             .then((response) => {
                 dispatch(setBackpack(response.data))
-                props.history.push('/stripe')
+                if(usertype === 'student'){props.history.push('/stripe')}
+                if(usertype === 'tutor'){props.history.push('/dashboard')}
                 notify()//<-- adding toast
             })
         })

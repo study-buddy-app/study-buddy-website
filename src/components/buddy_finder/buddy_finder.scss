@@ -6,7 +6,8 @@
 .page_Container {
   width: 100vw;
   height: 100vh;
-
+  flex-wrap: wrap;
+  display: flex;
   margin-top: 100px;
 }
 .map_Container {
@@ -51,9 +52,12 @@
   box-shadow: -0px 1px 1px 1px rgb(109, 109, 109);
 }
 .button {
-  width: 7.5em;
+  display: flex;
+  width: 7em;
   height: 2em;
   border-radius: 5px 5px;
+  display: flex;
+  justify-content: center;
 }
 .map_button_Container {
   display: flex;
@@ -85,6 +89,8 @@
   margin-top: 0.75em;
   width: 20rem;
   border-radius: 5px 5px;
+  height: 1.8rem;
+  border: 2px solid black;
 }
 .txtTutorSearch {
   margin-top: 4.5em;
@@ -94,7 +100,7 @@
   width: 63.5%;
   position: absolute;
   height: 2em;
-  margin-top: 0.25em;
+  margin-top: 0.75em;
 }
 .frm_newEvent {
   margin-top: 3em;
@@ -105,8 +111,8 @@
   margin-top: 0.75em;
   float: right;
   margin-right: -0em;
-  height: 30px;
-  color: black;
+  display: flex;
+  justify-content: center;
 }
 span {
   display: flex;
@@ -144,10 +150,19 @@ span {
   height: 100vh;
   width: 100vw;
   background-color: #ee964b;
-  //   margin-top: -200px;
 }
-.btn_addEvent {
-  color: black;
-  width: 100px;
-  height: 40px;
+.tutors_ByLocation {
+  margin-top: 4rem;
+  background-color: white;
+  padding: 0.5em;
+  height: 12rem;
+  width: 30rem;
+  border: 1px solid black;
+  font-size: 14px;
+}
+
+td {
+  width: 25%;
+  text-align: left;
+  cursor: pointer;
 }

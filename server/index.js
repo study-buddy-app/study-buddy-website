@@ -3,6 +3,7 @@ const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
 const cors = require("cors")
+
 const authCtrl = require('./controllers/authCtrl')
 const studentCtrl = require('./controllers/studentCtrl')
 const tutorCtrl = require('./controllers/tutorCtrl')
@@ -36,6 +37,41 @@ massive({
   app.listen(SERVER_PORT, () => console.log(`Server listening on ${SERVER_PORT}`))
 }).catch(err => console.log(err))
 
+//SOCKET IO 
+const server= require('http').createServer(app)
+const io= require ('socket.io')(server, {
+  cors:{
+      origin:'*',
+      methods:['GET', 'POST']
+  }
+})
+
+app.use (cors())
+
+// const PORT= process.env.PORT || 5000
+
+app.get('/', (req,res)=>{
+  res.send('Server is running')
+})
+
+
+
+io.on('connection', (socket)=>{ //<-- establishes initial connection
+  socket.emit('me', socket.id) //<-- creates socket.id to user and signal
+
+  //HANDLER FUNCTIONS
+  socket.on("disconnect", () => {
+  socket.broadcast.emit("callEnded")
+});
+
+socket.on("callUser", ({ userToCall, signalData, from, name }) => {
+  io.to(userToCall).emit("callUser", { signal: signalData, from, name }); //<--the emitted signal data is sent to the front end -->( signal: signalData, from, name)
+});
+
+socket.on("answerCall", (data) => {
+  io.to(data.to).emit("callAccepted", data.signal)
+});
+});
 //ENDPOINTS
 //auth
 app.post('/auth/register', authCtrl.register)
@@ -48,12 +84,12 @@ app.get('/student/session/tutors', studentCtrl.getTutors)
 app.post('/student/session/tutor', studentCtrl.addTutor)
 app.delete('/student/session/tutor', studentCtrl.deleteTutor)
 //tutor
-app.put('/tutor/profile', tutorCtrl.updateProfile)
-app.get('/tutor/subjects/:tutor_id', tutorCtrl.getSubjectsByTutor)
-app.get('/tutor/subjects', tutorCtrl.getTutorsByStateAndSubject)
-app.get('/tutor/subjects/:subject_id', tutorCtrl.getTutorsBySubject)
-app.delete('/tutor/subjects/:tutor_id', tutorCtrl.deleteSubject)
-app.post('/tutor/subjects/:tutor_id', tutorCtrl.addSubject)
+app.put('/api/tutor/profile', tutorCtrl.updateProfile)
+app.get('/api/tutor/subjects/:tutor_id', tutorCtrl.getSubjectsByTutor)
+app.put('/api/tutor/state/subjects', tutorCtrl.getTutorsByStateAndSubject)
+app.get('/api/tutor/subjects/:subject_id', tutorCtrl.getTutorsBySubject)
+app.delete('/api/tutor/subjects/:tutor_id', tutorCtrl.deleteSubject)
+app.post('/api/tutor/subjects/:tutor_id', tutorCtrl.addSubject)
 
 //session
 app.use(cors())
@@ -62,7 +98,6 @@ app.post('/payment', cors(), paymentCtrl.addPayment)
 
 //subject
 app.get('/api/subject', subjectCtrl.getSubject)
-
 
 //backpack
 app.get('/api/backpack', backpackCtrl.getBackPack)

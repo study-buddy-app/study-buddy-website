@@ -1,7 +1,8 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import axios from "axios"
 import React, { useState } from 'react'
-import '../stripe/PaymentFrom.css'
+import '../stripe/PaymentFrom.scss'
+import {Link} from 'react-router-dom'
 
 const CARD_OPTIONS = {
 	iconStyle: "solid",
@@ -14,7 +15,7 @@ const CARD_OPTIONS = {
 			fontSize: "16px",
 			fontSmoothing: "antialiased",
 			":-webkit-autofill": { color: "#fce883" },
-			"::placeholder": { color: "#87bbfd" }
+			"::placeholder": { color: "black" }
 		},
 		invalid: {
 			iconColor: "#ffc7ee",
@@ -65,8 +66,9 @@ export default function PaymentForm() {
 
     return (
         <div className='payment-container'>
+            <h1>Finish Sign up with a one time fee of $39.99</h1>
         {!success ? 
-        <form onSubmit={handleSubmit}>
+        <form className='pay-form' onSubmit={handleSubmit}>
             <fieldset className="FormGroup">
                 <div className="FormRow">
                     <CardElement options={CARD_OPTIONS}/>
@@ -76,7 +78,7 @@ export default function PaymentForm() {
         </form>
         :
        <div >
-           <h2 id="thank-you">Thank you for your purchase!</h2>
+          <Link style={{color: 'black'}} to='/'><h2 id="thank-you">Thank you for your purchase! Click here to continue</h2></Link> 
        </div> 
         } 
         </div>

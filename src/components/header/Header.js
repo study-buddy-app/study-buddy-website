@@ -55,10 +55,10 @@ const Header = () => {
             <Logout closeMobileMenu={closeMobileMenu} />
           
           </li>
-
       
         </ul>
-      </div>
+ 
+      </div> 
    </header>
    </>
   )

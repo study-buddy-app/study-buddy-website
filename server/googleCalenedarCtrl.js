@@ -1,14 +1,19 @@
 // Require google from googleapis package.
 const { google } = require('googleapis')
+require('dotenv').config()
+
+const { CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN } =
+  process.env
 
 // Require oAuth2 from our google instance.
 const { OAuth2 } = google.auth
 
 // Create a new instance of oAuth and set our Client ID & Client Secret.
-const oAuth2Client = new OAuth2(
-  'YOUR CLIENT ID GOES HERE',
-  'YOUR CLIENT SECRET GOES HERE'
-)
+const oAuth2Client = new OAuth2({
+  clientId: CLIENT_ID,
+  clientSecret: CLIENT_SECRET,
+  refreshToken: REFRESH_TOKEN
+})
 
 // Call the setCredentials method on our oAuth2Client instance and set our refresh token.
 oAuth2Client.setCredentials({
@@ -28,10 +33,14 @@ eventEndTime.setDate(eventEndTime.getDay() + 4)
 eventEndTime.setMinutes(eventEndTime.getMinutes() + 45)
 
 // Create a dummy event for temp uses in our calendar
+const summary= ''
+const location=''
+const description=''
 const event = {
-  summary: `Meeting with David`,
-  location: `3595 California St, San Francisco, CA 94118`,
-  description: `Meet with David to talk about the new client project and how to integrate the calendar for booking.`,
+  //Make variables for each event element for inputs from the front end
+  summary: `${summary}`,
+  location: `${location}`,
+  description: `${description}`,
   colorId: 1,
   start: {
     dateTime: eventStartTime,

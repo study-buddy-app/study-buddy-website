@@ -64,8 +64,8 @@ const Login = (props) => {
       <br></br>
       <div className='bottomform'>
       <button className='login2'onClick ={handleLogin}>Login</button>
-      <p className='p4'>Don't have an account?</p>
-      <Link className='registerlink' to='/registration'>Register</Link>
+     <Link to="/registration"><p className='p4'>Don't have an account? Click here to create one!</p></Link>
+      {/* <Link className='registerlink' to='/registration'>Register</Link> */}
       </div> 
     </div>
     <video className='videoTag' poster='poster.jpg' autoPlay loop muted>

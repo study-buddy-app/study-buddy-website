@@ -2,12 +2,11 @@ import {Switch, Route} from 'react-router-dom'
 import Landing from './components/landingPage/Landing'
 import Login from './components/login/Login'
 import Dashboard from './components/dashboard/Dashboard'
-import SocketApp from './components/VirtualRooms/SocketApp'
+import SocketApp from './components/virtualRooms/SocketApp'
 import Registration from './components/studentAuth/Registration'
 import Aboutus from './components/aboutus/Aboutus'
 import Tutordash from './components/tutorDash/Tutordash'
 import Buddy from './components/buddy_finder/buddy_finder'
-import Qbot from './components/qbot/Qbot'
 import StripeContainer from './components/stripe/StripeContainer'
 
 export default (
@@ -20,7 +19,6 @@ export default (
         <Route path = '/aboutus' component={Aboutus} />   
         <Route path = '/tutordash' component={Tutordash} />
         <Route path = '/buddyup' component={Buddy} />
-        <Route path = '/qbot' component={Qbot} />
         <Route path= '/stripe' component={StripeContainer}/>
 
     </Switch>

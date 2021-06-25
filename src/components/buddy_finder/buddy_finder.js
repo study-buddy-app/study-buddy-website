@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "../buddy_finder/buddy_finder.scss";
 import Google_maps from "../google-maps/Google_maps"
-import {Link} from 'react-router-dom'
+
 
 
 const Buddy_Finder = () => {
@@ -101,7 +101,7 @@ const Buddy_Finder = () => {
             </div>
             <div className="frmLabels"></div>
             <div className="loc_Container">
-              <input value={location} onChange={(e) => setLocation(e.target.value)}
+              <input value={location} onChange={(e) => locationOnChange(e)}
                 type="text"
                 className="txtLocation txtbox"
                 placeholder="Location"

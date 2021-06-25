@@ -114,8 +114,9 @@ const Buddy_Finder = () => {
                 onChange={(e) => handleMeetupType(e)}
               >
                 <option value="Meeting Type">Choose a Meeting Type</option>
-                <option value="In Person">In Person</option>
-                <option value="Virtual">Virtual</option>
+                <option value="Tutor">Find Tutor</option>
+                <option value="Student">Find Student</option>
+                <option value="Virtual">Virtual Meetup</option>
               </select>
               <select
                 className="txtSubject txtbox"

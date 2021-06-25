@@ -23,7 +23,6 @@ const Login = (props) => {
     .then((res) => {
       console.log(res.data, 'logged in')
       dispatch(setUser(res.data))
-      props.history.push('/dashboard')
       console.log('this is data', res.data)
       axios.get('/api/backpack')
       .then((response) => {
@@ -37,16 +36,18 @@ const Login = (props) => {
     console.log('e', e)
     if(setUsertype(e.target.value) === 'student'){   
       setUsertype = "student"
+      props.history.push('/dashboard')
       console.log(e.target.value)
     } else {
       setUsertype = "tutor"
+      props.history.push('/tutordash')
       console.log(e.target.value)
     }
   }
 
   
   return(
-    <div className='login'> 
+    <div className='login'>   
     <div className= 'loginform'>
       <h2 className='login1' >Login</h2>
       <p className='p1'>user name*</p>
@@ -66,11 +67,12 @@ const Login = (props) => {
      <Link to="/registration"><p className='p4'>Don't have an account? Click here to create one!</p></Link>
       {/* <Link className='registerlink' to='/registration'>Register</Link> */}
       </div> 
-    </div>  
-    <video className='videoTag' autoPlay loop muted>
-    <source src='https://res.cloudinary.com/dgaapgd2f/video/upload/v1624342211/Untitled_design_1_aeolkz.mp4' type='video/mp4' />
-    </video>  
-    </div> 
+    </div>
+    <video className='videoTag' poster='poster.jpg' autoPlay loop muted>
+      <source src='https://res.cloudinary.com/dgaapgd2f/video/upload/v1624342211/Untitled_design_1_aeolkz.mp4' type='video/mp4' />s
+      </video>
+    </div>
+  
   )
 }
 

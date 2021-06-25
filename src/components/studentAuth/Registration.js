@@ -95,8 +95,8 @@ toast.configure()//<--toast funct
                 <input  value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password" type="password" required/>
                 <div className='confirm-container'>
                 <h3>Confirm you are a Student<div className={btn_student} onClick={handleStudent}>Yes</div></h3>
-                 <button className="Sign-Up">Sign Up</button>
                  </div>
+                 <button className="Sign-Up">Sign Up</button>
              </form>    
              <br></br>
              <div className='toggleBtn' onClick={tutorForm}><h3 className='sky-h3'>Want to create a Tutor account? Click Here</h3></div>
@@ -118,8 +118,8 @@ toast.configure()//<--toast funct
                 <input  value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password" type="password" required/>
             <div className='confirm-container'>
             <h3>Confirm you are a Tutor<div className={btn_tutor} onClick={handleTutor}>Yes</div></h3>
-                 <button className="Sign-Up">Sign Up</button>
             </div>
+                 <button className="Sign-Up">Sign Up</button>
         </form>    
              <br></br>
              <div className='toggleBtn' onClick={studentForm}><h3 className='sky-h3'>Want to create a student account? Click Here</h3></div>

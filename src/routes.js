@@ -7,8 +7,7 @@ import Registration from './components/studentAuth/Registration'
 import Aboutus from './components/aboutus/Aboutus'
 import Buddy from './components/buddy_finder/buddy_finder'
 import Qbot from './components/qbot/Qbot'
-import buddy_finder from './components/buddy_finder/buddy_finder'
-
+import StripeContainer from './components/stripe/StripeContainer'
 
 export default (
     <Switch>
@@ -18,8 +17,9 @@ export default (
         <Route path = '/dashboard' component={Dashboard} />
         <Route path = '/virtualroom' component={Virtualroom} />   
         <Route path = '/aboutus' component={Aboutus} />   
-        <Route path = '/meetup' component={buddy_finder} />
+        <Route path = '/buddyup' component={Buddy} />
         <Route path = '/qbot' component={Qbot} />
+        <Route path= '/stripe' component={StripeContainer}/>
 
     </Switch>
 )

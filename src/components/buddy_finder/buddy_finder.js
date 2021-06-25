@@ -13,25 +13,31 @@ const Buddy_Finder = () => {
   const [endTime, setEndTime] = useState();
   const [timezone, setTimeZone] = useState();
   const [subject, setSubject] = useState();
-  const [state, setState] = useState("")
+  const [state, setState] = useState();
+  const [popList, setPopList] = useState();
 
  
 
-  // const subject_id = 20;
+
 
   useEffect(() => {
-    let state ="TX";
-    let subject_id = 20;
+    let subject_id = subject
     axios
       .put('/api/tutor/state/subjects', {state, subject_id})
       .then((res) => {
         setTutorList(res.data);
       })
       .catch((err) => console.log(err));
-  }, [state]);
+  }, [subject]);
 
-  console.log("Tutorlist", tutorlist);
-
+  useEffect(()=>{
+    axios.get('/api/subject')
+    .then((res)=>{
+        setPopList(res.data);
+    })
+    .catch((err)=> console.log(err))
+  },[])
+console.log(popList)
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -45,6 +51,7 @@ const Buddy_Finder = () => {
     const selSubject = e.target.value;
     setSubject(selSubject);
   };
+ 
 
   const handleStart = (e) => {
     setStartTime(e.target.value);
@@ -54,6 +61,14 @@ const Buddy_Finder = () => {
     setEndTime(e.target.value);
   };
 
+  const locationOnChange = (e) =>{
+    let getState = e.target.value.split(',')
+    console.log('getState',getState)
+    getState = getState[1]?.trim()
+    setState(getState)
+  }
+
+console.log('state value', state)
   return (
     <div>
       <main className="page_Container">
@@ -63,18 +78,25 @@ const Buddy_Finder = () => {
           </div>
           <div className="locate_buddy">
             <div className="tutor_search">
-              <textarea
-                className="txtTutorSearch"
-                rows="10"
-                cols="50"
-                placeholder="Enter a location and this area will show you the available tutors or study buddies. Click on the name to add it to the right."
-              >
-                {tutorlist}
-              </textarea>
+
+              <div className='tutors_ByLocation' >
+              {tutorlist?.map((item, index)=>{ 
+                  return (
+                    <table className='tblTutors'>
+                      <tr>
+                        <td key={item.subject_id}>{item.f_name}</td>
+                        <td key={item.subject_id}>{item.l_name}</td>
+                        <td key={item.subject_id}>{item.email}</td>
+                        <td key={item.subject_id}>{item.city},</td>
+                        <td key={item.subject_id}>{item.state}</td>
+                      </tr>
+                    </table>)
+                })}
+              </div>
             </div>
             <div className="frmLabels"></div>
             <div className="loc_Container">
-              <input
+              <input onChange ={(e)=>locationOnChange(e)}
                 type="text"
                 className="txtLocation txtbox"
                 placeholder="Location"
@@ -96,40 +118,11 @@ const Buddy_Finder = () => {
                 <option value="Choose a Field of Study">
                   Choose a Field of Study
                 </option>
-                <option value="Accounting and Finance">
-                  Accounting and Finance
-                </option>
-                <option value="Art">Art</option>
-                <option value="Beauty Therapy">Beauty Therapy</option>
-                <option value="Business and Economics">
-                  Business and Economics
-                </option>
-                <option value="MChild Care">Child Care</option>
-                <option value="Computer Science">Computer Studies</option>
-                <option value="Event Management">Event Management</option>
-                <option value="Forensic Investigation">
-                  Forensic Investigation
-                </option>
-                <option value="General Management">General Management</option>
-                <option value="Graphic Design">Graphic Design</option>
-                <option value="Hospitality">Hospitality</option>
-                <option value="Interior Design">Interior Design</option>
-                <option value="Journalism">Journalism</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Nursing">Nursing</option>
-                <option value="Office Administration and Secretarial Studies">
-                  Office Administration and Secretarial Studies
-                </option>
-                <option value="Paralegal Studies">Paralegal Studies</option>
-                <option value="Photography">Photography</option>
-                <option value="Project Management">Project Management</option>
-                <option value="Sport Studies and Coaching">
-                  Sport Studies and Coaching
-                </option>
-                <option value="Technical Studies">
-                  Technical Studies (plumbing, electrical work, etc.)
-                </option>
-                <option value="Writing">Writing</option>
+                {popList?.map((topic)=>{
+                  return(
+                    <option key ={topic.subject_id} value={topic.subject_id}>{topic.subject}</option>
+                  )
+                })}
               </select>
               <div className="lblDate startlabel">Start Date/Time</div>
               <input
@@ -157,7 +150,7 @@ const Buddy_Finder = () => {
                 type="submit"
                 className="btnSubmit button"
               >
-                Add Event
+                Add
               </button>
             </form>
             <div className="searchNow"></div>
@@ -175,9 +168,9 @@ const Buddy_Finder = () => {
             ></iframe>
           </div>
           <div className="event_btn_container">
-            <button className="btn_addEvent button">Edit Event</button>
+            <button className="btn_addEvent button">Edit</button>
             <button className="btn_addEvent button">Today</button>
-            <button className="btn_addEvent button">Del Event</button>
+            <button className="btn_addEvent button">Delete</button>
           </div>
 
           <div className="event_Item">
@@ -193,7 +186,6 @@ const Buddy_Finder = () => {
             <h4>-No one</h4>
           </div>
         </div>
-        <div className="chat_Container"></div>
       </main>
     </div>
   );

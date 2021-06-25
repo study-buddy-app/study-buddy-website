@@ -9,8 +9,6 @@ import Buddy from './components/buddy_finder/buddy_finder'
 import Qbot from './components/qbot/Qbot'
 import StripeContainer from './components/stripe/StripeContainer'
 
-
-
 export default (
     <Switch>
         <Route exact path = '/' component={Landing} />

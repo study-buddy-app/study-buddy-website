@@ -1,14 +1,17 @@
-$font: Arial,Verdana,sans-serif;
+$font: Arial, Verdana, sans-serif;
+$primary-color: #264653;
+$secondary-color: #2a9d8f;
+$accent-color1: #e9c46a;
+$accent-color2: #faf0ca;
 $font-weights: (
-    'regular': 400,
-    'medium': 500,
-    "bold": 700
+  "regular": 400,
+  "medium": 500,
+  "bold": 700,
 );
 
-
-@mixin FlexCenterAll($direct){
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction:$direct;
+@mixin FlexCenterAll($direct) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direct;
 }

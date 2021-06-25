@@ -1,17 +1,16 @@
 import React, {useState, useEffect} from 'react'
-import './Dashboard.scss'
 import { Link } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
 import {setBackpack} from '../../redux/backpackReducer'
-import Backpack from './Backpack'
+import Backpack from '../dashboard/Backpack'
 
 
 
-export default function Dashboard(props) {
+export default function Tutordash(props) {
     const [subjectArr, setSubjectArr] = useState([])
     const [search, setSearch] = useState('')
-    const [askq, setAskq] = useState('')
+   
 
     const {user} = useSelector((store) => store.authReducer)
     const {backpack} = useSelector((store) => store.backpackReducer)
@@ -67,7 +66,7 @@ export default function Dashboard(props) {
                             <h3>Upload your paper</h3>
                                 <textarea
                                     className="askq"
-                                    onChange={(e) => setAskq(e.target.value)}
+                                    // onChange={(e) => setAskq(e.target.value)}
                                     rows="10"
                                     cols="50"
                                     placeholder="Upload your paper or ask a question"
@@ -123,10 +122,5 @@ export default function Dashboard(props) {
                     </div>
                     </div>
                     </div>
-                  
-             
-            
-        
     )
-                            
-}
+                            }

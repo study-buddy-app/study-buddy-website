@@ -5,7 +5,7 @@ import Dashboard from './components/dashboard/Dashboard'
 import Virtualroom from './components/virtualRooms/Virtualroom'
 import Registration from './components/studentAuth/Registration'
 import Aboutus from './components/aboutus/Aboutus'
-// import Meetup from './components/meetup/Meetup'
+import Buddy from './components/buddy_finder/buddy_finder'
 import Qbot from './components/qbot/Qbot'
 import buddy_finder from './components/buddy_finder/buddy_finder'
 

@@ -23,7 +23,6 @@ const Login = (props) => {
     .then((res) => {
       console.log(res.data, 'logged in')
       dispatch(setUser(res.data))
-      props.history.push('/dashboard')
       console.log('this is data', res.data)
       axios.get('/api/backpack')
       .then((response) => {
@@ -37,9 +36,11 @@ const Login = (props) => {
     console.log('e', e)
     if(setUsertype(e.target.value) === 'student'){   
       setUsertype = "student"
+      props.history.push('/dashboard')
       console.log(e.target.value)
     } else {
       setUsertype = "tutor"
+      props.history.push('/tutordash')
       console.log(e.target.value)
     }
   }

@@ -1,5 +1,5 @@
 import React, { createContext, useState, useRef, useEffect} from 'react'
-import {io} from 'socket.io-client' //<-- in the video its socket.io-client so if it crashes change it 
+import io from 'socket.io-client' //<-- in the video its socket.io-client so if it crashes change it 
 import Peer from 'simple-peer'
 
 //This is the logic for the entire application
@@ -27,6 +27,9 @@ const ContextProvider = ({children}) =>{
             .then((currentStream)=>{ //<--this sends a promise to initializes the stream
                 setStream(currentStream)
                 myVideo.current.srcObject = currentStream
+            }).catch((err)=>{
+              console.log(err)
+              console.log("stream not connected")
             })
         socket.on('me', (id)=> setMe(id) )//<--connects to the backend socket.emit('me', socket.id) grabs the unique connection ID and sets it to state
 

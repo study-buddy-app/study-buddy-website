@@ -5,6 +5,7 @@ import Notifications from './Notifications'
 import Options from './Options'
 import VideoPlayer from './VideoPlayer'
 import {ChatEng} from './ChatEng'
+import {ContextProvider} from './SocketContext'
 import './VirtualRooms.scss';
 
 const useStyles= makeStyles((theme) =>({
@@ -36,6 +37,7 @@ const useStyles= makeStyles((theme) =>({
 const SocketApp =() =>{
   const classes= useStyles()
   return (
+<ContextProvider>
     <div className={classes.wrapper}>
       <AppBar className={classes.appBar} position='static' color='inherit'>
         <Typography variant='h2' align='center'>Video Chat</Typography>
@@ -46,6 +48,7 @@ const SocketApp =() =>{
       </Options>
       <ChatEng/>
     </div>
+</ContextProvider>
   );
 }
 

@@ -98,7 +98,7 @@ app.post('/payment', cors(), paymentCtrl.addPayment)
 
 //subject
 app.get('/api/subject', subjectCtrl.getSubject)
-
+app.get('/api/subject/menu/:student_id', subjectCtrl.getSubjectFromBP)
 //backpack
 app.get('/api/backpack', backpackCtrl.getBackPack)
 app.post('/api/backpack/:subject_id', backpackCtrl.addToBackPack)

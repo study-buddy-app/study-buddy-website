@@ -42,6 +42,16 @@ getStudentsByStateAndSubject: (req,res)=>{
       res.status(400).send(err);
     })
   },
+getVirtualStudentsBySubject: (req,res)=>{
+    const db = req.app.get('db');
+    const {subject_id} = req.body
+    db.student.s_get_virtual_students_by_subject( subject_id)
+    .then((students)=>{
+      res.status(200).send(students);
+    }).catch((err)=>{
+      res.status(400).send(err);
+    })
+  },
 deleteTutor: (req,res)=>{
     const db = req.app.get('db')
     const {student_id} = req.params

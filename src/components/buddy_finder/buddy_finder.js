@@ -34,6 +34,14 @@ const Buddy_Finder = () => {
         })
         .catch((err) => console.log(err));
       }
+    if(description === 'Virtual'){
+      axios
+        .put('/api/subject/student/virtual', {subject_id})
+        .then((res) => {
+          setTutorList(res.data);
+        })
+        .catch((err) => console.log(err));
+      }
   }, [subject, description]);
 
   useEffect(() => {
@@ -100,12 +108,20 @@ console.log('subject_id', subject)
                       <tr>
                         <td
                           onClick={handleOnClick}
-                          title={item.f_name + " " + item.l_name}
+                          title={item.f_name + " " + item.l_name +" --"+ item.email +" --"+ description}
                         >
                           {item.f_name}
                         </td>
-                        <td key={item.subject_id}>{item.l_name}</td>
-                        <td key={item.subject_id}>{item.email}</td>
+                        <td key={item.subject_id}
+                        onClick={handleOnClick}
+                        title={item.f_name + " " + item.l_name +" --"+ item.email +" --"+ description}
+                        >
+                          {item.l_name}</td>
+                        <td key={item.subject_id}
+                        onClick={handleOnClick}
+                        title={item.f_name + " " + item.l_name +" --"+ item.email +" --"+ description}
+                        >
+                          {item.email}</td>
                         <td key={item.subject_id}>{item.city},</td>
                         <td key={item.subject_id}>{item.state}</td>
                       </tr>

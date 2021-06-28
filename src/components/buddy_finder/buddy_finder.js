@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../buddy_finder/buddy_finder.scss";
-import Google_maps from "../google-maps/Google_maps"
-
-
+import Google_maps from "../google-maps/Google_maps";
+require("dotenv").config();
 
 const Buddy_Finder = () => {
   const [tutorName, setTutorName] = useState();
@@ -17,46 +16,66 @@ const Buddy_Finder = () => {
   const [state, setState] = useState();
   const [popList, setPopList] = useState();
 
- 
-
   useEffect(() => {
-    let subject_id = subject
+    let subject_id = subject;
+    if(description === 'Tutor'){
     axios
-      .put('/api/tutor/state/subjects', {state, subject_id})
+      .put('/api/subject/tutor/state', { state, subject_id })
       .then((res) => {
         setTutorList(res.data);
       })
       .catch((err) => console.log(err));
-  }, [subject]);
+    }
+    if(description === 'Student'){
+      axios
+        .put('/api/subject/student/state', { state, subject_id })
+        .then((res) => {
+          setTutorList(res.data);
+        })
+        .catch((err) => console.log(err));
+      }
+    if(description === 'Virtual'){
+      axios
+        .put('/api/subject/student/virtual', {subject_id})
+        .then((res) => {
+          setTutorList(res.data);
+        })
+        .catch((err) => console.log(err));
+      }
+  }, [subject, description]);
 
-  useEffect(()=>{
-    axios.get('/api/subject')
-    .then((res)=>{
+  useEffect(() => {
+    const student_id = 30
+    axios
+      .get(`/api/subject/menu/${student_id}`, )
+      .then((res) => {
         setPopList(res.data);
-    })
-    .catch((err)=> console.log(err))
-  },[])
-
+      })
+      .catch((err) => console.log(err));
+  }, []);
+ console.log(popList)
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  const handleOnClick = (e) =>{
-    setTutorName(e.target.title)
-  }
-  
+  const handleOnClick = (e) => {
+    setTutorName(e.target.title);
+  };
 
   const handleMeetupType = (e) => {
     const meetupType = e.target.value;
     setDescription(meetupType);
   };
+console.log('meetup Type', description)
 
   const handleSubjectChange = (e) => {
     const selSubject = e.target.value;
     setSubject(selSubject);
-    setTutorName('')
+    setTutorName("");
+    console.log('e', e)
   };
- 
+
+console.log('subject_id', subject)
 
   const handleStart = (e) => {
     setStartTime(e.target.value);
@@ -85,19 +104,32 @@ const Buddy_Finder = () => {
           </div>
           <div className="locate_buddy">
             <div className="tutor_search">
-
-              <div className='tutors_ByLocation' >
-              {tutorlist?.map((item)=>{ 
+              <div className="tutors_ByLocation">
+                {tutorlist?.map((item) => {
                   return (
-                    <table className='tblTutors'>
-                      <tr >
-                        <td onClick ={handleOnClick} title={item.f_name+' '+item.l_name}>{item.f_name}</td>
-                        <td key={item.subject_id}>{item.l_name}</td>
-                        <td key={item.subject_id}>{item.email}</td>
+                    <table className="tblTutors">
+                      <tr>
+                        <td
+                          onClick={handleOnClick}
+                          title={item.f_name + " " + item.l_name +" --"+ item.email +" --"+ description}
+                        >
+                          {item.f_name}
+                        </td>
+                        <td key={item.subject_id}
+                        onClick={handleOnClick}
+                        title={item.f_name + " " + item.l_name +" --"+ item.email +" --"+ description}
+                        >
+                          {item.l_name}</td>
+                        <td key={item.subject_id}
+                        onClick={handleOnClick}
+                        title={item.f_name + " " + item.l_name +" --"+ item.email +" --"+ description}
+                        >
+                          {item.email}</td>
                         <td key={item.subject_id}>{item.city},</td>
                         <td key={item.subject_id}>{item.state}</td>
                       </tr>
-                    </table>)
+                    </table>
+                  );
                 })}
               </div>
             </div>
@@ -122,16 +154,17 @@ const Buddy_Finder = () => {
               <br/><br/>
               <select
                 className="txtSubject txtbox"
-                
                 onChange={(e) => handleSubjectChange(e)}
               >
                 <option value="Choose a Field of Study">
-                  Choose a Field of Study 
+                  Choose a Field of Study
                 </option>
-                {popList?.map((topic)=>{
-                  return(
-                    <option key ={topic.subject_id} value={topic.subject_id} >{topic.subject}</option>
-                  )
+                {popList?.map((topic) => {
+                  return (
+                    <option key={topic.subject_id} value={topic.subject_id}>
+                      {topic.subject}
+                    </option>
+                  );
                 })}
               </select>
               <br/><br/>
@@ -174,7 +207,7 @@ const Buddy_Finder = () => {
         <div className="schedule_container">
           <div className="calendar_Container">
             <iframe
-              src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showPrint=0&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showTz=1&amp;showTabs=0"
+              src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showTz=0&amp;showCalendars=1&amp;showTitle=0&amp;showPrint=1&amp;showTabs=0"
               width="100%"
               height="100%"
               frameborder="0"

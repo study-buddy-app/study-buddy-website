@@ -1,8 +1,7 @@
 import {Link, withRouter} from 'react-router-dom'
 import {useState} from "react"
 import '../header/Header.scss'
-// import {GiHamburgerMenu} from 'react-icons/gi'
-// import { Dropdown, DropdownButton } from 'react-bootstrap';
+import '../login/Login.scss'
 import Logout from '../login/logout'
 
 
@@ -23,9 +22,9 @@ const Header = () => {
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
            </div>
-           {/* <div>
+           <div>
             <input className='searchBar' placeholder='Search'/>
-          </div> */}
+          </div>
            <ul className={click ? 'nav-menu active' : 'nav-menu'}>
            <li className='nav-item'>
            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
@@ -44,17 +43,18 @@ const Header = () => {
           </li>
           <li className='nav-item'>
               <Link
-                to='/profile'
+                to='/buddyup'
                 className='nav-links'
                 onClick= {closeMobileMenu}
                 >
-                <h3>Contact</h3>
+                <h3>Meet Up</h3>
               </Link>
           </li>
-          <li className='nav-item'>
-            <Logout closeMobileMenu={closeMobileMenu} />
-          
+          <li className='nav-links'>
+            <Logout closeMobileMenu={closeMobileMenu} />  
+            <li to='/dashboard'> <i className="far fa-user-circle"></i></li>
           </li>
+    
       
         </ul>
  

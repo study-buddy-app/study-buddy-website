@@ -9,8 +9,7 @@ const studentCtrl = require('./controllers/studentCtrl')
 const tutorCtrl = require('./controllers/tutorCtrl')
 const backpackCtrl = require('./controllers/backpackCtrl')
 const subjectCtrl = require( './controllers/subjectCtrl')
-
-
+const timelogCtrl = require("./controllers/timelog_controller");
 
 const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env
 
@@ -90,6 +89,11 @@ app.put('/api/tutor/state/subjects', tutorCtrl.getTutorsByStateAndSubject)
 app.get('/api/tutor/subjects/:subject_id', tutorCtrl.getTutorsBySubject)
 app.delete('/api/tutor/subjects/:tutor_id', tutorCtrl.deleteSubject)
 app.post('/api/tutor/subjects/:tutor_id', tutorCtrl.addSubject)
+// timelog
+app.get('/api/time', timelogCtrl.getTime)
+app.post('/api/time', timelogCtrl.addTime)
+app.delete('/api/time/:id',timelogCtrl.deleteTime)
+app.put('/api/time/:id', timelogCtrl.editTime)
 
 //session
 app.use(cors())

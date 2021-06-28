@@ -27,6 +27,14 @@ const Login = (props) => {
       axios.get('/api/backpack')
       .then((response) => {
         dispatch(setBackpack(response.data)) 
+        if(usertype === 'student'){
+          props.history.push('/dashboard')
+        } 
+        if(usertype === 'tutor'){
+          props.history.push('./tutordash')
+        }
+
+        
       })        
     })
     .catch(err => console.log(err))
@@ -36,11 +44,9 @@ const Login = (props) => {
     console.log('e', e)
     if(setUsertype(e.target.value) === 'student'){   
       setUsertype = "student"
-      props.history.push('/dashboard')
       console.log(e.target.value)
     } else {
       setUsertype = "tutor"
-      props.history.push('/tutordash')
       console.log(e.target.value)
     }
   }
@@ -50,11 +56,17 @@ const Login = (props) => {
     <div className='login'>   
     <div className= 'loginform'>
       <h2 className='login1' >Login</h2>
+      <br></br>
       <p className='p1'>user name*</p>
+      <br></br>
       <input  className='input1' placeholder='user name'value={username} onChange={(e) => setUsername(e.target.value)} />
+      <br></br>
       <p className='p2'>password*</p>
-      <input className='input2' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)}  type="password" />
+      <br></br>
+      <input className='input2' placeholder='password' value={password} type ='password'onChange={(e) => setPassword(e.target.value)} />
+      <br></br>
       <p className='p3'>user type*</p>
+      <br></br>
       <select className = 'dropdown' onChange={handleOnChange}>
         <option   value='usertype' >user type</option>
         <option   value= 'tutor'>tutor</option>

@@ -5,16 +5,6 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
-
-  // }
-  // .dashheader {
-  //   background: url("https://res.cloudinary.com/dgaapgd2f/image/upload/v1624371922/EB4FB6E5-C68B-4672-A0E5-685C9AD564F5_4_5005_c_qg74np.jpg")
-  //     center center/cover no-repeat;
-  //   width: 100vw;
-  //   height: 150px;
-  //   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
-  //   margin-top: -50px;
-  //   margin-bottom: 10px;
 }
 
 .container {
@@ -239,4 +229,34 @@
 }
 .pro {
   margin: 140px;
+}
+.tutorcolumn1 {
+  padding: 3rem;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  width: 60vw;
+  background-color: $primary-color;
+  margin-right: 50px;
+  margin-bottom: 400px;
+  border-radius: 10px;
+  box-shadow: 1px 0 20px rgba(0, 0, 0, 0.35);
+}
+.hours {
+  background: whitesmoke;
+  overflow-y: scroll;
+  width: 300px;
+  height: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
+}
+
+.trackhours {
+  position: sticky;
+  top: 0px;
+  background: white;
+  width: 250px;
+  height: 35px;
 }

@@ -2,6 +2,8 @@ import {Switch, Route} from 'react-router-dom'
 import Landing from './components/landingPage/Landing'
 import Login from './components/login/Login'
 import Dashboard from './components/dashboard/Dashboard'
+import Profile from './components/dashboard/Profile'
+import Tutorprofile from './components/tutorDash/Tutorprofile'
 import SocketApp from './components/virtualRooms/SocketApp'
 import Registration from './components/studentAuth/Registration'
 import Aboutus from './components/aboutus/Aboutus'
@@ -20,6 +22,8 @@ export default (
         <Route path = '/tutordash' component={Tutordash} />
         <Route path = '/buddyup' component={Buddy} />
         <Route path= '/stripe' component={StripeContainer}/>
+        <Route path= '/profile' component={Profile}/>
+        <Route path= '/tutorprofile' component={Tutorprofile}/>
 
     </Switch>
 )

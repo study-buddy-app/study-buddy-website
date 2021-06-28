@@ -117,6 +117,7 @@ const Buddy_Finder = () => {
                 <option value="Student">Find Student</option>
                 <option value="Virtual">Virtual Meetup</option>
               </select>
+              <br/><br/>
               <select
                 className="txtSubject txtbox"
                 
@@ -131,14 +132,16 @@ const Buddy_Finder = () => {
                   )
                 })}
               </select>
+              <br/><br/>
               <div className="lblDate startlabel">Start Date/Time</div>
+            
               <input
                 type="datetime-local"
                 className="dtStart txtbox"
                 placeholder="Your Name"
                 onChange={(e) => handleStart(e)}
               ></input>
-              <br />
+                <br/><br/>
               <br></br>
               <div className="lblDate endlabel">End Date/Time</div>
               <input
@@ -147,12 +150,14 @@ const Buddy_Finder = () => {
                 placeholder="Your Name"
                 onChange={(e) => handleEnd(e)}
               ></input>
+                <br/><br/>
               <input
                 type="text"
                 className="txtTutor txtbox"
                 placeholder="Select a Tutor from the List"
                 defaultValue={tutorName}
               ></input>
+                <br/><br/>
               <button
                 onClick={handleSubmit}
                 type="submit"

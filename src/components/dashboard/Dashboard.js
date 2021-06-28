@@ -59,7 +59,7 @@ export default function Dashboard(props) {
                 <div className='column1'>
                     <div className='block1'>
                         <div className='greeting'>
-                           <img className = 'userlogo' src = 'https://res.cloudinary.com/dgaapgd2f/image/upload/v1624410772/A912FD0D-3C1E-475B-B5DD-6138727912B9_1_201_a_vjozus.jpg' alt = 'userlogo'/>
+                           <Link to='/profile' ><img className = 'userlogo' src = 'https://res.cloudinary.com/dgaapgd2f/image/upload/v1624410772/A912FD0D-3C1E-475B-B5DD-6138727912B9_1_201_a_vjozus.jpg' alt = 'userlogo'/></Link>
                             <h1 className='h1'>Hi there</h1>
                         </div>
                         <br/><br/>
@@ -77,7 +77,15 @@ export default function Dashboard(props) {
                         </div>
                         <br/><br/>
                         <div className='tutorsearch'>
-                        <input className='choose-tutor'type='text' placeholder='choose a tutor' onChange= { e => setSearch(e.target.value)}></input>   
+     
+                        <iframe
+                            src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showPrint=0&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showTz=1&amp;showTabs=0"
+                            width="100%"
+                            height="100%"
+                            frameborder="0"
+                            scrolling="no"
+                            title="calendar"
+                            ></iframe>
                         </div>
                         
                     
@@ -88,14 +96,14 @@ export default function Dashboard(props) {
                             <h3>virtual meetup</h3>
                             <p>Today's schedule</p>
                             <br/><br/>
-                            <button><Link to='/virtualroom'>virtual meeting</Link></button>
+                            <button><Link to='/virtualrooms'>virtual rooms</Link></button>
                             </div> 
                             <br/><br/>
                         <div className='meetup'>
                             <h3>In person meetup</h3>
                             <p>Today's schedule</p>
                             <br/><br/>
-                            <button><Link to='/meetup'>meetup</Link></button>
+                            <button><Link to='/buddyup'>buddy up</Link></button>
                             </div>
                         </div>
                 </div>

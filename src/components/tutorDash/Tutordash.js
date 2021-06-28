@@ -4,7 +4,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
 import {setBackpack} from '../../redux/backpackReducer'
 import Backpack from '../dashboard/Backpack'
-
+import TimeLogList from './TimeLogList';
+import './Tutordash.scss'
 
 
 export default function Tutordash(props) {
@@ -55,46 +56,48 @@ export default function Tutordash(props) {
         <div className='dashboard'>
              <div className='dashheader'></div>
             <div className='container'>
-                <div className='column1'>
+                <div className='tutorcolumn1'>
                     <div className='block1'>
                         <div className='greeting'>
-                           <img className = 'userlogo' src = 'https://res.cloudinary.com/dgaapgd2f/image/upload/v1624410772/A912FD0D-3C1E-475B-B5DD-6138727912B9_1_201_a_vjozus.jpg' alt = 'userlogo'/>
+                        <Link to='/tutorprofile' ><img className = 'userlogo' src = 'https://res.cloudinary.com/dgaapgd2f/image/upload/v1624410772/A912FD0D-3C1E-475B-B5DD-6138727912B9_1_201_a_vjozus.jpg' alt = 'userlogo'/></Link>
                             <h1 className='h1'>Hi there</h1>
+
                         </div>
                         <br/><br/>
                         <div className='questionpage'>
-                            <h3>Upload your paper</h3>
-                                <textarea
-                                    className="askq"
-                                    // onChange={(e) => setAskq(e.target.value)}
-                                    rows="10"
-                                    cols="50"
-                                    placeholder="Upload your paper or ask a question"
-                                ></textarea>
+                            <iframe
+                                src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showPrint=0&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showTz=1&amp;showTabs=0"
+                                width="100%"
+                                height="100%"
+                                frameborder="0"
+                                scrolling="no"
+                                title="calendar"
+                            ></iframe>
+                             
                             <br/><br/>
-                            <button className='submit'onClick ={handleSubmit}>submit</button>
                         </div>
                         <br/><br/>
-                        <div className='tutorsearch'>
-                        <input className='choose-tutor'type='text' placeholder='choose a tutor' onChange= { e => setSearch(e.target.value)}></input>   
+                        <div className='hours'>
+                        <h3 className='trackhours'>Hours</h3> 
+                        <TimeLogList />
                         </div>
                         
-                    
+    
 
                 
                     <div className='block2'>
                         <div className='virtual'>
                             <h3>virtual meetup</h3>
-                            <p>Today's schedule</p>
+                         
                             <br/><br/>
                             <button><Link to='/virtualroom'>virtual meeting</Link></button>
                             </div> 
                             <br/><br/>
-                        <div className='meetup'>
+                            <div className='meetup'>
                             <h3>In person meetup</h3>
                             <p>Today's schedule</p>
                             <br/><br/>
-                            <button><Link to='/meetup'>meetup</Link></button>
+                            <button><Link to='/buddyup'>Schedule a meetup</Link></button>
                             </div>
                         </div>
                 </div>

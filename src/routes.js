@@ -15,7 +15,7 @@ export default (
         <Route path = '/login' component={Login} />
         <Route path = '/registration' component={Registration} />
         <Route path = '/dashboard' component={Dashboard} />
-        <Route path = '/virtualrooms' component={SocketApp} />       
+        <Route path = '/virtualroom' component={SocketApp} />       
         <Route path = '/aboutus' component={Aboutus} />   
         <Route path = '/tutordash' component={Tutordash} />
         <Route path = '/buddyup' component={Buddy} />

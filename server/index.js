@@ -41,7 +41,7 @@ massive({
 const server= require('http').createServer(app)
 const io= require ('socket.io')(server, {
   cors:{
-      origin:'*',
+      origin:'http://localhost:4040',
       methods:['GET', 'POST']
   }
 })

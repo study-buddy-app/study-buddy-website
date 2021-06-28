@@ -1,6 +1,13 @@
-import SocketApp from '../src/components/VirtualRooms/SocketApp';
-import {ContextProvider} from '../src/components/VirtualRooms/SocketContext'
 
+
+import SocketApp from './SocketApp'
+import {ContextProvider} from './SocketContext'
+
+export default function VirtRoomContainer() {
+	return (
 <ContextProvider>
             <SocketApp />
 </ContextProvider>
+    )
+}
+

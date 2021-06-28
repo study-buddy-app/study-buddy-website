@@ -4,5 +4,5 @@ INNER JOIN tbl_backpack bk
 ON  tr.tutor_id = bk.tutor_id
 INNER JOIN tbl_subject s
 ON s.subject_id = bk.subject
-WHERE  s.subject_id = $1 AND tr.state = $2 
+WHERE tr.state = $1 AND s.subject_id = $2
 ORDER BY subject;

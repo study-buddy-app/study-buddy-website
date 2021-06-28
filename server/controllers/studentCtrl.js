@@ -31,6 +31,17 @@ addTutor: (req,res) =>{
         res.status(400).send(err)
     })
 },
+getStudentsByStateAndSubject: (req,res)=>{
+    const db = req.app.get('db');
+    const {state, subject_id} = req.body
+    console.log('I\'ve got a student by state and subjects request here!')
+    db.student.s_get_students_by_state_and_subject(state, subject_id)
+    .then((students)=>{
+      res.status(200).send(students);
+    }).catch((err)=>{
+      res.status(400).send(err);
+    })
+  },
 deleteTutor: (req,res)=>{
     const db = req.app.get('db')
     const {student_id} = req.params

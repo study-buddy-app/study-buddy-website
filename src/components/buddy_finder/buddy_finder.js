@@ -18,35 +18,34 @@ const Buddy_Finder = () => {
 
   useEffect(() => {
     let subject_id = subject;
+    if(description === 'Tutor'){
     axios
-      .put("/api/tutor/state/subjects", { state, subject_id })
+      .put('/api/subject/tutor/state', { state, subject_id })
       .then((res) => {
         setTutorList(res.data);
       })
       .catch((err) => console.log(err));
-  }, [subject]);
+    }
+    if(description === 'Student'){
+      axios
+        .put('/api/subject/student/state', { state, subject_id })
+        .then((res) => {
+          setTutorList(res.data);
+        })
+        .catch((err) => console.log(err));
+      }
+  }, [subject, description]);
 
   useEffect(() => {
-    const student_id = 4;
-    const tutor_id = 4;
-    if (description === "Tutor") {
-      axios
-        .get(`/api/subject/menu/${tutor_id}`)
-        .then((res) => {
-          setPopList(res.data);
-        })
-        .catch((err) => console.log(err));
-    }
-    if (description === "Student") {
-      axios
-        .get(`/api/subject/menu/${student_id}`)
-        .then((res) => {
-          setPopList(res.data);
-        })
-        .catch((err) => console.log(err));
-    }
+    const student_id = 30
+    axios
+      .get(`/api/subject/menu/${student_id}`, )
+      .then((res) => {
+        setPopList(res.data);
+      })
+      .catch((err) => console.log(err));
   }, []);
-
+ console.log(popList)
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -59,12 +58,16 @@ const Buddy_Finder = () => {
     const meetupType = e.target.value;
     setDescription(meetupType);
   };
+console.log('meetup Type', description)
 
   const handleSubjectChange = (e) => {
     const selSubject = e.target.value;
     setSubject(selSubject);
     setTutorName("");
+    console.log('e', e)
   };
+
+console.log('subject_id', subject)
 
   const handleStart = (e) => {
     setStartTime(e.target.value);

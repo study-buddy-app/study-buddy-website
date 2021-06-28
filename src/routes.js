@@ -5,6 +5,7 @@ import Dashboard from './components/dashboard/Dashboard'
 import Profile from './components/dashboard/Profile'
 import Tutorprofile from './components/tutorDash/Tutorprofile'
 import SocketApp from './components/virtualRooms/SocketApp'
+import SocketApp from '../src/components/VirtualRooms/SocketApp';
 import Registration from './components/studentAuth/Registration'
 import Aboutus from './components/aboutus/Aboutus'
 import Tutordash from './components/tutorDash/Tutordash'

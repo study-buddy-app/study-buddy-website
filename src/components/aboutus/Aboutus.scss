@@ -1,1 +1,26 @@
+.aboutus {
+  background: url("https://res.cloudinary.com/dgaapgd2f/image/upload/v1624342314/24A20871-D9D3-4FD1-AAFD-9533E5760BB1_1_201_a_rjcvap.jpg")
+    center center/cover no-repeat;
+  height: 150vh;
+  width: 100%;
+  margin-top: 5rem;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(252, 239, 239, 0.4);
+  object-fit: contain;
+  color: White;
+}
+.aboutus-text {
+  color: black;
+}
+
+@media (max-width: 400px) {
+  .aboutus {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+  }
+}

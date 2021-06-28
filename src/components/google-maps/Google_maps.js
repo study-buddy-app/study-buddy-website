@@ -81,7 +81,7 @@ export default function Google_maps(props){
         onLoad={onMapLoad}
         >
           {/* <Locate panTo={panTo} /> */}
-          <Search panTo={panTo} setLocation={props.setLocation} />
+          <Search panTo={panTo} locationOnChange={props.locationOnChange} />
           {markers.map((marker) => (
             <Marker
             key={`${marker.lat}-${marker.lng}`}
@@ -129,7 +129,7 @@ function Locate({ panTo }) {
     );
   }
 
-  function Search({ panTo, setLocation }) {
+  function Search({ panTo, locationOnChange }) {
     const {
       ready,
       value,
@@ -152,7 +152,7 @@ function Locate({ panTo }) {
     const handleSelect = async (address) => {
       setValue(address, false);
       clearSuggestions();
-      setLocation(address)
+      locationOnChange(address)
   
       try {
         const results = await getGeocode({ address });

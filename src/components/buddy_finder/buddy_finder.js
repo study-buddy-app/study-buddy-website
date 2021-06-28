@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "../buddy_finder/buddy_finder.scss";
 import Google_maps from "../google-maps/Google_maps"
-import {Link} from 'react-router-dom'
+
 
 
 const Buddy_Finder = () => {
   const [tutorName, setTutorName] = useState();
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState(null);
   const [tutorlist, setTutorList] = useState();
   const [description, setDescription] = useState();
   const [startTime, setStartTime] = useState();
@@ -66,12 +66,14 @@ const Buddy_Finder = () => {
     setEndTime(e.target.value);
   };
 
-  const locationOnChange = (e) =>{
-    let getState = e.target.value.split(',')
+  const locationOnChange = (locationString) =>{
+    let getState = locationString.split(',')
     console.log('getState',getState)
     getState = getState[1]?.trim()
     setState(getState)
+    console.log(locationString)
   }
+  console.log(state)
 
 
   return (
@@ -79,7 +81,7 @@ const Buddy_Finder = () => {
       <main className="page_Container">
         <div className="map_Container">
           <div className="map">
-            <Google_maps setLocation={setLocation}/>
+            <Google_maps locationOnChange={locationOnChange}/>
           </div>
           <div className="locate_buddy">
             <div className="tutor_search">
@@ -101,11 +103,11 @@ const Buddy_Finder = () => {
             </div>
             <div className="frmLabels"></div>
             <div className="loc_Container">
-              <input value={location} onChange={(e) => setLocation(e.target.value)}
+              {/* <input value={location} onChange={(e) => locationOnChange(e)}
                 type="text"
                 className="txtLocation txtbox"
                 placeholder="Location"
-              ></input>
+              ></input> */}
             </div>
             <form className="frm_newEvent">
               <select

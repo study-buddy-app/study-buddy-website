@@ -1,41 +1,103 @@
 import {Link, withRouter} from 'react-router-dom'
+import {useState} from "react"
 import '../header/Header.scss'
-import {GiHamburgerMenu} from 'react-icons/gi'
-import { Dropdown, DropdownButton } from 'react-bootstrap';
+// import {GiHamburgerMenu} from 'react-icons/gi'
+// import { Dropdown, DropdownButton } from 'react-bootstrap';
 import Logout from '../login/logout'
 
 
 const Header = () => {
+  const [click, setClick] = useState(false)
+
+
+  const handleClick = () => setClick(!click)
+  const closeMobileMenu = () => setClick(false)
+
     return (
-    <header>     
-      <div className='H-secLeft'>
-        <img className='logo' height='18%' width='18%' src='https://study-buddy-bucket.s3.us-east-2.amazonaws.com/Study+Buddy+logo+resize.png' alt='Study Buddy logo'/>
-      </div>
-      <div>
-        <input className='searchBar' placeholder='Search'/>
-      </div>
+      <>
+    <header className='header'>    
+        <div className='header-container'>
+          <Link to='/' onClick={closeMobileMenu}>
+          <img   className ="logo"src='https://study-buddy-bucket.s3.us-east-2.amazonaws.com/Study+Buddy+logo+resize.png' alt='Study Buddy logo'/>
+          </Link>  
+          <div className='menu-icon' onClick={handleClick}>
+            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+           </div>
+           {/* <div>
+            <input className='searchBar' placeholder='Search'/>
+          </div> */}
+           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+           <li className='nav-item'>
+           <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                <h3>Home</h3> 
+               </Link>
+          </li>
 
-      <div className='H-secRight'>
-        <Link className='links' to='/'><h3>HomePage</h3></Link>
-        <Link className='links' to='/login'><h3>Login</h3></Link>
-        {/* <Link className='links' to='/registration'><h3>Register</h3></Link> */}
-        <Link className='links' to='/aboutus'><h3>About Us</h3></Link>
-        <Link className='links' to ='/buddyup'><h3>Meet Up</h3></Link> 
-      </div>
-
-
-      <div className="DropDown">
-        <DropdownButton id="dropdown-basic-button" title={<h3 id="ham-icon"><GiHamburgerMenu/></h3>}> 
-            <Dropdown.Item id='drop-item' as={Link} to="/">HomePage</Dropdown.Item>
-            <Dropdown.Item id='drop-item' as={Link} to="/login">Login</Dropdown.Item>
-            <Dropdown.Item id='drop-item' as={Link} to="/packages">About Us</Dropdown.Item>
-        </DropdownButton>
-      </div>
+          <li className='nav-item'>
+              <Link
+                to='/aboutus'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                <h3>About Us</h3>
+              </Link>
+          </li>
+          <li className='nav-item'>
+              <Link
+                to='/profile'
+                className='nav-links'
+                onClick= {closeMobileMenu}
+                >
+                <h3>Contact</h3>
+              </Link>
+          </li>
+          <li className='nav-item'>
+            <Logout closeMobileMenu={closeMobileMenu} />
+          
+          </li>
+      
+        </ul>
+ 
+      </div> 
    </header>
+   </>
   )
 }
 
+   
+       
+      
+        
+ 
+
+
+      {/* <div className="DropDown">
+        <DropdownButton id="dropdown-basic-button" title={<h3 id="ham-icon"><GiHamburgerMenu/></h3>}> 
+            <Dropdown.Item id='drop-item' as={Link} to="/">HomePage</Dropdown.Item>
+            <Dropdown.Item id='drop-item' as={Link} to="/packages">About Us</Dropdown.Item>
+            <Dropdown.Item id='drop-item' as={Link} to="/login">Login</Dropdown.Item>
+        </DropdownButton>
+      </div> */}
+
+
     export default withRouter(Header)
+    
+
+
+
+
+
+
+
+  
+     
+       
+    
+          
+          
+           
+          
+           
     
 
     

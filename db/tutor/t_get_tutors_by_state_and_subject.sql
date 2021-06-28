@@ -1,8 +1,8 @@
-SELECT t.tutor_id, t.f_name, t.l_name, t.email, t.city, t.state, s.subject 
-FROM tbl_tutor t
-INNER JOIN tbl_tutor_subject_junction j
-ON  t.tutor_id = j.tutor_id
+SELECT DISTINCT tr.tutor_id, tr.f_name, tr.l_name, tr.email, tr.city, tr.state, (s.subject)
+FROM tbl_tutor tr
+INNER JOIN tbl_backpack bk
+ON  tr.tutor_id = bk.tutor_id
 INNER JOIN tbl_subject s
-ON s.subject_id = j.subject_id
-WHERE  state = $1 AND j.subject_id = $2
-ORDER BY state;
+ON s.subject_id = bk.subject
+WHERE  s.subject_id = $1 AND tr.state = $2 
+ORDER BY subject;

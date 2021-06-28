@@ -27,13 +27,24 @@ const Buddy_Finder = () => {
   }, [subject]);
 
   useEffect(() => {
-    const student_id = 4
-    axios
-      .get(`/api/subject/menu/${student_id}`, )
-      .then((res) => {
-        setPopList(res.data);
-      })
-      .catch((err) => console.log(err));
+    const student_id = 4;
+    const tutor_id = 4;
+    if (description === "Tutor") {
+      axios
+        .get(`/api/subject/menu/${tutor_id}`)
+        .then((res) => {
+          setPopList(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+    if (description === "Student") {
+      axios
+        .get(`/api/subject/menu/${student_id}`)
+        .then((res) => {
+          setPopList(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
   }, []);
 
   const handleSubmit = (e) => {

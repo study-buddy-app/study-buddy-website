@@ -6,7 +6,7 @@ require("dotenv").config();
 
 const Buddy_Finder = () => {
   const [tutorName, setTutorName] = useState();
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState(null);
   const [tutorlist, setTutorList] = useState();
   const [description, setDescription] = useState();
   const [startTime, setStartTime] = useState();
@@ -85,19 +85,22 @@ console.log('subject_id', subject)
     setEndTime(e.target.value);
   };
 
-  const locationOnChange = (e) => {
-    let getState = e.target.value.split(",");
-    console.log("getState", getState);
-    getState = getState[1]?.trim();
-    setState(getState);
-  };
+  const locationOnChange = (locationString) =>{
+    let getState = locationString.split(',')
+    console.log('getState',getState)
+    getState = getState[1]?.trim()
+    setState(getState)
+    console.log(locationString)
+  }
+  console.log(state)
+
 
   return (
     <div>
       <main className="page_Container">
         <div className="map_Container">
           <div className="map">
-            <Google_maps setLocation={setLocation} />
+            <Google_maps locationOnChange={locationOnChange}/>
           </div>
           <div className="locate_buddy">
             <div className="tutor_search">
@@ -132,13 +135,11 @@ console.log('subject_id', subject)
             </div>
             <div className="frmLabels"></div>
             <div className="loc_Container">
-              <input
-                value={location}
-                onChange={(e) => locationOnChange(e)}
+              {/* <input value={location} onChange={(e) => locationOnChange(e)}
                 type="text"
                 className="txtLocation txtbox"
                 placeholder="Location"
-              ></input>
+              ></input> */}
             </div>
             <form className="frm_newEvent">
               <select

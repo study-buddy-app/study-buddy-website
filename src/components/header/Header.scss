@@ -1,108 +1,176 @@
-@import '../../scss/variables.scss';
+@import "../../scss/variables.scss";
 
-header {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: row;
-  min-width: 100%;
-  height: 120px;
-  background-color: #264653;
-  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.35);
-  position: fixed;
-  z-index: 1;
-}
-h1 {
-  color: aliceblue;
-}
-
-.H-secLeft {
-  padding-left: 50px;
-}
-
-.searchBar {
-  margin-left: 10px;
-  height: 30px;
-  width: 400px;
-  border: 1px solid black;
-}
-
-.H-secRight {
-  justify-content: space-around;
-  flex-direction: row;
-  display: flex;
-}
-
-.links-logout {
-  margin-left: 30px;
-  margin-right: 60px;
-  margin-top: -10px;
-  width: 100px;
-}
-.links-aboutus {
-  margin-left: 30px;
-  margin-right: -15px;
-  font-size: 10px;
-  width: 100px;
-}
-
-.links-home {
-  margin-left: 400px;
-  font-size: 10px;
-}
+// .searchBar {
+//   height: 2rem;
+//   width: 25rem;
+//   border: 1px solid black;
+//   margin-left: 30px;
+// }
 
 .logo {
-  margin-top: 5px;
+  width: 100px;
+  height: 90px;
+  margin-top: -8px;
+  margin-left: -220px;
+}
+@media (max-width: 400px) {
+  .logo {
+    height: 60px;
+    width: 70px;
+    margin-left: -150px;
+    margin-top: -25px;
+  }
 }
 
-.DropDown{
-  display: none;
-}
-
-#drop-item{
-  background-color: #264653;
-  color: black;
-  height: 30px;
-  width: 100vw;
-  @include FlexCenterAll(row);
-  position: relative;
-}
-
-#drop-item:hover{
-  color: blue;
-  cursor: pointer;
-}
-
-#dropdown-basic-button{
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
+.header {
+  background: $primary-color;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 150px;
+  font-size: 1.2rem;
+  top: 0;
+  z-index: 1;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  width: 100vw;
+  height: 10vh;
+  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.35);
+  position: fixed;
 }
 
-#ham-icon{
-  width: 19px;
-  height: 19px;
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  max-width: 1500px;
 }
 
-.links{
-  margin-left: 30px;
+.fa-typo3 {
+  margin-left: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.nav-menu {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
+  list-style: none;
+  text-align: center;
+  width: 60vw;
+  justify-content: end;
+  margin-right: 2rem;
+}
+
+.nav-item {
+  height: 80px;
+}
+h3 {
+  margin-top: 20px;
   font-size: 20px;
-  color: white;
+}
+.nav-links {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
 }
 
+.nav-links:hover,
+.navbar-logo:hover {
+  border-bottom: 4px solid #fff;
+  transition: all 0.2s ease-out;
+}
 
-@media(max-width: 1142px){
-  .H-secRight{
-    display: none;
+.fa-bars {
+  color: #fff;
+}
+
+.nav-links-mobile {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .NavbarItems {
+    position: relative;
   }
-  .H-secLeft{
-    display: none;
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 90vh;
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    opacity: 1;
+    transition: all 0.5s ease;
   }
-  .DropDown{
-    @include FlexCenterAll(column)
+
+  .nav-menu.active {
+    background-color: $primary-color;
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .nav-links {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+  }
+
+  .nav-links:hover {
+    background-color: #fff;
+    color: #242424;
+    border-radius: 0;
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    right: 0px;
+    margin-top: -80px;
+    transform: translate(-100%, 60%);
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+
+  .fa-times {
+    color: #fff;
+    font-size: 2rem;
+  }
+
+  .nav-links-mobile {
+    display: block;
+    text-align: center;
+    margin: 2rem auto;
+    border-radius: 4px;
+    width: 80%;
+    text-decoration: none;
+    font-size: 1.5rem;
+    background-color: transparent;
+    color: #fff;
+    padding: 14px 20px;
+    border: 1px solid #fff;
+    transition: all 0.3s ease-out;
+  }
+
+  .nav-links-mobile:hover {
+    background: #fff;
+    color: #242424;
+    transition: 250ms;
   }
 }

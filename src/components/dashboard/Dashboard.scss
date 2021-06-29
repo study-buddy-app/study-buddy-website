@@ -142,12 +142,16 @@
   object-fit: cover;
   margin: auto;
   border-radius: 10px;
+  overflow-y: scroll;
   // border: 5px solid rgba(243, 178, 56, 0.979);
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
 }
 .backpack-container {
   display: flex;
   height: 50px;
+  padding-top: 20px;
+  margin-bottom: 50px;
+  top: 0px;
 }
 .backpack-image {
   width: 20%;
@@ -166,7 +170,6 @@
   background: whitesmoke;
   width: 250px;
   height: 35px;
-  position: sticky;
   top: 0px;
 }
 .subjectslist {

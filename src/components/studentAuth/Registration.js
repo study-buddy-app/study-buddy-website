@@ -36,7 +36,7 @@ const Registration = (props) => {
             .then((response) => {
                 dispatch(setBackpack(response.data))
                 if(usertype === 'student'){props.history.push('/stripe')}
-                if(usertype === 'tutor'){props.history.push('/dashboard')}
+                if(usertype === 'tutor'){props.history.push('/tutordash')}
                 notify()//<-- adding toast
             })
         })

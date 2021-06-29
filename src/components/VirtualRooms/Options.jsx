@@ -3,7 +3,6 @@ import { Button, TextField, Grid, Typography, Container, Paper } from '@material
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Assignment, Phone, PhoneDisabled } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-
 import  {SocketContext} from './SocketContext';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     [theme.breakpoints.down('xs')]: {
       width: '80%',
+  
     },
   },
   margin: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: '10px 20px',
-    border: '2px solid black',
+    border: '50px solid #e9c46a',
   },
 }));
 
@@ -51,7 +51,7 @@ const Sidebar = ({ children }) => {
               <Typography gutterBottom variant="h6">Account Info</Typography>
               <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)} fullWidth />
               <CopyToClipboard text={me} className={classes.margin}>
-                <Button variant="contained" color="primary" fullWidth startIcon={<Assignment fontSize="large" />}>
+                <Button variant="contained" color="black" fullWidth startIcon={<Assignment fontSize="large" />}>
                   Copy Your ID
                 </Button>
               </CopyToClipboard>
@@ -60,11 +60,11 @@ const Sidebar = ({ children }) => {
               <Typography gutterBottom variant="h6">Make a call</Typography>
               <TextField label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />
               {callAccepted && !callEnded ? (
-                <Button variant="contained" color="secondary" startIcon={<PhoneDisabled fontSize="large" />} fullWidth onClick={leaveCall} className={classes.margin}>
+                <Button variant="contained" color="black" startIcon={<PhoneDisabled fontSize="large" />} fullWidth onClick={leaveCall} className={classes.margin}>
                   Hang Up
                 </Button>
               ) : (
-                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => callUser(idToCall)} className={classes.margin}>
+                <Button variant="contained" color="black" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => callUser(idToCall)} className={classes.margin}>
                   Call
                 </Button>
               )}

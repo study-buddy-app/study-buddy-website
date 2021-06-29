@@ -57,7 +57,7 @@ export default function Tutordash(props) {
              <div className='dashheader'></div>
             <div className='container'>
                 <div className='tutorcolumn1'>
-                    <div className='block1'>
+                    <div className='tutorblock1'>
                         <div className='greeting'>
                         <Link to='/tutorprofile' ><img className = 'userlogo' src = 'https://res.cloudinary.com/dgaapgd2f/image/upload/v1624410772/A912FD0D-3C1E-475B-B5DD-6138727912B9_1_201_a_vjozus.jpg' alt = 'userlogo'/></Link>
                             <h1 className='h1'>Hi there</h1>
@@ -85,7 +85,7 @@ export default function Tutordash(props) {
     
 
                 
-                    <div className='block2'>
+                    <div className='tutorblock2'>
                         <div className='virtual'>
                             <h3>virtual meetup</h3>
                          

@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "../buddy_finder/buddy_finder.scss";
 import Google_maps from "../google-maps/Google_maps";
-require("dotenv").config();
+import {user} from "../../redux/authReducer"
+import { useSelector } from "react-redux";
 
 const Buddy_Finder = () => {
   const [tutorName, setTutorName] = useState();
@@ -15,6 +16,9 @@ const Buddy_Finder = () => {
   const [subject, setSubject] = useState();
   const [state, setState] = useState();
   const [popList, setPopList] = useState();
+  const {user} = useSelector((store) => store.authReducer)
+  console.log('this is the user location', user.city, user.state)
+
 
   useEffect(() => {
     let subject_id = subject;
@@ -45,7 +49,7 @@ const Buddy_Finder = () => {
   }, [subject, description]);
 
   useEffect(() => {
-    const student_id = 30
+    const student_id = user.student_id
     axios
       .get(`/api/subject/menu/${student_id}`, )
       .then((res) => {

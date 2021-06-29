@@ -14,6 +14,7 @@ const timelogCtrl = require("./controllers/timelog_controller");
 const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env
 
 const paymentCtrl = require('./controllers/PaymentCtrl')
+const sessionCtrl = require('./controllers/sessionCtrl')
 
 const app = express()
 
@@ -96,7 +97,9 @@ app.delete('/api/time/:id',timelogCtrl.deleteTime)
 app.put('/api/time/:id', timelogCtrl.editTime)
 
 //session
-app.use(cors())
+app.post('/api/sessions/appointments/:student_id', sessionCtrl.addSession)
+app.delete('/api/session/remove', sessionCtrl.cancelSession)
+app.put('api/session/appointment/:student_id', sessionCtrl.getSessions)
 //Payment Ctrl
 app.post('/payment', cors(), paymentCtrl.addPayment)
 

@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS tbl_schedule
 DROP TABLE IF EXISTS tbl_student_subject_junction
 DROP TABLE IF EXISTS tbl_tutor_subject_junction
 DROP TABLE IF EXISTS tbl_subject_backpack_junction
@@ -5,6 +6,15 @@ DROP TABLE IF EXISTS tbl_backpack;
 DROP TABLE IF EXISTS tbl_subject;
 DROP TABLE IF EXISTS tbl_session;
 DROP TABLE IF EXISTS tbl_tutor;
+
+CREATE TABLE tbl_schedule(
+schedule_id SERIAL PRIMARY KEY,
+description VARCHAR(100),
+sch_subject VARCHAR(100),
+event_start TIMESTAMP,
+event_end TIMESTAMP,
+buddy_choice VARCHAR(500)
+);
 
 CREATE TABLE tbl_student_subject_junction(
 student_subject_id SERIAL PRIMARY KEY,

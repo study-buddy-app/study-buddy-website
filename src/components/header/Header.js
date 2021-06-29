@@ -3,6 +3,9 @@ import {useState} from "react"
 import '../header/Header.scss'
 import '../login/Login.scss'
 import Logout from '../login/logout'
+import Loggeddash from '../login/Loggeddash'
+import Loggedmeet from '../login/Loggedmeet'
+import Loggedvirtual from '../login/Loggedvirtual'
 
 
 
@@ -27,29 +30,15 @@ const Header = () => {
             <input className='searchBar' placeholder='Search'/>
           </div>
            <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-           <li className='nav-item'>
-           <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                <h3>Home</h3> 
-               </Link>
+           <li className='nav-links'>
+            <Loggeddash closeMobileMenu={closeMobileMenu} />  
           </li>
 
-          <li className='nav-item'>
-              <Link
-                to='/aboutus'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                <h3>About Us</h3>
-              </Link>
+          <li className='nav-links'>
+            <Loggedvirtual closeMobileMenu={closeMobileMenu} />  
           </li>
-          <li className='nav-item'>
-              <Link
-                to='/buddyup'
-                className='nav-links'
-                onClick= {closeMobileMenu}
-                >
-                <h3>Meet Up</h3>
-              </Link>
+          <li className='nav-links'>
+            <Loggedmeet closeMobileMenu={closeMobileMenu} />  
           </li>
           <li className='nav-links'>
             <Logout closeMobileMenu={closeMobileMenu} />  

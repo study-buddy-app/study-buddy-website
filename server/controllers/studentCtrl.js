@@ -45,7 +45,8 @@ getStudentsByStateAndSubject: (req,res)=>{
 getVirtualStudentsBySubject: (req,res)=>{
     const db = req.app.get('db');
     const {subject_id} = req.body
-    db.student.s_get_virtual_students_by_subject( subject_id)
+    console.log('I\'ve got a virtual student by subject request here!')
+    db.student.s_get_virtual_students_by_subject(subject_id)
     .then((students)=>{
       res.status(200).send(students);
     }).catch((err)=>{

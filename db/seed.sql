@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS tbl_student_subject_junction
 DROP TABLE IF EXISTS tbl_tutor_subject_junction
 DROP TABLE IF EXISTS tbl_subject_backpack_junction
 DROP TABLE IF EXISTS tbl_backpack;
@@ -5,6 +6,11 @@ DROP TABLE IF EXISTS tbl_subject;
 DROP TABLE IF EXISTS tbl_session;
 DROP TABLE IF EXISTS tbl_tutor;
 
+CREATE TABLE tbl_student_subject_junction(
+student_subject_id SERIAL PRIMARY KEY,
+student_id INT REFERENCES tbl_student(student_id),
+subject_id INT REFERENCES tbl_subject(subject_id)
+);
 CREATE TABLE tbl_tutor_subject_junction(
 tutor_subject_id SERIAL PRIMARY KEY,
 tutor_id INT REFERENCES tbl_tutor(tutor_id),

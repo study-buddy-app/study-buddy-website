@@ -78,7 +78,7 @@ export default function PaymentForm() {
         </form>
         :
        <div >
-          <Link style={{color: 'black'}} to='/'><h2 id="thank-you">Thank you for your purchase! Click here to continue</h2></Link> 
+          <Link style={{color: 'black'}} to='/dashboard'><h2 id="thank-you">Thank you for your purchase! Click here to continue</h2></Link> 
        </div> 
         } 
         </div>

@@ -16,21 +16,7 @@
   // margin-top: 20px;
 }
 
-.column1 {
-  padding: 3rem;
-  height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  width: 60vw;
-  background-color: $primary-color;
-  margin-right: 50px;
-  margin-bottom: 400px;
-  border-radius: 10px;
-  box-shadow: 1px 0 20px rgba(0, 0, 0, 0.35);
-}
-
-.block1 {
+.tutorblock1 {
   margin: auto;
   margin-bottom: 700px;
   margin-left: -5px;
@@ -91,9 +77,9 @@
 .onesubject:hover {
   box-shadow: 1px 1px 1px 1px rgb(134, 130, 130);
 }
-.block2 {
+.tutorblock2 {
   margin-left: 400px;
-  margin-top: -550px;
+  margin-top: -500px;
 }
 .virtual {
   // border: 5px solid rgba(243, 178, 56, 0.979);
@@ -232,7 +218,7 @@
 }
 .tutorcolumn1 {
   padding: 3rem;
-  height: 100vh;
+  height: 120vh;
   display: flex;
   flex-wrap: wrap;
   position: relative;

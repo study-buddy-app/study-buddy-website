@@ -11,7 +11,7 @@ const Landing = () => {
                 </div>
                 
                 <div className='landing-rightDiv-d1'>
-                    <h1 className='rd1-text'>Don't study alone, <br/>
+                    <h1 className='rd1-text'>Don't study alone, 
                     Study together</h1>
                     <h4>A smarter way to study</h4>
                     <br/><br/>
@@ -28,6 +28,7 @@ const Landing = () => {
                 on the same subject
                 and <br/> 
                 get assignments done faster!</h2>
+                <br/><br/>
                 <button className='landing-d1-btn'>Start the Process</button>
                 </div>
 
@@ -43,17 +44,22 @@ const Landing = () => {
 
                 <div className='landing-rightDiv-d3'>
                    
-                    <h2 className='d3-text'>Find tutors in your area <br/>
+                    <h2 className='d3-text'>Find tutors in your area 
                     and schedule online or in person meetups. </h2>
         
                     <img className= "landing-image3-2" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4j194D-q7XVDB-dcRntD2LaMaHFe3s5bByA&usqp=CAU' alt='tutor'/>
                 </div>
             </div>
-
+            <div className="motto">
+                <h2 className='review'>"With Study-Buddy my brain doesn't hurt as much!"</h2>
+                <div className="author">
+                    <h4 className='noone'>-No one</h4>
+                </div>
+                </div>
             <div className='landing-D4'>
                 <div className='landing-D4-sec'>
-                    <div>
-            <h2>Sign up is easy. <bk/> 
+                    <div className ='d4-text'>
+            <h2>Sign up is easy.
                 Click the link below to get started </h2>
                 <h4>Must be 18 years old or older to join</h4>
                 <br/><br/>

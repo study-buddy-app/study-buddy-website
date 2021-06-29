@@ -142,6 +142,7 @@ console.log('subject_id', subject)
               ></input> */}
             </div>
             <form className="frm_newEvent">
+            <div className = "form">
               <select
                 className="txtSummary txtbox"
                 onChange={(e) => handleMeetupType(e)}
@@ -193,6 +194,7 @@ console.log('subject_id', subject)
                 defaultValue={tutorName}
               ></input>
                 <br/><br/>
+                </div>
               <button
                 onClick={handleSubmit}
                 type="submit"
@@ -224,16 +226,17 @@ console.log('subject_id', subject)
           <div className="event_Item">
             <span>25</span> Meetup with George at 8pm
           </div>
-          <div className="event_Item"></div>
-          <div className="event_Item"></div>
-          <div className="event_Item"></div>
-        </div>
-        <div className="motto">
-          <h2>"With Study-Buddy my brain doesn't hurt as much!"</h2>
-          <div className="author">
-            <h4>-No one</h4>
+          <div className="event_Item">
+          <span>29</span> Meetup with Tom at 10pm
+          </div>
+          <div className="event_Item">
+          <span>30</span> Meetup with Sarah at 6pm
+          </div>
+          <div className="event_Item">
+          <span>1</span> Meetup with Kendal at 5pm
           </div>
         </div>
+     
       </main>
     </div>
   );

@@ -88,8 +88,6 @@ export default function Dashboard(props) {
                             ></iframe>
                         </div>
                         
-                    
-
                 
                     <div className='block2'>
                         <div className='virtual'>

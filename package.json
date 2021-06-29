@@ -23,6 +23,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+    "firebase": "^8.6.8",
     "gapi": "0.0.3",
     "gapi-script": "^1.2.0",
     "googleapis": "^78.0.0",

@@ -96,7 +96,7 @@ export default function Dashboard(props) {
                             <h3>virtual meetup</h3>
                             <p>Today's schedule</p>
                             <br/><br/>
-                            <button><Link to='/virtualrooms'>virtual rooms</Link></button>
+                            <button><Link to='/virtualroom'>virtual rooms</Link></button>
                             </div> 
                             <br/><br/>
                         <div className='meetup'>

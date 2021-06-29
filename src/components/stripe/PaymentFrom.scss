@@ -13,8 +13,10 @@
    justify-content: center;
    flex-direction: column;
    height: 100vh;
+   width: 100%;
    z-index: 2;
    background-color: #264653;
+   position: fixed;
 }
 
 .FormGroup{
@@ -31,3 +33,4 @@
 #check-button{
    margin-left: 187px;
 }
+

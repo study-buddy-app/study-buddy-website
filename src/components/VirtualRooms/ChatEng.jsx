@@ -1,13 +1,13 @@
 import React from 'react';
 import { ChatEngine } from 'react-chat-engine';
 
-export function ChatEng () {
+export function ChatEng() {
 	return (
 		<ChatEngine
 			height='100vh'
-			userName='Study Buddy Admin'
-			userSecret='uihdf8erhyraq'
-			projectID='1d5d7770-7e7d-4c54-aba3-60e8668bb9bf'
+			userName='shida.pita13@gmail.com'
+			userSecret='%stdbd2021'
+			projectID='287df426-8d5f-4052-8230-e759deeebddc'
 		/>
 	);
 }

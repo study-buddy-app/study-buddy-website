@@ -60,7 +60,7 @@ export default function Dashboard(props) {
                     <div className='block1'>
                         <div className='greeting'>
                            <img className = 'userlogo' src = 'https://res.cloudinary.com/dgaapgd2f/image/upload/v1624410772/A912FD0D-3C1E-475B-B5DD-6138727912B9_1_201_a_vjozus.jpg' alt = 'userlogo'/>
-                            <h1 className='h1'>Hi there</h1>
+                            <h1 className='h1'>Hi there {`${user.username}`}</h1>
                         </div>
                         <br/><br/>
                         <div className='questionpage'>

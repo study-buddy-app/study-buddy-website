@@ -1,45 +1,46 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
-import { storage } from '../dashboard/firebase'
+import { app} from '../dashboard/firebase'
+
+// const db = app.firestore()
 
 export default function Tutorprofile(props) {
     const {user} = useSelector((store) => store.authReducer)
-    const [image, setImage] = useState(null)
-    const [url, setUrl] = useState('')
+    const [files, setFiles] = useState([])
+    const [fileurl, setFileUrl] = useState(null)
     const [progress, setProgress] = useState(0)
 
-    const handleChange = e => {
-        if (e.target.files[0]){
-            setImage(e.target.files[0]);
-    
-        }
-    }
-    const handleUpload = () => {
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
-        uploadTask.on(
-            "state_changed",
-            snapshot => {
-                const progress = Math.round (
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                )
-                setProgress(progress)
 
-            },
-            error => {
-                console.log(error);
-            },
-            () => {
-                storage
-                .ref("images")
-                .child(image.name)
-                .getDownloadURL()
-                .then(url => {
-                  setUrl(url)
-                })
-    
+    const handleChange = async (e) => {
+        const file = e.target.files[0]
+        const storageRef = app.storage().ref()
+        const fileRef = storageRef.child(file.name)
+        await fileRef.put(file)
+        setFileUrl(await fileRef.getDownloadURL())
+       
+       
+    }
+    const handleUpload = (e) => {
+       e.preventDefault()
+       const username = e.target.username.value;
+       if(!username){
+           return 
+       }
+    //    db.collection("files").doc(username).set({
+    //        name:username,
+    //        avatar:fileurl
+    //    })
             }
-        )
-        }
+
+            // useEffect(() =>{
+            //     const fetchUsers =async () => {
+            //         const fileCollection = await db.collection('files').get()
+            //         setFiles(fileCollection.docs.map(doc =>{
+            //             return doc.data()
+            //         }))
+            //     }
+            //     fetchUsers()
+            // }, [])
 
     return (
         <div className='tutorprofile'>
@@ -47,10 +48,7 @@ export default function Tutorprofile(props) {
             <div className='picture'>
              <br/><br/>
 
-                <img className="img" src ={url || "http://via.placeholder.com/120x120"} alt ="firebase-image" />
-                 <br/><br/>
-                <input type="file" onChange={handleChange}/>
-                <button onClick={handleUpload}>Change profile</button>
+        
              </div>
              <div className='picture'></div>
              <h3 className='pro'>Name  <br/><br/>

@@ -5,18 +5,19 @@ import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
 import {setBackpack} from '../../redux/backpackReducer'
 import Backpack from './Backpack'
-import { storage } from './firebase'
+import { app } from './firebase'
 // import 'antd/dist/antd.css'
 
 
+// const db = app.firestore()
 
 
 export default function Dashboard(props) {
     const [subjectArr, setSubjectArr] = useState([])
     const [search, setSearch] = useState('')
-    const [image, setImage] = useState(null)
-    const [url, setUrl] = useState('')
+    const [fileurl, setFileUrl] = useState(null)
     const [progress, setProgress] = useState(0)
+    const [files, setFiles] = useState([])
 
 
     const {user} = useSelector((store) => store.authReducer)
@@ -52,41 +53,36 @@ export default function Dashboard(props) {
            
                 }
 
-                const handleChange = e => {
-                    if (e.target.files[0]){
-                        setImage(e.target.files[0]);
-                
-                    }
+                const handleChange = async (e) => {
+                    const file = e.target.files[0]
+                    const storageRef = app.storage().ref()
+                    const fileRef = storageRef.child(file.name)
+                    await fileRef.put(file)
+                    setFileUrl(await fileRef.getDownloadURL())
+                   
+                   
                 }
-                const handleUpload = () => {
-                    const uploadTask = storage.ref(`images/${image.name}`).put(image);
-                    uploadTask.on(
-                        "state_changed",
-                        snapshot => {
-                            const progress = Math.round (
-                                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                            )
-                            setProgress(progress)
-
-                        },
-                        error => {
-                            console.log(error);
-                        },
-                        () => {
-                            storage
-                            .ref("images")
-                            .child(image.name)
-                            .getDownloadURL()
-                            // axios.post(`/api/backpack/${url}`)
-                            .then(url => {
-                                // console.log(res.data, 'this is my data')
-                                //   dispatch(setBackpack(res.data))
-                                setUrl(url)
-                                })
-                              
-                            })
-                
+                const handleUpload = (e) => {
+                   e.preventDefault()
+                   const username = e.target.username.value;
+                   if(!username){
+                       return 
+                   }
+                //    db.collection("files").doc(username).set({
+                //        name:username,
+                //        avatar:fileurl
+                //    })
                         }
+
+                        // useEffect(() =>{
+                        //     const fetchUsers =async () => {
+                        //         const fileCollection = await db.collection('files').get()
+                        //         setFiles(fileCollection.docs.map(doc =>{
+                        //             return doc.data()
+                        //         }))
+                        //     }
+                        //     fetchUsers()
+                        // }, [])
                     
                   
     
@@ -113,15 +109,19 @@ export default function Dashboard(props) {
                             <h3>Upload your paper</h3>
                             <progress vlaue={progress} max="100"/>
                             <br/><br/>
-                                <input
-                                    type="file"
-                                    onChange={handleChange}
-                                    />
-         
-                        <button onClick={handleUpload}>Upload</button>
-                        {url}
-                        <img className="img" src ={url} alt ="file upload" />
-         
+                            <form handleUpload={handleUpload}>
+                                <input type="file" onChange={handleChange} />
+                                <input typr= "text" name="username" placeholder="NAME" />
+                                <button>Submit</button>
+                            </form>
+                            <ul>
+                               {files.map(file => {
+                                   return<li key = {user.name}>
+                                       <img width = "100" height = "100" src={file.avatar} alt = {file.name} />
+                                       <p>{file.name}</p>
+                                   </li>
+                               })}
+                            </ul>
                         </div>
                         <br/><br/>
                         <div className='tutorsearch'>

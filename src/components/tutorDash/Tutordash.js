@@ -66,15 +66,15 @@ export default function Tutordash(props) {
                         </div>
                         <br/><br/>
                         <div className='questionpage'>
-                            <iframe
-                                src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showPrint=0&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showTz=1&amp;showTabs=0"
-                                width="100%"
-                                height="100%"
-                                frameborder="0"
-                                scrolling="no"
-                                title="calendar"
-                            ></iframe>
-                             
+                        <iframe
+                        src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showTz=0&amp;showCalendars=1&amp;showTitle=0&amp;showPrint=1&amp;showTabs=0"
+                        width="100%"
+                        height="100%"
+                        frameborder="0"
+                        scrolling="no"
+                        title="calendar"
+                        ></iframe>
+                                        
                             <br/><br/>
                         </div>
                         <br/><br/>
@@ -96,7 +96,7 @@ export default function Tutordash(props) {
                             <br/><br/>
                             <div className='meetup'>
                             <h3>In person meetup</h3>
-                            <p>Today's schedule</p>
+                         
                             <br/><br/>
                             <button><Link to='/buddyup'>Schedule a meetup</Link></button>
                             </div>

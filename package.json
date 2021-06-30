@@ -5,6 +5,7 @@
   "main": "server/index.js",
   "proxy": "http://localhost:4040",
   "dependencies": {
+    "@firebase/firestore": "^2.3.7",
     "@firebase/storage": "^0.5.5",
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
@@ -29,6 +30,7 @@
     "gapi": "0.0.3",
     "gapi-script": "^1.2.0",
     "googleapis": "^78.0.0",
+    "init": "^0.1.2",
     "massive": "^6.9.0",
     "node-sass": "^6.0.0",
     "nodemailer": "^6.6.2",

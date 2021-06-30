@@ -4,7 +4,7 @@ const massive = require('massive')
 const session = require('express-session')
 const cors = require("cors")
 
-const fileUpload = require('express-fileupload')
+
 
 const authCtrl = require('./controllers/authCtrl')
 const studentCtrl = require('./controllers/studentCtrl')
@@ -21,7 +21,7 @@ const app = express()
  
 
 
-app.use(fileUpload())
+
 app.use(express.json())
 app.use(session({
   secret: SESSION_SECRET,
@@ -30,23 +30,8 @@ app.use(session({
   cookie: {maxAge: 1000 *60 *60 *24}
 }))
 
-// Upload Endpoints
-app.post('/upload', (req,res) => {
-  if (req.files === null) {
-    return res.status(400).json({msg:'No file uploaded'})
-  }
 
-  const file = req.files.file;
 
-  file.mv(`${__dirname}/client/public/uploads/${file.name}`, err => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send(err);
-    }
-    res.json({ fileName: filename, filePath: `/uploads/${file.name}`})
-  })
-
-})
 
 
 massive({

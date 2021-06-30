@@ -227,13 +227,13 @@ console.log('subject_id', subject)
             <span>25</span> Meetup with George at 8pm
           </div>
           <div className="event_Item">
-          <span>29</span> Meetup with Tom at 10pm
+          <span></span> <br/><br/>
           </div>
           <div className="event_Item">
-          <span>30</span> Meetup with Sarah at 6pm
+          <span></span> <br/><br/>
           </div>
           <div className="event_Item">
-          <span>1</span> Meetup with Kendal at 5pm
+          <span></span> <br/><br/>
           </div>
         </div>
      

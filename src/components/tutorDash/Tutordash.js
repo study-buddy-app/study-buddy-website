@@ -122,7 +122,7 @@ export default function Tutordash(props) {
                                 })} 
                     </div>
 
-                  
+                    {window.scrollTo(0,0)}
                     </div>
                     </div>
                     </div>

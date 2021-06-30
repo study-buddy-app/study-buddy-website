@@ -5,7 +5,9 @@ import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
 import {setBackpack} from '../../redux/backpackReducer'
 import Backpack from './Backpack'
-import  { storage } from 'firebase'
+import { storage } from './firebase'
+// import 'antd/dist/antd.css'
+
 
 
 
@@ -13,7 +15,9 @@ export default function Dashboard(props) {
     const [subjectArr, setSubjectArr] = useState([])
     const [search, setSearch] = useState('')
     const [image, setImage] = useState(null)
-    
+    const [url, setUrl] = useState('')
+    const [progress, setProgress] = useState(0)
+
 
     const {user} = useSelector((store) => store.authReducer)
     const {backpack} = useSelector((store) => store.backpackReducer)
@@ -47,23 +51,45 @@ export default function Dashboard(props) {
               })
            
                 }
+
                 const handleChange = e => {
                     if (e.target.files[0]){
                         setImage(e.target.files[0]);
-
+                
                     }
                 }
                 const handleUpload = () => {
-                    // const uplaodTask = storage.ref(`image/${image.name}`).put(image);
-                    // uplaodTask.on(
-                    //     "state_chnaged",
-                    //     snapshot => {},
-                    //     error => {
-                    //         console.log(error);
-                    //     }
-                    // )
-                    }
-               
+                    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+                    uploadTask.on(
+                        "state_changed",
+                        snapshot => {
+                            const progress = Math.round (
+                                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                            )
+                            setProgress(progress)
+
+                        },
+                        error => {
+                            console.log(error);
+                        },
+                        () => {
+                            storage
+                            .ref("images")
+                            .child(image.name)
+                            .getDownloadURL()
+                            // axios.post(`/api/backpack/${url}`)
+                            .then(url => {
+                                // console.log(res.data, 'this is my data')
+                                //   dispatch(setBackpack(res.data))
+                                setUrl(url)
+                                })
+                              
+                            })
+                
+                        }
+                    
+                  
+    
  
         
         const filteredSubjects = subjectArr.filter(subject => {
@@ -85,16 +111,17 @@ export default function Dashboard(props) {
                         <br/><br/>
                         <div className='questionpage'>
                             <h3>Upload your paper</h3>
-                                <input
-                                    className="askq"
-                                    rows="10"
-                                    cols="50"
-                                    placeholder="Upload your paper or ask a question"
-                                    type="file"
-                                    onChange={handleChange}/>
-                        
+                            <progress vlaue={progress} max="100"/>
                             <br/><br/>
-                            <button className='submit'onClick ={handleUpload}>upload</button>
+                                <input
+                                    type="file"
+                                    onChange={handleChange}
+                                    />
+         
+                        <button onClick={handleUpload}>Upload</button>
+                        {url}
+                        <img className="img" src ={url} alt ="file upload" />
+         
                         </div>
                         <br/><br/>
                         <div className='tutorsearch'>
@@ -145,7 +172,7 @@ export default function Dashboard(props) {
                                 })} 
                     </div>
 
-                  
+                  {window.scrollTo(0,0)}
                     </div>
                     </div>
                     </div>
@@ -156,3 +183,4 @@ export default function Dashboard(props) {
     )
                             
 }
+

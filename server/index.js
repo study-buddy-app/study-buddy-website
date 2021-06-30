@@ -4,6 +4,8 @@ const massive = require('massive')
 const session = require('express-session')
 const cors = require("cors")
 
+const fileUpload = require('express-fileupload')
+
 const authCtrl = require('./controllers/authCtrl')
 const studentCtrl = require('./controllers/studentCtrl')
 const tutorCtrl = require('./controllers/tutorCtrl')
@@ -16,7 +18,10 @@ const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env
 const paymentCtrl = require('./controllers/PaymentCtrl')
 
 const app = express()
+ 
 
+
+app.use(fileUpload())
 app.use(express.json())
 app.use(session({
   secret: SESSION_SECRET,
@@ -24,6 +29,24 @@ app.use(session({
   saveUninitialized: true,
   cookie: {maxAge: 1000 *60 *60 *24}
 }))
+
+// Upload Endpoints
+app.post('/upload', (req,res) => {
+  if (req.files === null) {
+    return res.status(400).json({msg:'No file uploaded'})
+  }
+
+  const file = req.files.file;
+
+  file.mv(`${__dirname}/client/public/uploads/${file.name}`, err => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send(err);
+    }
+    res.json({ fileName: filename, filePath: `/uploads/${file.name}`})
+  })
+
+})
 
 
 massive({
@@ -40,16 +63,16 @@ massive({
 const server= require('http').createServer(app)
 const io= require ('socket.io')(server, {
   cors:{
-      origin:'http://localhost:4040',
+      origin:'*',
       methods:['GET', 'POST']
   }
 })
 
 app.use (cors())
 
-// const PORT= process.env.PORT || 5000
+const PORT= process.env.PORT || 5000
 
-app.get('/', (req,res)=>{
+app.get('/virtualroom', (req,res)=>{
   res.send('Server is running')
 })
 
@@ -59,18 +82,19 @@ io.on('connection', (socket)=>{ //<-- establishes initial connection
   socket.emit('me', socket.id) //<-- creates socket.id to user and signal
 
   //HANDLER FUNCTIONS
-  socket.on("disconnect", () => {
-  socket.broadcast.emit("callEnded")
-});
+    socket.on("disconnect", () => {
+    socket.broadcast.emit("callEnded")
+  });
 
-socket.on("callUser", ({ userToCall, signalData, from, name }) => {
-  io.to(userToCall).emit("callUser", { signal: signalData, from, name }); //<--the emitted signal data is sent to the front end -->( signal: signalData, from, name)
-});
+  socket.on("callUser", ({ userToCall, signalData, from, name }) => {
+    io.to(userToCall).emit("callUser", { signal: signalData, from, name }); //<--the emitted signal data is sent to the front end -->( signal: signalData, from, name)
+  });
 
-socket.on("answerCall", (data) => {
-  io.to(data.to).emit("callAccepted", data.signal)
+  socket.on("answerCall", (data) => {
+    io.to(data.to).emit("callAccepted", data.signal)
+  });
 });
-});
+server.listen(PORT, ()=> console.log(`Server listening on port ${PORT}`))
 //ENDPOINTS
 //auth
 app.post('/auth/register', authCtrl.register)

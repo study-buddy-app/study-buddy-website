@@ -10,6 +10,8 @@ import {
 import { formatRelative, set } from 'date-fns';
 import { useCallback } from 'react';
 
+
+
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
@@ -29,8 +31,8 @@ import usePlacesAutocomplete, {
 const libraries = ["places"]
 const mapContainerStyle = {
 
-    width: '63.8vw',
-    height: '37.8vh',
+    width: '63vw',
+    height: '36vh',
 };
 const center = {
     lat: 40.758480,
@@ -38,13 +40,13 @@ const center = {
 };
 
 export default function Google_maps(props){
-    const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-        libraries,
-      });
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries,
+  });
+  
     const [markers, setMarkers] = useState([]);
     const [selected, setSelected] = useState(null);
-
     const onMapClick = useCallback((e) => {
           setMarkers((current) => [
               ...current,
@@ -69,7 +71,6 @@ export default function Google_maps(props){
 
     if (loadError) return "Error loading maps";
     if (!isLoaded) return "Loading Maps";
-
 
     return (
       <div>
@@ -142,7 +143,6 @@ function Locate({ panTo }) {
         radius: 100 * 1000,
       },
     });
-  
     // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
   
     const handleInput = (e) => {

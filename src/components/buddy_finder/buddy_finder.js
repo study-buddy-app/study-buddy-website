@@ -6,14 +6,14 @@ import { user } from "../../redux/authReducer";
 import { useSelector } from "react-redux";
 
 const Buddy_Finder = () => {
-  const [tutorName, setTutorName] = useState();
+  let [tutorName, setTutorName] = useState();
   const [location, setLocation] = useState(null);
   const [tutorlist, setTutorList] = useState();
   const [description, setDescription] = useState();
-  const [startTime, setStartTime] = useState();
-  const [endTime, setEndTime] = useState();
+  let [startTime, setStartTime] = useState();
+  let [endTime, setEndTime] = useState();
   const [appointments, setAppointments] = useState();
-  const [subject, setSubject] = useState();
+  let [subject, setSubject] = useState();
   const [state, setState] = useState();
   const [popList, setPopList] = useState();
   const { user } = useSelector((store) => store.authReducer);
@@ -58,6 +58,7 @@ const Buddy_Finder = () => {
   }, []);
 
   useEffect(() => {
+    console.log('I\'ve started')
     const student_id = user.student_id;
     axios
       .get(`/api/session/appointment/${student_id}`)

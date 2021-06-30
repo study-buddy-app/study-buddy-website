@@ -31,5 +31,15 @@ getSessions: (req,res) =>{
     }).catch((err)=>{
         res.status(411).send(err)
     })
+},
+getUserLatestSession: (req,res) =>{
+    const db = req.app.get('db')
+    const {student_id} = req.params
+    db.sessions.get_user_latest_session(student_id)
+    .then((upcoming)=>{
+        res.status(200).send(upcoming)
+    }).catch((err)=>{
+        res.status(411).send(err)
+    })
 }
 } 

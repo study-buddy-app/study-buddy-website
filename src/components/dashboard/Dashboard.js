@@ -5,19 +5,22 @@ import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
 import {setBackpack} from '../../redux/backpackReducer'
 import Backpack from './Backpack'
+import  { storage } from 'firebase'
 
 
 
 export default function Dashboard(props) {
     const [subjectArr, setSubjectArr] = useState([])
     const [search, setSearch] = useState('')
-    const [askq, setAskq] = useState('')
+    const [image, setImage] = useState(null)
+    
 
     const {user} = useSelector((store) => store.authReducer)
     const {backpack} = useSelector((store) => store.backpackReducer)
 
-
+        
         const dispatch = useDispatch()
+         
 
         useEffect(() => {
         axios.get('/api/subject')
@@ -44,8 +47,24 @@ export default function Dashboard(props) {
               })
            
                 }
-              
-            
+                const handleChange = e => {
+                    if (e.target.files[0]){
+                        setImage(e.target.files[0]);
+
+                    }
+                }
+                const handleUpload = () => {
+                    // const uplaodTask = storage.ref(`image/${image.name}`).put(image);
+                    // uplaodTask.on(
+                    //     "state_chnaged",
+                    //     snapshot => {},
+                    //     error => {
+                    //         console.log(error);
+                    //     }
+                    // )
+                    }
+               
+ 
         
         const filteredSubjects = subjectArr.filter(subject => {
             return subject.subject.toLowerCase().includes(search.toLowerCase())
@@ -60,20 +79,22 @@ export default function Dashboard(props) {
                     <div className='block1'>
                         <div className='greeting'>
                            <Link to='/profile' ><img className = 'userlogo' src = 'https://res.cloudinary.com/dgaapgd2f/image/upload/v1624410772/A912FD0D-3C1E-475B-B5DD-6138727912B9_1_201_a_vjozus.jpg' alt = 'userlogo'/></Link>
-                            <h1 className='h1'>Hi there</h1>
+                            <h1 className='h1'>Hi there {`${user?.username}`} </h1>
+                      
                         </div>
                         <br/><br/>
                         <div className='questionpage'>
                             <h3>Upload your paper</h3>
-                                <textarea
+                                <input
                                     className="askq"
-                                    onChange={(e) => setAskq(e.target.value)}
                                     rows="10"
                                     cols="50"
                                     placeholder="Upload your paper or ask a question"
-                                ></textarea>
+                                    type="file"
+                                    onChange={handleChange}/>
+                        
                             <br/><br/>
-                            <button className='submit'onClick ={handleSubmit}>submit</button>
+                            <button className='submit'onClick ={handleUpload}>upload</button>
                         </div>
                         <br/><br/>
                         <div className='tutorsearch'>
@@ -92,14 +113,13 @@ export default function Dashboard(props) {
                     <div className='block2'>
                         <div className='virtual'>
                             <h3>virtual meetup</h3>
-                            <p>Today's schedule</p>
                             <br/><br/>
                             <button><Link to='/virtualroom'>virtual rooms</Link></button>
                             </div> 
                             <br/><br/>
                         <div className='meetup'>
                             <h3>In person meetup</h3>
-                            <p>Today's schedule</p>
+                           
                             <br/><br/>
                             <button><Link to='/buddyup'>buddy up</Link></button>
                             </div>
@@ -125,7 +145,7 @@ export default function Dashboard(props) {
                                 })} 
                     </div>
 
-                  
+                    {window.scrollTo(0, 0)}
                     </div>
                     </div>
                     </div>

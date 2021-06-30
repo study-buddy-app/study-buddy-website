@@ -12,16 +12,12 @@ import './VirtualRooms.scss';
 const useStyles= makeStyles((theme) =>({
   appBar: {
     borderRadius: 15,
-    margin: '100px 425px',
-    // display: 'flex',
-    // flexDirection: 'row',
-    // justifyContent: 'center',
-    // alignItems: 'center',
+    marginTop: '50px',
+    // marginRight:'425px',
     width: '600px',
-    border: '5px solid #e9c46a',
+    // border: '5px solid #264653',
     color:'inherit',
-    backgroundColor:'#e9c46a',
-
+    backgroundColor:'#fff',
 
     [theme.breakpoints.down('xs')]: {
       width: '90%',
@@ -31,13 +27,13 @@ const useStyles= makeStyles((theme) =>({
     marginLeft: '15px',
   },
   wrapper: {
-    marginTop:'50px',
+    marginTop:'-60px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     width: '100%',
     backgroundColor:'#2A9D8F',
-    height:'200vh',
+  
   
   
   },
@@ -53,7 +49,7 @@ const SocketApp =() =>{
 <ContextProvider>
     <div className={classes.wrapper}>
       <AppBar className={classes.appBar}>
-        <Typography variant='h2' align='center'>Video Chat</Typography>
+        {/* <Typography variant='h2' align='center'>Video Chat</Typography> */}
       </AppBar>
       <VideoPlayer/>
       <Options>

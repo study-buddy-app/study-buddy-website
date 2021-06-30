@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: '10px 20px',
-    border: '50px solid #e9c46a',
+    border: '10px solid #264653',
   },
 }));
 

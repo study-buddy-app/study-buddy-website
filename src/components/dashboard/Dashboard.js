@@ -145,7 +145,7 @@ export default function Dashboard(props) {
                                 })} 
                     </div>
 
-                  
+                    {window.scrollTo(0, 0)}
                     </div>
                     </div>
                     </div>

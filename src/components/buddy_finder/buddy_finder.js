@@ -12,12 +12,12 @@ const Buddy_Finder = () => {
   const [description, setDescription] = useState();
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
-  const [timezone, setTimeZone] = useState();
+  const [appointments, setAppointments] = useState();
   const [subject, setSubject] = useState();
   const [state, setState] = useState();
   const [popList, setPopList] = useState();
   const {user} = useSelector((store) => store.authReducer)
-  console.log('this is the user location', user.city, user.state)
+
 
 
   useEffect(() => {
@@ -57,11 +57,26 @@ const Buddy_Finder = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+
+
  console.log(popList)
   const handleSubmit = (e) => {
     e.preventDefault();
+    const sch_subject = subject;
+    const event_start = startTime;
+    const event_end = endTime;
+    const buddy_choice = tutorName;
+    const student_id = user.student_id;
+    axios
+    .post(`/api/sessions/appointments/${user.student_id}`, {description, sch_subject, event_start, event_end, buddy_choice, student_id})
+    .then((res) => {
+      setAppointments(res.data);
+    })
+    .catch((err) => console.log(err));
   };
 
+console.log('Appointments',appointments)
   const handleOnClick = (e) => {
     setTutorName(e.target.title);
   };
@@ -96,7 +111,7 @@ console.log('subject_id', subject)
     setState(getState)
     console.log(locationString)
   }
-  console.log(state)
+  console.log('state', state)
 
 
   return (
@@ -109,41 +124,41 @@ console.log('subject_id', subject)
           <div className="locate_buddy">
             <div className="tutor_search">
               <div className="tutors_ByLocation">
+              <table className="tblTutors">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>City</th>
+                <th>State</th>
                 {tutorlist?.map((item) => {
                   return (
-                    <table className="tblTutors">
                       <tr>
                         <td
                           onClick={handleOnClick}
-                          title={item.f_name + " " + item.l_name +" --"+ item.email +" --"+ description}
+                          title={item.f_name + " " + item.l_name +"  / "+ item.email}
                         >
                           {item.f_name}
                         </td>
                         <td key={item.subject_id}
                         onClick={handleOnClick}
-                        title={item.f_name + " " + item.l_name +" --"+ item.email +" --"+ description}
+                        title={item.f_name + " " + item.l_name +"  / "+ item.email}
                         >
                           {item.l_name}</td>
                         <td key={item.subject_id}
                         onClick={handleOnClick}
-                        title={item.f_name + " " + item.l_name +" --"+ item.email +" --"+ description}
+                        title={item.f_name + " " + item.l_name +"  / "+ item.email}
                         >
                           {item.email}</td>
                         <td key={item.subject_id}>{item.city},</td>
                         <td key={item.subject_id}>{item.state}</td>
                       </tr>
-                    </table>
                   );
                 })}
+                </table>
               </div>
             </div>
             <div className="frmLabels"></div>
             <div className="loc_Container">
-              {/* <input value={location} onChange={(e) => locationOnChange(e)}
-                type="text"
-                className="txtLocation txtbox"
-                placeholder="Location"
-              ></input> */}
             </div>
             <form className="frm_newEvent">
             <div className = "form">
@@ -228,17 +243,26 @@ console.log('subject_id', subject)
           </div>
 
           <div className="event_Item">
-            <span>25</span> Meetup with George at 8pm
+            <table className="tbl_event_Item">
+            {appointments?.map((item)=>{
+              let appDate = new Date(item.event_start)
+            return(<tr>
+            <td>
+            <span>{appDate.getMonth(`${item.event_start}`)+1 +"-"+ appDate.getDate(item.event_start)}</span>
+            </td> 
+            <td>
+            {item.subject}
+            </td>
+            <tr>
+              <td>
+                {item.buddy_choice}
+                </td>
+            </tr>
+            </tr>
+            )})}
+            </table>
           </div>
-          <div className="event_Item">
-          <span>29</span> Meetup with Tom at 10pm
-          </div>
-          <div className="event_Item">
-          <span>30</span> Meetup with Sarah at 6pm
-          </div>
-          <div className="event_Item">
-          <span>1</span> Meetup with Kendal at 5pm
-          </div>
+
         </div>
      
       </main>

@@ -1,6 +1,7 @@
 module.exports ={
 addSession: (req,res) =>{
     const db = req.app.get('db')
+    console.log('I\'ve got an appointment add here!')
     const {student_id} = req.params
     const {description, sch_subject,event_start,event_end,buddy_choice} = req.body
     db.sessions.add_session(description, sch_subject, event_start, event_end, buddy_choice, student_id)

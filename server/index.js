@@ -99,7 +99,7 @@ app.put('/api/time/:id', timelogCtrl.editTime)
 //session
 app.post('/api/sessions/appointments/:student_id', sessionCtrl.addSession)
 app.delete('/api/session/remove', sessionCtrl.cancelSession)
-app.put('api/session/appointment/:student_id', sessionCtrl.getSessions)
+app.get('api/session/appointment/:student_id', sessionCtrl.getSessions)
 //Payment Ctrl
 app.post('/payment', cors(), paymentCtrl.addPayment)
 

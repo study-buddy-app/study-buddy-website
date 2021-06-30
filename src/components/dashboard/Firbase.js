@@ -13,7 +13,7 @@ import 'firebase/storage'
     
       firebase.initilizeApp(firebaseConfig)
 
-      const storage = firbase.storage()
-      export {storage, firbase as default}
+      const storage = firebase.storage()
+      export {storage, firebase as default}
 
      

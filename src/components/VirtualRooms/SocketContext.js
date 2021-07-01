@@ -34,9 +34,8 @@ const ContextProvider = ({children}) =>{
               console.log(err)
               console.log("stream not connected")
             })
-           
-        socket.on('me', (id)=>  setMe(id) )//<--connects to the backend socket.emit('me', socket.id) grabs the unique connection ID and sets it to state
-            console.log(me) 
+        socket.on('me', (id)=> setMe(id) )//<--connects to the backend socket.emit('me', socket.id) grabs the unique connection ID and sets it to state
+            console.log(me)
             console.log(me.id)
         socket.on('callUser', ({from, name: callerName, signal})=>{ //<-- we are receiving a data object as a parameter
             setCall({isReceivingCall: true, from, name:callerName, signal})

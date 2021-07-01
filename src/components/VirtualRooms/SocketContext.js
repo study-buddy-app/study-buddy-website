@@ -2,6 +2,7 @@ import React, { createContext, useState, useRef, useEffect} from 'react'
 import io from 'socket.io-client' //<-- in the video its socket.io-client so if it crashes change it 
 import Peer from 'simple-peer'
 
+
 //This is the logic for the entire application
 
 const socket = io('http://localhost:5000')
@@ -18,6 +19,8 @@ const ContextProvider = ({children}) =>{
     const [callEnded, setCallEnded]= useState(false)
     const [name, setName] = useState('')
 
+ 
+
     const myVideo= useRef()
     const userVideo= useRef()
     const connectionRef= useRef()
@@ -31,14 +34,15 @@ const ContextProvider = ({children}) =>{
               console.log(err)
               console.log("stream not connected")
             })
-        socket.on('me', (id)=> setMe(id) ) //<--connects to the backend socket.emit('me', socket.id) grabs the unique connection ID and sets it to state
+           
+        socket.on('me', (id)=>  setMe(id) )//<--connects to the backend socket.emit('me', socket.id) grabs the unique connection ID and sets it to state
             console.log(me) 
             console.log(me.id)
         socket.on('callUser', ({from, name: callerName, signal})=>{ //<-- we are receiving a data object as a parameter
             setCall({isReceivingCall: true, from, name:callerName, signal})
         })
     }, [me]) //<--Dont forget the empty dependency array or youll get and infinte loop
-     
+
     const answerCall= ()=>{
         setCallAccepted(true)
 

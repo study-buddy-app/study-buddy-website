@@ -5,6 +5,7 @@ import axios from 'axios'
 import {setBackpack} from '../../redux/backpackReducer'
 import Backpack from '../dashboard/Backpack'
 import TimeLogList from './TimeLogList';
+import TodoApp from './Todo';
 import './Tutordash.scss'
 
 
@@ -110,6 +111,8 @@ export default function Tutordash(props) {
                                  )
                                 })} 
                     </div>
+
+                    <TodoApp />,
 
                     {window.scrollTo(0,0)}
                 </div>

@@ -1,24 +1,25 @@
 import firebase from "firebase/app"
 import "firebase/storage"
+import 'firebase/firestore'
 
 
-    const firbaseConfig ={
-        apiKey: "AIzaSyCqUuOFFC5ddUGPoGZI0mRGplImkDbi9to",
-        authDomain: "picture-uplaod.firebaseapp.com",
-        projectId: "picture-uplaod",
-        storageBucket: "picture-uplaod.appspot.com",
-        messagingSenderId: "379618924112",
-        appId: "1:379618924112:web:410ef1d3c9c79c4752e355",
-        measurementId: "G-WVVH3VXL82"
-      };
+
+export const app = firebase.initializeApp({
+  apiKey: "AIzaSyAe8fbC3BFx9asMGQDUUIGm2XkCYB3nv9U",
+  authDomain: "study-buddy-files.firebaseapp.com",
+  projectId: "study-buddy-files",
+  storageBucket: "study-buddy-files.appspot.com",
+  messagingSenderId: "452293956396",
+  appId: "1:452293956396:web:1ece3e3e63c773f79d1289",
+  measurementId: "G-SBE92BPXHM"
+});
     
   
 
-      firebase.initializeApp(firbaseConfig);
-
-      const storage = firebase.storage()
-
-      export { storage, firebase as default}
+      
+      const db = firebase.firestore();
+      db.settings({timestampsInSnapshots: true})
+    
   
 
 

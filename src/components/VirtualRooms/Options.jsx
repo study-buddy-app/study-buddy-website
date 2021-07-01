@@ -5,6 +5,7 @@ import { Assignment, Phone, PhoneDisabled } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import  {SocketContext} from './SocketContext';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -41,16 +42,20 @@ const Sidebar = ({ children }) => {
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
   const [idToCall, setIdToCall] = useState('');
   const classes = useStyles();
+ 
 
   return (
+  
     <Container className={classes.container}>
+        
       <Paper elevation={10} className={classes.paper}>
+      
         <form className={classes.root} noValidate autoComplete="off">
           <Grid container className={classes.gridContainer}>
             <Grid item xs={12} md={6} className={classes.padding}>
-            <Typography gutterBottom variant="h6"> Highlight Call ID <br/> <h5>ID is {`${me}`}</h5></Typography>
+             <Typography gutterBottom variant="h6"> Highlight Call ID <br/> <h5>ID is {`${me}`}</h5></Typography>
               <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)} fullWidth />
-              <CopyToClipboard text={me} className={classes.margin}>
+              <CopyToClipboard text={`${me}`} className={classes.margin}>
                 <Button variant="contained" color="black" fullWidth startIcon={<Assignment fontSize="large" />}>
                   Copy Your ID
                 </Button>
@@ -70,9 +75,10 @@ const Sidebar = ({ children }) => {
               )}
             </Grid>
           </Grid>
-        </form>
+        </form> 
         {children}
       </Paper>
+
     </Container>
   );
 };

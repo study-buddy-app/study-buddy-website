@@ -12,38 +12,38 @@ export default function Profile(props) {
     const [url, setUrl] = useState('')
     const [progress, setProgress] = useState(0)
 
-    const handleChange = e => {
-        if (e.target.files[0]){
-            setImage(e.target.files[0]);
+    // const handleChange = e => {
+    //     if (e.target.files[0]){
+    //         setImage(e.target.files[0]);
     
-        }
-    }
-    const handleUpload = () => {
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
-        uploadTask.on(
-            "state_changed",
-            snapshot => {
-                const progress = Math.round (
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                )
-                setProgress(progress)
+    //     }
+    // }
+    // const handleUpload = () => {
+    //     const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    //     uploadTask.on(
+    //         "state_changed",
+    //         snapshot => {
+    //             const progress = Math.round (
+    //                 (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+    //             )
+    //             setProgress(progress)
 
-            },
-            error => {
-                console.log(error);
-            },
-            () => {
-                storage
-                .ref("images")
-                .child(image.name)
-                .getDownloadURL()
-                .then(url => {
-                  setUrl(url)
-                })
+    //         },
+    //         error => {
+    //             console.log(error);
+    //         },
+    //         () => {
+    //             storage
+    //             .ref("images")
+    //             .child(image.name)
+    //             .getDownloadURL()
+    //             .then(url => {
+    //               setUrl(url)
+    //             })
     
-            }
-        )
-        }
+    //         }
+    //     )
+    //     }
 
     return (
         <div className='profile'>
@@ -51,9 +51,9 @@ export default function Profile(props) {
              <div className='picture'>
              <br/><br/>
                 {/* <Avatar size={64} icon="user"/> */}
-                <img className="img" src ={url || "http://via.placeholder.com/120x120"} alt ="firebase-image" />
+                {/* <img className="img" src ={url || "http://via.placeholder.com/120x120"} alt ="firebase-image" />
                 <input type="file" onChange={handleChange}/>
-                <button onClick={handleUpload}>Change profile</button>
+                <button onClick={handleUpload}>Change profile</button> */}
               
              </div>
              <h3 className='pro'>Name  <br/><br/>

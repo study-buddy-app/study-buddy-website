@@ -84,7 +84,7 @@ app.get('/student/session/tutors', studentCtrl.getTutors)
 app.post('/student/session/tutor', studentCtrl.addTutor)
 app.delete('/student/session/tutor', studentCtrl.deleteTutor)
 //tutor
-app.put('/api/tutor/profile', tutorCtrl.updateProfile)
+app.put('/api/tutor/profile/:tutor_id', tutorCtrl.updateProfile)
 app.get('/api/tutor/subjects/:tutor_id', tutorCtrl.getSubjectsByTutor)
 app.put('/api/tutor/state/subjects', tutorCtrl.getTutorsByStateAndSubject)
 app.get('/api/tutor/subjects/:subject_id', tutorCtrl.getTutorsBySubject)

@@ -206,12 +206,25 @@
   margin-top: 100px;
   display: flex;
 }
-.tutorprofile {
-  width: 100vw;
-  height: 100vh;
+.tutorprofile table{
+  margin-left: auto;
+  margin-right: auto;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  width: 20vw;
   background-color: $secondary-color;
   margin-top: 100px;
-  display: flex;
+}
+
+.tutorprofile td{
+  width: 20vw;
+  float: left;
+  height: fit-content;
+}
+.tutorprofile input{
+  width: 100%;
 }
 .pro {
   margin: 140px;
@@ -245,4 +258,8 @@
   background: white;
   width: 250px;
   height: 35px;
+}
+.btn_update_tprofile{
+  margin-top: 20px;
+  float: right;
 }

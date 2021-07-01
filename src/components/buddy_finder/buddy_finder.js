@@ -45,7 +45,7 @@ const Buddy_Finder = () => {
         .catch((err) => console.log(err));
     }
   }, [subject, description]);
-
+ console.log('tutorList', tutorlist)
   useEffect(() => {
     const student_id = user.student_id;
     axios

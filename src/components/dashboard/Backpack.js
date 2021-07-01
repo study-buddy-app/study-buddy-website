@@ -9,7 +9,7 @@ export default function Backpack(props) {
 
         const {backpack} = useSelector((store) => store.backpackReducer)
         const dispatch = useDispatch()
-      
+      console.log('backpack',backpack)
         useEffect(() => {
           axios.get('/api/backpack')
             .then((res) => {
@@ -38,10 +38,10 @@ export default function Backpack(props) {
               </div>
               {backpack.map((subject) => {
                 return(
-                  <div  className='oneitem' key={subject.subject_backpack_id}>
+                  <div  className='oneitem' key={subject.subject_id}>
                     <h4>{subject.subject}</h4>
                     
-                    <div classname = 'deletebackpackitem'>
+                    <div className = 'deletebackpackitem'>
                     <button className='remove' onClick={() => handleDeleteFromBackpack(subject.subject_id)}>delete</button>
                     </div>
                     </div>

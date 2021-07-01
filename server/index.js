@@ -4,6 +4,8 @@ const massive = require('massive')
 const session = require('express-session')
 const cors = require("cors")
 
+
+
 const authCtrl = require('./controllers/authCtrl')
 const studentCtrl = require('./controllers/studentCtrl')
 const tutorCtrl = require('./controllers/tutorCtrl')
@@ -17,6 +19,9 @@ const paymentCtrl = require('./controllers/PaymentCtrl')
 const sessionCtrl = require('./controllers/sessionCtrl')
 
 const app = express()
+ 
+
+
 
 app.use(express.json())
 app.use(session({
@@ -25,6 +30,9 @@ app.use(session({
   saveUninitialized: true,
   cookie: {maxAge: 1000 *60 *60 *24}
 }))
+
+
+
 
 
 massive({

@@ -2,6 +2,7 @@ import React, { createContext, useState, useRef, useEffect} from 'react'
 import io from 'socket.io-client' //<-- in the video its socket.io-client so if it crashes change it 
 import Peer from 'simple-peer'
 
+
 //This is the logic for the entire application
 
 const socket = io('http://localhost:5000')
@@ -17,6 +18,8 @@ const ContextProvider = ({children}) =>{
     const [callAccepted, setCallAccepted]= useState (false)
     const [callEnded, setCallEnded]= useState(false)
     const [name, setName] = useState('')
+
+ 
 
     const myVideo= useRef()
     const userVideo= useRef()
@@ -44,6 +47,7 @@ const ContextProvider = ({children}) =>{
 
         const peer = new Peer({initiator: false, trickle: false, stream})
         peer.on('signal',(data)=>{
+            console.log(data)
             socket.emit('answerCall', {signal: data, to: call.from})
         })
 

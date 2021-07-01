@@ -47,7 +47,8 @@ CREATE TABLE tbl_backpack (
   backpack_id SERIAL PRIMARY KEY,
   tutor_id INT REFERENCES tbl_tutor(tutor_id),
   student_id INT REFERENCES tbl_student(student_id),
-  subject_id INT REFERENCES tbl_subject(subject_id)
+  subject_id INT REFERENCES tbl_subject(subject_id),
+  file_upload VARCHAR(500),
   active BOOLEAN;
 );
 

@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import axios from 'axios'
 import {useSelector, useDispatch} from 'react-redux'
 import {setBackpack} from '../../redux/backpackReducer'
 import {useEffect} from 'react'
 import './Dashboard.scss'
+import {handleUpload} from './Dashboard'
 
 export default function Backpack(props) {
+  const [url, setUrl] = useState('')
 
         const {backpack} = useSelector((store) => store.backpackReducer)
         const dispatch = useDispatch()
@@ -30,6 +32,7 @@ export default function Backpack(props) {
             })
         }
       console.log(backpack)
+
         return (
             <div className ='backpack'>
               <div className='backpack-container'>
@@ -48,6 +51,7 @@ export default function Backpack(props) {
                     )
                     
               })}
+         
                   </div>
                 )
             }

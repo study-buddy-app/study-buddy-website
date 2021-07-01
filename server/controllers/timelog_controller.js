@@ -22,15 +22,7 @@ module.exports = {
     getTime: (req, res) => {
         res.status(200).send(time);
       },
-    //   catchTime: (req,res) => {
-    //       const {ttime} =req.body;
 
-    //       ttime.id = id;
-    //       id++;
-
-    //   time.push(ttime);
-    //   res.status(200).send(time);
-    //   },
 
       addTime: (req, res) => {
           console.log(req.body)

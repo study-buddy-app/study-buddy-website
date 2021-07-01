@@ -2,8 +2,7 @@ module.exports = {
   updateProfile: (req, res) => {
     console.log('I\'ve got a tutor update request here!')
     const db = req.app.get("db");
-    const {tutor_id} =req.params
-    const {f_name, l_name,username,email} = req.body
+    const {f_name, l_name,username,email, tutor_id} = req.body
   
     db.tutor.t_update_profile(f_name, l_name,username,email, tutor_id)
       .then((profile) => {

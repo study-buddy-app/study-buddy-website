@@ -16,6 +16,7 @@ const timelogCtrl = require("./controllers/timelog_controller");
 const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env
 
 const paymentCtrl = require('./controllers/PaymentCtrl')
+const sessionCtrl = require('./controllers/sessionCtrl')
 
 const app = express()
  
@@ -92,7 +93,7 @@ app.get('/student/session/tutors', studentCtrl.getTutors)
 app.post('/student/session/tutor', studentCtrl.addTutor)
 app.delete('/student/session/tutor', studentCtrl.deleteTutor)
 //tutor
-app.put('/api/tutor/profile', tutorCtrl.updateProfile)
+app.put('/api/tutor/profile/:tutor_id', tutorCtrl.updateProfile)
 app.get('/api/tutor/subjects/:tutor_id', tutorCtrl.getSubjectsByTutor)
 app.put('/api/tutor/state/subjects', tutorCtrl.getTutorsByStateAndSubject)
 app.get('/api/tutor/subjects/:subject_id', tutorCtrl.getTutorsBySubject)
@@ -105,7 +106,10 @@ app.delete('/api/time/:id',timelogCtrl.deleteTime)
 app.put('/api/time/:id', timelogCtrl.editTime)
 
 //session
-app.use(cors())
+app.post('/api/sessions/appointments/:student_id', sessionCtrl.addSession)
+app.delete('/api/session/remove', sessionCtrl.cancelSession)
+app.get('/api/session/appointment/:student_id', sessionCtrl.getSessions)
+app.get('/api/session/current/appointment/:student_id', sessionCtrl.getUserLatestSession)
 //Payment Ctrl
 app.post('/payment', cors(), paymentCtrl.addPayment)
 

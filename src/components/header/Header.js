@@ -9,14 +9,15 @@ import Loggedvirtual from '../login/Loggedvirtual'
 
 
 
+
+
 const Header = () => {
   const [click, setClick] = useState(false)
-
-
   const handleClick = () => setClick(!click)
   const closeMobileMenu = () => setClick(false)
+  const [usertype, setUsertype] = useState('')
 
-    return (
+    if(usertype === ''){return (
       <>
     <header className='header'>    
         <div className='header-container'>
@@ -51,7 +52,57 @@ const Header = () => {
       </div> 
    </header>
    </>
-  )
+  )}
+   if(usertype === 'tutor'){return (
+      <>
+    <header className='header'>    
+        <div className='header-container'>
+          <Link to='/' onClick={closeMobileMenu}>
+          <img   className ="logo"src='https://study-buddy-bucket.s3.us-east-2.amazonaws.com/Study+Buddy+logo+resize.png' alt='Study Buddy logo'/>
+          </Link>  
+          <div className='menu-icon' onClick={handleClick}>
+            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+           </div>
+           <div>
+            <input className='searchBar' placeholder='Search'/>
+          </div>
+           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+           <li className='nav-item'>
+           <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                <h3>Home</h3> 
+               </Link>
+          </li>
+
+          <li className='nav-item'>
+              <Link
+                to='/aboutus'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                <h3>About Us</h3>
+              </Link>
+          </li>
+          <li className='nav-item'>
+              <Link
+                to='/buddyup'
+                className='nav-links'
+                onClick= {closeMobileMenu}
+                >
+                <h3>Meet Up</h3>
+              </Link>
+          </li>
+          <li className='nav-links'>
+            <Logout closeMobileMenu={closeMobileMenu} />  
+            <li to='/tutordash'> <i className="far fa-user-circle"></i></li>
+          </li>
+    
+      
+        </ul>
+ 
+      </div> 
+   </header>
+   </>
+  )}
 }
 
    

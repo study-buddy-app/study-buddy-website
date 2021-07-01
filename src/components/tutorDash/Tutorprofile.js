@@ -1,15 +1,14 @@
+import React, {useState} from 'react'
 import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { app } from '../dashboard/firebase'
 import {setUser} from '../../redux/authReducer'
 
-
 const db = app.firestore()
 
-export default function Tutorprofile(props) {
-    const dispatch =  useDispatch()
-    const {user} = useSelector((store) => store.authReducer)
+export default function Tutorprofile() {
+    const [newinfo, setNewInfo] = useState()
     const [imgUrl, setImgUrl] = useState(null)
     const [users, setUsers] = useState([])
     const [f_name, setF_name] = useState('')
@@ -19,27 +18,29 @@ export default function Tutorprofile(props) {
     const [age, setAge] = useState(null)
     const [showEdit, setShowEdit] = useState(false)
 
-       const handleUpdateProfile = () => {
+    const {user} = useSelector((store) => store.authReducer)
 
-        const body = {
-            f_name: f_name || user?.f_name,
-            l_name: l_name || user?.l_name,
-            username: username|| user?.username,
-            email: email || user?.email,
-            age: age || user?.age,
-        }
-
-        axios.put('/api/tutor/profile', body)
+    const handleClick =() =>{
+        const tutor_id = +user.tutor_id
+        axios
+        .put(`/api/tutor/profile/`+parseInt(user.tutor_id),{f_name, l_name, username,email, tutor_id})
         .then((res) => {
-            console.log(res.data)
-            dispatch(setUser(res.data))
-            setShowEdit(false)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-       }
-  
+            setNewInfo(res.data)
+    })}
+    console.log('new info', newinfo)
+    const fNameOnChange =(e)=>{
+       setFName(e.target.value)
+    }
+    const lNameOnChange =(e)=>{
+       setLName(e.target.value)
+    }
+    const userNameOnChange =(e)=>{
+       setUserName(e.target.value)
+    }
+    const emailOnChange =(e)=>{
+       setEmail(e.target.value)
+    }
+
 
     const handleChange = async (e)=> {
         const file = e.target.files[0]
@@ -72,12 +73,12 @@ export default function Tutorprofile(props) {
                 fetchUsers()
             }, [])
     return (
-        <div className='tutorprofile'>
-            <h1>Profile</h1>
-            <div className='tutorpicture'>
+        
+ 
+        <div className ='tutorprofile'>
 
-              
-                <ul>
+        <div className='tutorpicture'>
+                  <ul>
                     {users.map(user => {
                         return (
                             <li className="li-tag" key={user.name}>
@@ -92,50 +93,29 @@ export default function Tutorprofile(props) {
                     <input type ="text" name= "username" placeholder="NAME"/>
                     <button>unpload</button>
                 </form>
-             </div>
-             <div className="editprofile">
-             <h3 className='tutorpro'>Name</h3>
-             {showEdit ? (
-                 <>
-                    <input placeHolder="first name"  value={f_name} onChange={(e) => setF_name(e.target.value)}></input>
-                    <input placeHolder="last name" value={l_name} onChange={(e) => setL_name(e.target.value)}></input>
-                </>
-             ):(
-                    <h4>{`${user?.f_name} ${user?.l_name}`}</h4>
-             )}
+            <table>
+                <tr>
+                <th>First Name</th>
+                <td><input onChange ={(e)=>fNameOnChange(e)}type="text" placeholder={user.f_name} /></td>
+                </tr>
+                <tr>
+                <th>Last Name</th>
+                <td><input onChange ={(e)=>lNameOnChange(e)}type="text" placeholder={user.l_name} /></td>
+                </tr>
+                <tr>
+                <th>Username</th>
+                <td><input onChange ={(e)=>userNameOnChange(e)}type="text" placeholder={user.username} /></td>
+                </tr>
+                <tr>
+                <th> Email</th>
+                <td><input onChange ={(e)=>emailOnChange(e)} type="text" placeholder={user.email} /></td>
+                </tr>
+                <tr>
+                    <button onClick ={handleClick}className='btn_update_tprofile'>Update</button>
+                </tr>
+            </table>
+        </div>
 
-              <h3 className='tutorpro'>username</h3>
-             {showEdit ? (
-                 <>
-                    <input value={username} onChange={(e) => setUsername(e.target.value)}></input> 
-                </>
-             ):(
-                <h4>{`${user?.username}`}</h4>
-             )}
-             <h3 className='tutorpro'>email</h3>
-             {showEdit ? (
-                 <>
-                    <input value={email} onChange={(e) => setEmail(e.target.value)}></input>
-                </>
-             ):(
-             <h4>{`${user?.email}`}</h4>
-             )}
-            
-             <h3 className='tutorpro'>age</h3>
-             {showEdit ? (
-                 <>
-                    <input type="number" value={age} onChange={(e) => setAge(e.target.value)}></input>
-                </>
-             ):(
-             <h4>{`${user?.age}`}</h4>
-             )}
-             <div className="profilebutton">
-            <button  onClick={handleUpdateProfile}>update profile</button>
-            <button onClick={()=> setShowEdit(!showEdit)}>edit</button>
-            </div>
-             <h3 className='tutorpro'>Usertype<br/><br/>
-             {`${user?.usertype }`}</h3>
-             </div>
         </div>
     )
 }

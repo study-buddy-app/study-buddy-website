@@ -7,51 +7,69 @@ import {setBackpack} from '../../redux/backpackReducer'
 import Backpack from './Backpack'
 import { app } from './firebase'
 import TodoApp from '../tutorDash/Todo'
-import { file } from '@babel/types'
-
-
-
-const db = app.firestore()
 
 
 export default function Dashboard(props) {
-    const [subjectArr, setSubjectArr] = useState([])
-    const [search, setSearch] = useState('')
-    const [fileUrl, setFileUrl] = useState(null)
-    const [users, setUsers] = useState([])
+  const [subjectArr, setSubjectArr] = useState([]);
+  const [search, setSearch] = useState("");
+  const [meetup, setMeetup] = useState();
+  const [fileUrl, setFileUrl] = useState(null)
+  const [users, setUsers] = useState([])
 
     const {user} = useSelector((store) => store.authReducer)
     const {backpack} = useSelector((store) => store.backpackReducer)
 
+    const db = app.firestore()
         
         const dispatch = useDispatch()
-         
+      
+        useEffect(() => {
+          console.log('I\'m firing')
+          axios.get('/api/backpack')
+            .then((res) => {
+              console.log(res.data)
+              dispatch(setBackpack(res.data))
+            }).catch(err => {
+              console.log(err)
+            })
+          }, [])
+        useEffect(() => {
+          axios
+            .get(`/api/session/current/appointment/${user.student_id}`)
+            .then((appointment) => {
+              setMeetup(appointment.data);
+            })
+            .catch((err) => console.log(err));
+        }, []);
+      
 
         useEffect(() => {
-        axios.get('/api/subject')
-        .then((res) => {
-        setSubjectArr(res.data)
-        })
-        .catch(err => console.log(err))
-        }, [dispatch])
-
+          axios
+            .get("/api/subject")
+            .then((res) => {
+              setSubjectArr(res.data);
+            })
+            .catch((err) => console.log(err));
+        }, []);
 
         const handleSubmit = (subject_id) => {
-            const subject = backpack.find((subject) => subject.subject_id === subject_id)
-            console.log(subject_id)
-            
-              axios.post(`/api/backpack/${subject_id}`)
-              .then((res) => {
-              console.log(res.data, 'this is my data')
-                dispatch(setBackpack(res.data))
-              })
-              .catch((err) => {
-                console.log(err)
-                if(err.response.status === 511){
-            
-                }
-              })
-            }
+          // const subject = backpack.find(
+          //   (subject) => subject.subject_id === subject_id
+          // );
+          // console.log(subject_id);
+      
+          axios
+            .post(`/api/backpack/${user.student_id}`,{subject_id})
+            .then((res) => {
+              console.log(res.data, "this is my data");
+              dispatch(setBackpack(res.data));
+            })
+            .catch((err) => {
+              console.log(err);
+              if (err.response.status === 511) {
+              }
+            });
+        };
             const handleChange = async (e)=> {
                 const file = e.target.files[0]
                 const storageRef = app.storage().ref()
@@ -84,12 +102,6 @@ export default function Dashboard(props) {
                 fetchUsers()
             }, [])
 
-                
-                
-        
-             
-                 
-        
         const filteredSubjects = subjectArr.filter(subject => {
             return subject.subject.toLowerCase().includes(search.toLowerCase())
           })
@@ -149,11 +161,42 @@ export default function Dashboard(props) {
                             <button><Link to='/virtualroom'>virtual room</Link></button>
                         </div> 
                         <br/><br/>
-                        <div className='meetup'>
-                            <h3>In person meetup</h3>
-                            <br/><br/>
-                            <button><Link to='/buddyup'>buddy up</Link></button>
-                        </div>
+                        <div className="meetup">
+                <h3>In person meetup</h3>
+
+                <br />
+                <br />
+                <button>
+                  <Link to="/buddyup">buddy up</Link>
+                </button>
+                {meetup?.map((item) => {
+                  let aptDate = new Date(item.event_start);
+                  return (
+                    <table className='lastEntry'>
+                      <tr>
+                        <td><h4>
+                          {aptDate.getMonth(item.event_start) +
+                            1 +
+                            "-" +
+                            aptDate.getDate(item.event_start) +
+                            "-" +
+                            aptDate.getFullYear(item.event_start)} 
+                            {"  "}
+                            {item.description}
+                            {" Meetup"}
+                            </h4>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td><span>{item.subject}</span></td>
+                        </tr>
+                        <tr>
+                        <td><span>{item.buddy_choice}</span></td>
+                      </tr>
+                    </table>
+                  );
+                })}
+              </div>
                     </div>
                 </div>
                 <div className='column2'>
@@ -176,7 +219,6 @@ export default function Dashboard(props) {
                 </div>
             </div>
         </div>       
-        )
-                            
-}
+        );
+      }
     

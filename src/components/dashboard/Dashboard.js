@@ -126,7 +126,7 @@ export default function Dashboard(props) {
                             <form onSubmit= {onSubmit}>
                                 <input type ="file" onChange ={handleChange} />
                                 <input type ="text" name= "username" placeholder="NAME"/>
-                                <button>unpload</button>
+                                <button>upload</button>
                             </form>
                             <ul>
                                 {users.map(user => {

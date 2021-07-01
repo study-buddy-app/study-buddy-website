@@ -1,4 +1,3 @@
-import React, {useState} from 'react'
 import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
@@ -11,12 +10,12 @@ export default function Tutorprofile() {
     const [newinfo, setNewInfo] = useState()
     const [imgUrl, setImgUrl] = useState(null)
     const [users, setUsers] = useState([])
-    const [f_name, setF_name] = useState('')
-    const [l_name, setL_name] = useState('')
-    const [username, setUsername] = useState('')
+    const [f_name, setFName] = useState('')
+    const [l_name, setLName] = useState('')
+    const [username, setUserName] = useState('')
     const [email, setEmail] = useState('')
-    const [age, setAge] = useState(null)
-    const [showEdit, setShowEdit] = useState(false)
+   
+ 
 
     const {user} = useSelector((store) => store.authReducer)
 

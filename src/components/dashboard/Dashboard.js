@@ -17,6 +17,19 @@ export default function Dashboard(props) {
   const { backpack } = useSelector((store) => store.backpackReducer);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('I\'m firing')
+    axios.get('/api/backpack')
+      .then((res) => {
+        console.log(res.data)
+        dispatch(setBackpack(res.data))
+      }).catch(err => {
+        console.log(err)
+      })
+    }, [])
+
+
   useEffect(() => {
     axios
       .get(`/api/session/current/appointment/${user.student_id}`)
@@ -42,7 +55,7 @@ export default function Dashboard(props) {
     console.log(subject_id);
 
     axios
-      .post(`/api/backpack/${subject_id}`)
+      .post(`/api/backpack/${user.student_id}`,{subject_id})
       .then((res) => {
         console.log(res.data, "this is my data");
         dispatch(setBackpack(res.data));

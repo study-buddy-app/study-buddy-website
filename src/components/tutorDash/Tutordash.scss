@@ -26,7 +26,7 @@
 // }
 .tutor_column1 {
   padding: 3rem;
-  height: 120vh;
+  min-height: 120vh;
   display: flex;
   flex-wrap: wrap;
   position: relative;
@@ -57,7 +57,7 @@
 }
 
 .tutor_h1 {
-  color: black;
+  color: $secondary-color;
   margin-left: 50px;
   margin-top: 15px;
   // padding-left: 10px;
@@ -152,42 +152,52 @@
   // border: 5px solid rgba(243, 178, 56, 0.979);
   background: $accent-color2;
   overflow-y: scroll;
-  width: 300px;
+  width: 325px;
   height: 250px;
   padding: 20px;
   margin-top: 30px;
-  margin-left: 35px;
+  margin-left: 23px;
   border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+  .tutor_dashboard {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 800px) {
+  .tutor_container {
+    padding: 0;
+  }
 }
 
 @media (max-width: 800px) {
   .tutor_column1 {
     flex-direction: column;
-    margin-left: -45px;
+    margin-top: 40px;
   }
 }
 @media (max-width: 800px) {
-  .tutor_dashboard {
-    background-color: $secondary-color;
-    height: 150;
+  .tutor_block1 {
+    margin-top: -30px;
   }
 }
-@media (max-width: 800px) {
-  .tutor_block2 {
-    margin-bottom: -70px;
-  }
-}
-@media (max-width: 800px) {
-  .todo {
-    margin-left: -25px;
-  }
-}
+
 @media (max-width: 800px) {
   .tutor_column2 {
     width: 45vw;
     margin-left: -30px;
+    height: fit-content;
+    margin-top: 40px;
   }
 }
+@media (max-width: 800px) {
+  .tutor_block2 {
+    margin-top: 50px;
+    margin-left: -5px;
+  }
+}
+
 @media (max-width: 800px) {
   .tutor_subjectslist {
     margin-left: -15px;
@@ -196,15 +206,12 @@
 }
 @media (max-width: 800px) {
   .tutor_choose-subject {
-    // margin-left: -10px;
     width: 200px;
   }
 }
-
 @media (max-width: 800px) {
-  .tutor_dashboard {
-    flex-direction: column;
-    margin-bottom: 100px;
+  .todo {
+    margin-left: -25px;
   }
 }
 
@@ -221,12 +228,24 @@
   height: 120px;
   border-radius: 50%;
 }
-// .tutorpicture {
-//   border-radius: 100%;
-//   background-color: $accent-color1;
-//   width: 10vw;
-//   height: 15vh;
-// }
+.tutorpicture {
+  // border-radius: 100%;
+  // background-color: $accent-color1;
+  width: 10vw;
+  height: 15vh;
+  margin-top: 50px;
+  margin-left: -60px;
+  padding-top: 20px;
+}
 .tutorpro {
   margin: 140px;
+}
+.editprofile {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+}
+.profilebutton {
+  width: 20px;
+  height: 20px;
 }

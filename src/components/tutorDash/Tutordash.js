@@ -60,7 +60,7 @@ export default function Tutordash(props) {
                 <div className='tutor_column1'>
                     <div className='tutor_block1'>
                         <div className='tutor_greeting'>
-                            <Link to='/profile' ><img className = 'tutor_userlogo' src = 'https://res.cloudinary.com/dgaapgd2f/image/upload/v1624410772/A912FD0D-3C1E-475B-B5DD-6138727912B9_1_201_a_vjozus.jpg' alt = 'userlogo'/></Link>
+                            <Link to='/tutorprofile' ><img className = 'tutor_userlogo' src = 'https://res.cloudinary.com/dgaapgd2f/image/upload/v1624410772/A912FD0D-3C1E-475B-B5DD-6138727912B9_1_201_a_vjozus.jpg' alt = 'userlogo'/></Link>
                             <h1 className='tutor_h1'>Hi there {`${user?.username}`}</h1>
                         </div>
                         <br/><br/>

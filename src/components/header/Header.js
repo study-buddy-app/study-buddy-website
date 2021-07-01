@@ -42,7 +42,7 @@ const Header = () => {
           </li>
           <li className='nav-links'>
             <Logout closeMobileMenu={closeMobileMenu} />  
-            <li to='/dashboard'> <i className="far fa-user-circle"></i></li>
+            {/* <i className="far fa-user-circle"></i> */}
           </li>
     
       

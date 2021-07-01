@@ -8,7 +8,7 @@ import Backpack from './Backpack'
 import { app } from './firebase'
 import TodoApp from '../tutorDash/Todo'
 import { file } from '@babel/types'
-// import 'antd/dist/antd.css'
+
 
 
 const db = app.firestore()
@@ -17,9 +17,6 @@ const db = app.firestore()
 export default function Dashboard(props) {
     const [subjectArr, setSubjectArr] = useState([])
     const [search, setSearch] = useState('')
-    // const [image, setImage] = useState(null)
-    // const [url, setUrl] = useState('')
-    const [progress, setProgress] = useState(0)
     const [fileUrl, setFileUrl] = useState(null)
     const [users, setUsers] = useState([])
 
@@ -72,8 +69,9 @@ export default function Dashboard(props) {
                     return
                 }
                 db.collection("files").doc(username).set({
+                    avatar:fileUrl,
                     name:username
-                
+                    
                 })   
             }
             useEffect(() => {
@@ -115,15 +113,15 @@ export default function Dashboard(props) {
                         <>
                             <form onSubmit= {onSubmit}>
                                 <input type ="file" onChange ={handleChange} />
-                                {/* <input type ="text" name= "username" placeholder="NAME"/> */}
+                                <input type ="text" name= "username" placeholder="NAME"/>
                                 <button>unpload</button>
                             </form>
                             <ul>
-                                {users.map(file => {
+                                {users.map(user => {
                                     return (
-                                        <li className="li-tag" key={file.name}>
+                                        <li className="li-tag" key={user.name}>
                                         {/* <img width="100" height="100" src={file.avatar} alt={file.name}/> */}
-                                        <p>{file.name}</p>
+                                        <p>{user.name}</p>
                                         </li>
                                     )
       

@@ -4,7 +4,7 @@ import Peer from 'simple-peer'
 
 //This is the logic for the entire application
 
-const socket = io('http://localhost:4040')
+const socket = io('http://localhost:5000')
 
 const SocketContext= createContext();
 
@@ -32,11 +32,12 @@ const ContextProvider = ({children}) =>{
               console.log("stream not connected")
             })
         socket.on('me', (id)=> setMe(id) )//<--connects to the backend socket.emit('me', socket.id) grabs the unique connection ID and sets it to state
-
+            console.log(me)
+            console.log(me.id)
         socket.on('callUser', ({from, name: callerName, signal})=>{ //<-- we are receiving a data object as a parameter
             setCall({isReceivingCall: true, from, name:callerName, signal})
         })
-    }, []) //<--Dont forget the empty dependency array or youll get and infinte loop
+    }, [me]) //<--Dont forget the empty dependency array or youll get and infinte loop
 
     const answerCall= ()=>{
         setCallAccepted(true)

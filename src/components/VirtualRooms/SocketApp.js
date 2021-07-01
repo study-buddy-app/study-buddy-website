@@ -55,7 +55,7 @@ const SocketApp =() =>{
       <Options>
         <Notifications/>
       </Options>
-      <ChatEng className={classes.chat}/>
+      <ChatEng />
     </div>
 </ContextProvider>
   );

@@ -41,37 +41,39 @@ massive({
 const server= require('http').createServer(app)
 const io= require ('socket.io')(server, {
   cors:{
-      origin:'http://localhost:4040',
+      origin:'*',
       methods:['GET', 'POST']
   }
 })
 
 app.use (cors())
 
-// const PORT= process.env.PORT || 5000
+const PORT= process.env.PORT || 5000
 
-app.get('/', (req,res)=>{
+app.get('/virtualroom', (req,res)=>{
   res.send('Server is running')
 })
 
 
 
-io.on('connection', (socket)=>{ //<-- establishes initial connection
-  socket.emit('me', socket.id) //<-- creates socket.id to user and signal
+  io.on('connection', (socket)=>{ //<-- establishes initial connection
+    socket.emit('me', socket.id)
+    console.log(socket.emit) //<-- creates socket.id to user and signal
+    console.log(socket.id)
+    //HANDLER FUNCTIONS
+    socket.on("disconnect", () => {
+    socket.broadcast.emit("callEnded")
+  });
 
-  //HANDLER FUNCTIONS
-  socket.on("disconnect", () => {
-  socket.broadcast.emit("callEnded")
-});
+  socket.on("callUser", ({ userToCall, signalData, from, name }) => {
+    io.to(userToCall).emit("callUser", { signal: signalData, from, name }); //<--the emitted signal data is sent to the front end -->( signal: signalData, from, name)
+  });
 
-socket.on("callUser", ({ userToCall, signalData, from, name }) => {
-  io.to(userToCall).emit("callUser", { signal: signalData, from, name }); //<--the emitted signal data is sent to the front end -->( signal: signalData, from, name)
+  socket.on("answerCall", (data) => {
+    io.to(data.to).emit("callAccepted", data.signal)
+  });
 });
-
-socket.on("answerCall", (data) => {
-  io.to(data.to).emit("callAccepted", data.signal)
-});
-});
+server.listen(PORT, ()=> console.log(`Server listening on port ${PORT}`))
 //ENDPOINTS
 //auth
 app.post('/auth/register', authCtrl.register)

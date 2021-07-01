@@ -64,10 +64,11 @@ app.get('/virtualroom', (req,res)=>{
 
 
 
-io.on('connection', (socket)=>{ //<-- establishes initial connection
-  socket.emit('me', socket.id) //<-- creates socket.id to user and signal
-
-  //HANDLER FUNCTIONS
+  io.on('connection', (socket)=>{ //<-- establishes initial connection
+    socket.emit('me', socket.id)
+    console.log(socket.emit) //<-- creates socket.id to user and signal
+    console.log(socket.id)
+    //HANDLER FUNCTIONS
     socket.on("disconnect", () => {
     socket.broadcast.emit("callEnded")
   });

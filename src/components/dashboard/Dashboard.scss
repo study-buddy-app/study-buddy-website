@@ -1,14 +1,14 @@
 @import "../../scss/variables.scss";
 .dashboard {
-  // margin-top: 50px;
+  margin-top: 100px;
   height: 190vh;
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  padding-top: 50px;
   margin-bottom: 25px;
-  background-color: $secondary-color;
+  background-color: white;
 }
+
 // .dashheader {
 //   background: url("https://res.cloudinary.com/dgaapgd2f/image/upload/v1624371922/EB4FB6E5-C68B-4672-A0E5-685C9AD564F5_4_5005_c_qg74np.jpg")
 //     center center/cover no-repeat;
@@ -22,13 +22,13 @@
 .container {
   background-color: $secondary-color;
   width: 100vw;
-  // height: 200vh;
+  padding: 3rem;
   display: flex;
 }
 
 .column1 {
   padding: 3rem;
-  height: 100vh;
+  height: 120vh;
   display: flex;
   flex-wrap: wrap;
   position: relative;
@@ -41,7 +41,6 @@
 }
 
 .block1 {
-  margin: auto;
   margin-bottom: 700px;
   margin-left: -5px;
 }
@@ -65,7 +64,7 @@
   margin-top: 15px;
 }
 
-.questionpage {
+.uploads {
   width: 300px;
   height: 250px;
   padding: 20px;
@@ -75,13 +74,8 @@
   border-radius: 10px;
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
 }
-.askq {
-  padding-left: 10px;
-  width: 250px;
-  height: 100px;
-}
 
-.tutorsearch {
+.calander {
   // border: 5px solid rgba(243, 178, 56, 0.979);
   background: whitesmoke;
   overflow-y: scroll;
@@ -90,14 +84,6 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
-}
-
-.choose-tutor {
-  position: sticky;
-  top: 0px;
-  background: white;
-  width: 250px;
-  height: 35px;
 }
 
 .onesubject:hover {
@@ -105,7 +91,7 @@
 }
 .block2 {
   margin-left: 400px;
-  margin-top: -550px;
+  margin-top: -650px;
 }
 .virtual {
   // border: 5px solid rgba(243, 178, 56, 0.979);
@@ -126,7 +112,7 @@
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
 }
 .column2 {
-  height: 120vh;
+  height: 110vh;
   position: relative;
   padding: 3rem;
   width: 35vw;
@@ -151,9 +137,6 @@
 .backpack-container {
   display: flex;
   height: 50px;
-  padding-top: 20px;
-  margin-bottom: 50px;
-  top: 0px;
 }
 .backpack-image {
   width: 20%;
@@ -180,16 +163,31 @@
   background: white;
   overflow-y: scroll;
   width: 300px;
-  height: 200px;
+  height: 250px;
   padding: 20px;
   margin: auto;
   border-radius: 10px;
 }
+
+@media (max-width: 800px) {
+  .dashboard {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 800px) {
+  .container {
+  }
+}
+@media (max-width: 800px) {
+  .block2 {
+    margin-top: -650px;
+    margin-left: 5px;
+  }
+}
+
 @media (max-width: 800px) {
   .column1 {
-    flex-direction: column;
-    height: 150vh;
-    margin-left: -40px;
+    height: fit-content;
   }
 }
 @media (max-width: 800px) {
@@ -197,16 +195,12 @@
     margin-top: -30px;
   }
 }
-@media (max-width: 800px) {
-  .block2 {
-    margin-top: 100px;
-    margin-left: 5px;
-  }
-}
+
 @media (max-width: 800px) {
   .column2 {
     width: 45vw;
     margin-left: -30px;
+    height: fit-content;
   }
 }
 @media (max-width: 800px) {
@@ -218,10 +212,10 @@
 }
 @media (max-width: 800px) {
   .choose-subject {
-    // margin-left: -10px;
     width: 200px;
   }
 }
+
 @media (max-width: 800px) {
   .backpack-image {
     margin-left: 30px;
@@ -235,13 +229,7 @@
   margin-top: 100px;
   display: flex;
 }
-.tutorprofile {
-  width: 100vw;
-  height: 100vh;
-  background-color: $secondary-color;
-  margin-top: 100px;
-  display: flex;
-}
+
 .pro {
   margin: 140px;
 }

@@ -1,12 +1,12 @@
 @import "../../scss/variables.scss";
 .dashboard {
-  margin-top: 100px;
+  margin-top: 90px;
   height: 190vh;
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  margin-bottom: 25px;
-  background-color: white;
+  margin-bottom: 120px;
+  background-color: $accent-color1;
 }
 
 // .dashheader {
@@ -20,9 +20,9 @@
 // }
 
 .container {
-  background-color: $secondary-color;
+  background-color: $accent-color1;
   width: 100vw;
-  padding: 3rem;
+  padding: 5rem;
   display: flex;
 }
 
@@ -36,7 +36,7 @@
   background-color: $primary-color;
   margin-right: 50px;
   margin-bottom: 400px;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 1px 0 20px rgba(0, 0, 0, 0.35);
 }
 
@@ -46,43 +46,46 @@
 .userlogo {
   width: 50px;
   height: 50px;
-  margin-left: 25px;
-  margin-top: 30px;
+  margin-left: 2px;
+  margin-top: 10px;
+}
+.userlogo:hover {
+  box-shadow: 1px 1px 1px 1px rgb(134, 130, 130);
 }
 .greeting {
   // border: 5px solid rgba(243, 178, 56, 0.979);
   box-shadow: 1px 0 20px rgba(0, 0, 0, 0.35);
   background: white;
   display: flex;
-  border-radius: 10px;
-  width: 100px;
+  border-radius: 5px;
+  border: 10px solid $accent-color1;
 }
 
 .h1 {
-  color: $secondary-color;
-  margin-left: 50px;
+  color: black;
+  margin-left: 8px;
   margin-top: 15px;
 }
 
 .uploads {
+  background: whitesmoke;
   width: 300px;
-  height: 250px;
+  height: 500px;
   padding: 20px;
   overflow-y: scroll;
-  // border: 5px solid rgba(243, 178, 56, 0.979);
-  background: whitesmoke;
-  border-radius: 10px;
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
+  border-radius: 5px;
+  // box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
+  border: 10px solid $accent-color1;
 }
 
 .calander {
-  // border: 5px solid rgba(243, 178, 56, 0.979);
-  background: whitesmoke;
-  overflow-y: scroll;
   width: 300px;
   height: 250px;
   padding: 20px;
-  border-radius: 10px;
+  // border: 5px solid rgba(243, 178, 56, 0.979);
+  background: whitesmoke;
+  border-radius: 5px;
+  border: 10px solid $accent-color1;
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
 }
 
@@ -91,26 +94,30 @@
 }
 .block2 {
   margin-left: 400px;
-  margin-top: -800px;
+  margin-top: -950px;
 }
 .virtual {
-  // border: 5px solid rgba(243, 178, 56, 0.979);
-  background: whitesmoke;
+  background: $accent-color2;
   width: 300px;
-  height: 250px;
+  height: 150px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
 }
 .meetup {
   // border: 5px solid rgba(243, 178, 56, 0.979);
-  background: whitesmoke;
+  background-color: $secondary-color;
   width: 300px;
   height: 250px;
   padding: 20px;
-  border-radius: 10px;
-  overflow-y: scroll;
+  border-radius: 5px;
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
+}
+.button-meetup {
+  height: 30px;
+  width: 200px;
+  color: black;
+  margin-left: 20px;
 }
 .column2 {
   min-height: 100vh;
@@ -121,7 +128,7 @@
   margin-bottom: 400px;
   background-color: $primary-color;
   box-shadow: 1px 0 20px rgba(0, 0, 0, 0.35);
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .backpack {
   background: white;
@@ -167,7 +174,7 @@
   height: 250px;
   padding: 20px;
   margin: auto;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 @media (max-width: 800px) {
@@ -254,5 +261,5 @@
 }
 .li-tag {
   list-style-type: none;
-  margin-left: 20px;
+  margin-left: -5px;
 }

@@ -11,14 +11,34 @@ import './Tutordash.scss'
 
 export default function Tutordash(props) {
     const [subjectArr, setSubjectArr] = useState([])
-    const [search, setSearch] = useState('')
-   
+    const [search, setSearch] = useState("")
+    const [meetup, setMeetup] = useState();
 
     const {user} = useSelector((store) => store.authReducer)
     const {backpack} = useSelector((store) => store.backpackReducer)
 
 
         const dispatch = useDispatch()
+  
+        useEffect(() => {
+            console.log('I\'m firing')
+            axios.get('/api/backpack')
+              .then((res) => {
+                console.log(res.data)
+                dispatch(setBackpack(res.data))
+              }).catch(err => {
+                console.log(err)
+              })
+            }, [])
+
+          useEffect(() => {
+            axios
+              .get(`/api/session/current/appointment/${user.tutor_id}`)
+              .then((appointment) => {
+                setMeetup(appointment.data);
+              })
+              .catch((err) => console.log(err));
+          }, []);
 
         useEffect(() => {
         axios.get('/api/subject')
@@ -30,12 +50,13 @@ export default function Tutordash(props) {
 
         const handleSubmit = (subject_id) => {
             const subject = backpack.find((subject) => subject.subject_id === subject_id)
-            console.log(subject_id)
-            
-              axios.post(`/api/backpack/${subject_id}`)
+            console.log("subject_id", subject_id)
+           
+              axios.post(`/api/backpack/${user.tutor_id}`,`${subject_id}`)
               .then((res) => {
               console.log(res.data, 'this is my data')
                 dispatch(setBackpack(res.data))
+                
               })
               .catch((err) => {
                 console.log(err)
@@ -44,9 +65,7 @@ export default function Tutordash(props) {
                 }
               })
            
-                }
-              
-            
+                }     
         
         const filteredSubjects = subjectArr.filter(subject => {
             return subject.subject.toLowerCase().includes(search.toLowerCase())
@@ -83,17 +102,49 @@ export default function Tutordash(props) {
                     </div>
                     <div className='tutor_block2'>
                         <div className='tutor_virtual'>
-                            <h3>virtual meetup</h3>
+                            <h3 className='tutor-h3-virtual'>See who else is online</h3>
                             <br/><br/>
-                            <button><Link to='/virtualroom'>virtual meeting</Link></button>
+                            <Link to='/virtualroom'> <button className="tutor-button">virtual meeting</button></Link>
                         </div> 
                         <br/><br/>
-                        <div className='tutor_meetup'>
-                            <h3>In person meetup</h3>
-                            
-                            <br/><br/>
-                            <button><Link to='/buddyup'>Schedule a meetup</Link></button>
-                        </div>
+                    
+                        <div className="tutor_meetup">
+                            <h3 className='tutor-h3-meetup'>Today's in person meeting</h3>
+
+                            <br />
+                            <br />
+                            <Link to="/buddyup"><button className="tutor-button">buddy up</button></Link>
+
+                            {meetup?.map((item) => {
+                            let aptDate = new Date(item.event_start);
+                            return (
+                                <table className='lastEntry'>
+                                <tr>
+                                    <td><h4>
+                          {aptDate.getMonth(item.event_start) +
+                            1 +
+                            "-" +
+                            aptDate.getDate(item.event_start) +
+                            "-" +
+                            aptDate.getFullYear(item.event_start)} 
+                            {"  "}
+                            {item.description}
+                            {" Meetup"}
+                            </h4>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td><span>{item.subject}</span></td>
+                        </tr>
+                        <tr>
+                        <td><span>{item.buddy_choice}</span></td>
+                      </tr>
+                    </table>
+                  );
+                })}
+              </div>
+              <br/><br/>
+              <TodoApp />,
                     </div>
                 </div>
                 <div className='tutor_column2'>
@@ -111,8 +162,6 @@ export default function Tutordash(props) {
                                  )
                                 })} 
                     </div>
-
-                    <TodoApp />,
 
                     {window.scrollTo(0,0)}
                 </div>

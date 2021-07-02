@@ -33,9 +33,10 @@ export default function Dashboard(props) {
               console.log(err)
             })
           }, [])
+
         useEffect(() => {
-          axios
-            .get(`/api/session/current/appointment/${user.student_id}`)
+         
+          axios.get(`/api/session/current/appointment/${user.student_id}`)
             .then((appointment) => {
               setMeetup(appointment.data);
             })
@@ -53,10 +54,10 @@ export default function Dashboard(props) {
         }, []);
 
         const handleSubmit = (subject_id) => {
-          // const subject = backpack.find(
-          //   (subject) => subject.subject_id === subject_id
-          // );
-          // console.log(subject_id);
+          const subject = backpack.find(
+            (subject) => subject.subject_id === subject_id
+          );
+          console.log(subject_id);
       
           axios
             .post(`/api/backpack/${user.student_id}`,{subject_id})

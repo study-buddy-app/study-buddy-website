@@ -70,12 +70,12 @@ class Display extends Component {
       ) : (
         <div className="time">
         
-          <h3 className = "result1"> Start Time: {this.props.startTime}</h3>
-          <h3 className = "result2">End Time : {this.props.endTime}</h3>
-          <h3 className = "result3">Total Time : {this.props.endTime - this.props.startTime }</h3>
-          <h3 className = "result4">Date : {this.props.month}/{this.props.day}</h3>
+          <h5 className = "result1"> Start Time: {this.props.startTime}</h5>
+          <h5 className = "result2">End Time : {this.props.endTime}</h5>
+          <h5 className = "result3">Total Time : {this.props.endTime - this.props.startTime }</h5>
+          <h5 className = "result4">Date : {this.props.month}/{this.props.day}</h5>
         
-  
+          <br/><br/>
           <button className = "delete"
           onClick={() => this.props.deleteTime(this.props.id)}>
             delete 
@@ -83,6 +83,7 @@ class Display extends Component {
 
           <button className = "edit"
           onClick={this.toggleEdit}>edit</button>
+          <br/><br/>
         </div>
       )
     }

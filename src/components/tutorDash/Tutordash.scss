@@ -1,28 +1,36 @@
 @import "../../scss/variables.scss";
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
 .tutor_dashboard {
-  margin-top: 100px;
+  margin-top: 60px;
   height: 190vh;
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  margin-bottom: 80px;
-  background-color: white;
+  margin-bottom: 70px;
+  background-color: $accent-color1;
 }
 
 .tutor_container {
-  background-color: $secondary-color;
+  background-color: $accent-color1;
   width: 100vw;
-  padding: 3rem;
+  padding: 5rem;
   display: flex;
+  margin-top: 10px;
 }
 // .tutor_dashheader {
 //   background: url("https://res.cloudinary.com/dgaapgd2f/image/upload/v1624371922/EB4FB6E5-C68B-4672-A0E5-685C9AD564F5_4_5005_c_qg74np.jpg")
 //     center center/cover no-repeat;
 //   width: 100vw;
 //   height: 150px;
-//   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
 //   margin-top: -50px;
-//   margin-bottom: 10px;
+// }
+// .tutor_dashheader:hover {
+//   box-shadow: 1px 0 20px rgba(0, 0, 0, 0.35);
 // }
 .tutor_column1 {
   padding: 3rem;
@@ -34,7 +42,7 @@
   background-color: $primary-color;
   margin-right: 50px;
   margin-bottom: 400px;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 1px 0 20px rgba(0, 0, 0, 0.35);
 }
 .tutor_block1 {
@@ -43,33 +51,35 @@
 .tutor_userlogo {
   width: 50px;
   height: 50px;
-  margin-left: 25px;
-  margin-top: 30px;
+  margin-left: 2px;
+  margin-top: 10px;
+}
+.tutor_userlogo:hover {
+  box-shadow: 1px 1px 1px 1px rgb(134, 130, 130);
 }
 .tutor_greeting {
   // border: 5px solid rgba(243, 178, 56, 0.979);
   box-shadow: 1px 0 20px rgba(0, 0, 0, 0.35);
   background: white;
   display: flex;
-  border-radius: 10px;
-  // margin-left: 10px;
-  width: 100px;
+  border-radius: 5px;
+  border: 10px solid $accent-color1;
 }
 
 .tutor_h1 {
-  color: $secondary-color;
-  margin-left: 50px;
+  color: black;
+  margin-left: 8px;
   margin-top: 15px;
-  // padding-left: 10px;
 }
 
 .tutor_calander {
   width: 300px;
   height: 250px;
-  padding: 20px;
+  // padding: 20px;
   // border: 5px solid rgba(243, 178, 56, 0.979);
   background: whitesmoke;
-  border-radius: 10px;
+  border-radius: 5px;
+  border: 10px solid $accent-color1;
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
 }
 
@@ -77,10 +87,11 @@
   background: whitesmoke;
   overflow-y: scroll;
   width: 300px;
-  height: 400px;
+  height: 500px;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
+  border-radius: 5px;
+  // box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
+  border: 10px solid $accent-color1;
 }
 
 .trackhours {
@@ -96,29 +107,29 @@
 }
 .tutor_block2 {
   margin-left: 400px;
-  margin-top: -850px;
+  margin-top: -900px;
 }
 .tutor_virtual {
   // border: 5px solid rgba(243, 178, 56, 0.979);
-  background: whitesmoke;
+  background: $accent-color2;
   width: 300px;
-  height: 250px;
+  height: 150px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
 }
 .tutor_meetup {
   // border: 5px solid rgba(243, 178, 56, 0.979);
-  background: whitesmoke;
+  background-color: $secondary-color;
   width: 300px;
   height: 250px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
 }
 
 .tutor_column2 {
-  height: 135vh;
+  height: 100vh;
   position: relative;
   padding: 3rem;
   width: 35vw;
@@ -126,7 +137,7 @@
   margin-bottom: 400px;
   background-color: $primary-color;
   box-shadow: 1px 0 20px rgba(0, 0, 0, 0.35);
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .tutor_choose-subject {
@@ -145,21 +156,19 @@
   height: 250px;
   padding: 20px;
   margin: auto;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .todo {
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
-  // border: 5px solid rgba(243, 178, 56, 0.979);
-  background: $accent-color2;
-  overflow-y: scroll;
-  width: 325px;
-  height: 250px;
+  background: $accent-color1;
+  width: 300px;
+  min-height: 200px;
   padding: 20px;
-  margin-top: 30px;
-  margin-left: 23px;
-  border-radius: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.35);
 }
-
+.todo-list:focus {
+  text-decoration: line-through;
+}
 @media (max-width: 800px) {
   .tutor_dashboard {
     margin-bottom: 20px;
@@ -211,69 +220,51 @@
 }
 @media (max-width: 800px) {
   .todo {
-    margin-left: -25px;
+    margin-left: 3px;
   }
 }
 
 .tutorprofile {
   width: 100vw;
   height: 100vh;
+  margin-top: 80px;
+  background-color: $accent-color2;
 }
-.profile {
-  width: 100vw;
-  height: 100vh;
-  background-color: $secondary-color;
-  margin-top: 100px;
-  display: flex;
-}
-.tutorprofile table {
-  margin-left: auto;
-  margin-right: auto;
-  align-content: center;
-  display: flex;
+.tutor-profile-table {
   flex-direction: column;
-  height: 50vh;
-  width: 20vw;
-  background-color: $secondary-color;
+  margin-left: 350px;
   margin-top: 100px;
+  background-color: $accent-color1;
+  width: 50vw;
+  height: 50vh;
+  padding-left: 100px;
+  padding-top: 25px;
+  border-radius: 10px;
 }
-
-.tutorprofile td {
-  width: 20vw;
-  float: left;
-  height: fit-content;
-}
-.tutorprofile input {
-  width: 100%;
-}
-
-.tutor_img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-}
-.tutorpicture {
-  // border-radius: 100%;
-  // background-color: $accent-color1;
-  width: 10vw;
-  height: 15vh;
-  margin-top: 50px;
-  margin-left: -60px;
-  padding-top: 20px;
+.tutor-pro {
+  margin-left: 3px;
 }
 .tutorpro {
-  margin: 140px;
+  font-weight: bold;
 }
-.editprofile {
-  display: flex;
-  margin: 0px;
-  padding: 0px;
-}
-.profilebutton {
-  width: 20px;
-  height: 20px;
-}
+
 .btn_update_tprofile {
-  margin-top: 20px;
-  float: right;
+  margin-left: 500px;
 }
+
+// tutordash
+.tutor-h3-virtual {
+  margin-left: 25px;
+}
+
+.tutor-h3-meetup {
+  margin-left: 35px;
+}
+.tutor-button {
+  height: 30px;
+  width: 200px;
+  color: black;
+  margin-left: 20px;
+}
+
+//

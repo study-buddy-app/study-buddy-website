@@ -48,19 +48,11 @@ export default function Profile(props) {
     return (
         <div className='profile'>
              <h1>Profile</h1>
-             <div className='picture'>
-             <br/><br/>
-                {/* <Avatar size={64} icon="user"/> */}
-                {/* <img className="img" src ={url || "http://via.placeholder.com/120x120"} alt ="firebase-image" />
-                <input type="file" onChange={handleChange}/>
-                <button onClick={handleUpload}>Change profile</button> */}
-              
-             </div>
-             <h3 className='pro'>Name  <br/><br/>
+             <h3 className='pro'>Name <br/><br/>
              {`${user?.f_name} ${user?.l_name} `}</h3>
              <h3 className='pro'>Email <br/><br/>
               {`${user?.email}`}</h3>
-                    <h3 className='pro'>usertype<br/><br/>
+              <h3 className='pro'>usertype<br/><br/>
              {`${user?.usertype }`}</h3>
             
     

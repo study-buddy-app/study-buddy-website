@@ -79,19 +79,19 @@ export default function Tutordash(props) {
                 <div className='tutor_column1'>
                     <div className='tutor_block1'>
                         <div className='tutor_greeting'>
-                            <Link to='/tutorprofile' ><img className = 'tutor_userlogo' src = 'https://res.cloudinary.com/dgaapgd2f/image/upload/v1624410772/A912FD0D-3C1E-475B-B5DD-6138727912B9_1_201_a_vjozus.jpg' alt = 'userlogo'/></Link>
+                            <Link to='/tprofile' ><img className = 'tutor_userlogo' src = 'https://res.cloudinary.com/dgaapgd2f/image/upload/v1624410772/A912FD0D-3C1E-475B-B5DD-6138727912B9_1_201_a_vjozus.jpg' alt = 'userlogo'/></Link>
                             <h1 className='tutor_h1'>Hi there {`${user?.username}`}</h1>
                         </div>
                         <br/><br/>
                         <div className='tutor_calander'>
-                            <iframe
-                            src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showTz=0&amp;showCalendars=1&amp;showTitle=0&amp;showPrint=1&amp;showTabs=0"
-                            width="100%"
-                            height="100%"
-                            frameborder="0"
-                            scrolling="no"
-                            title="calendar"
-                            ></iframe>              
+                        <iframe
+                          src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showTz=0&amp;showCalendars=1&amp;showTitle=0&amp;showPrint=1&amp;showTabs=0"
+                          width="100%"
+                          height="100%"
+                          frameborder="0"
+                          scrolling="no"
+                          title="calendar"
+                        ></iframe>            
                             <br/><br/>
                         </div>
                         <br/><br/>
@@ -109,12 +109,9 @@ export default function Tutordash(props) {
                         <br/><br/>
                     
                         <div className="tutor_meetup">
-                            <h3 className='tutor-h3-meetup'>Today's in person meeting</h3>
+                            <h3 className='tutor-h3-meetup'>In person meetup</h3>
 
-                            <br />
-                            <br />
-                            <Link to="/buddyup"><button className="tutor-button">buddy up</button></Link>
-
+                            <br /><br />
                             {meetup?.map((item) => {
                             let aptDate = new Date(item.event_start);
                             return (
@@ -142,6 +139,10 @@ export default function Tutordash(props) {
                     </table>
                   );
                 })}
+                 <br/><br/>
+                 <br/><br/>
+                 <br/><br/>
+                 <Link to="/buddyup"><button className="tutor-button">buddy up</button></Link>
               </div>
               <br/><br/>
               <TodoApp />,

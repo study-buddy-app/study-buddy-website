@@ -10,9 +10,8 @@
   min-height: 100vh;
   flex-wrap: wrap;
   display: flex;
-  margin-top: 100px;
+  margin-top: 75px;
   background-color: $secondary-color;
-  margin-bottom: 20px;
 }
 .map_Container {
   display: flex;
@@ -186,7 +185,7 @@ th {
   text-align: left;
   padding-left: 0px;
 }
-.tbl_event_Item td{
- width: 15%;
- text-align: left;
+.tbl_event_Item td {
+  width: 15%;
+  text-align: left;
 }

@@ -121,13 +121,13 @@ export default function Dashboard(props) {
                         <br/><br/>
                         <div className='calander'>
                         <iframe
-                            src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showPrint=0&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showTz=1&amp;showTabs=0"
-                            width="100%"
-                            height="100%"
-                            frameborder="0"
-                            scrolling="no"
-                            title="calendar"
-                            ></iframe>
+                          src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showTz=0&amp;showCalendars=1&amp;showTitle=0&amp;showPrint=1&amp;showTabs=0"
+                          width="100%"
+                          height="100%"
+                          frameborder="0"
+                          scrolling="no"
+                          title="calendar"
+                        ></iframe>
                         </div>
                         <br/><br/>
                         <div className='uploads'>
@@ -162,7 +162,7 @@ export default function Dashboard(props) {
                         </div> 
                         <br/><br/>
                         <div className="meetup">
-                <h3>In person meetup</h3>
+                <h3>Upcoming Meeting</h3>
 
                 <br />
                 <br />

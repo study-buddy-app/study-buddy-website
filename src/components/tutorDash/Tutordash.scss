@@ -11,7 +11,7 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  margin-bottom: 95px;
+  margin-bottom: 70px;
   background-color: $accent-color1;
 }
 
@@ -75,7 +75,7 @@
 .tutor_calander {
   width: 300px;
   height: 250px;
-  padding: 20px;
+  // padding: 20px;
   // border: 5px solid rgba(243, 178, 56, 0.979);
   background: whitesmoke;
   border-radius: 5px;
@@ -224,56 +224,35 @@
   }
 }
 
-.profile {
+.tutorprofile {
   width: 100vw;
   height: 100vh;
-  background-color: $secondary-color;
-  margin-top: 100px;
-  display: flex;
+  margin-top: 80px;
+  background-color: $accent-color2;
 }
-.tutorprofile table {
-  margin-left: auto;
-  margin-right: auto;
-  align-content: center;
-  display: flex;
+.tutor-profile-table {
   flex-direction: column;
-  height: 50vh;
-  width: 20vw;
-  background-color: $secondary-color;
+  margin-left: 350px;
   margin-top: 100px;
+  background-color: $accent-color1;
+  width: 50vw;
+  height: 50vh;
+  padding-left: 100px;
+  padding-top: 25px;
+  border-radius: 10px;
 }
-
-.tutorprofile td {
-  width: 20vw;
-  float: left;
-  height: fit-content;
+.tutor-pro {
+  margin-left: 3px;
 }
-.tutorprofile input {
-  width: 100%;
-}
-
-.tutor_img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-}
-
 .tutorpro {
-  margin: 140px;
+  font-weight: bold;
 }
-.editprofile {
-  display: flex;
-  margin: 0px;
-  padding: 0px;
-}
-.profilebutton {
-  width: 20px;
-  height: 20px;
-}
+
 .btn_update_tprofile {
-  margin-top: 20px;
-  float: right;
+  margin-left: 500px;
 }
+
+// tutordash
 .tutor-h3-virtual {
   margin-left: 25px;
 }
@@ -287,3 +266,5 @@
   color: black;
   margin-left: 20px;
 }
+
+//

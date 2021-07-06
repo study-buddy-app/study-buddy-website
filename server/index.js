@@ -20,9 +20,6 @@ const sessionCtrl = require('./controllers/sessionCtrl')
 
 const app = express()
  
-
-
-
 app.use(express.json())
 app.use(session({
   secret: SESSION_SECRET,
@@ -30,9 +27,6 @@ app.use(session({
   saveUninitialized: true,
   cookie: {maxAge: 1000 *60 *60 *24}
 }))
-
-
-
 
 
 massive({

@@ -30,7 +30,7 @@ const Registration = (props) => {
         e.preventDefault()
         axios.post('/auth/register', {username, password, usertype, email, age, f_name, l_name, state, city})
         .then((res) =>{
-            console.log(res.data)
+            console.log('res.data', res.data)
             dispatch(setUser(res.data))
             axios.get('/api/backpack')
             .then((response) => {

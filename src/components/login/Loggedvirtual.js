@@ -12,14 +12,11 @@ const Loggedmeet = (props) =>{
     return (
         <div>
              <>
-            {props.authReducer.user ? <Link to='/virtualroom' className= 'signin' ><h3>Virtual Room</h3></Link>
+            {props.authReducer.user ? <Link to='/virtualroom' className= 'nav-links' onClick={props.closeMobileMenu}><h3>Virtual Room</h3></Link>
             :
-            <Link     
-            to='/aboutus'
-            className='signin'
-            onClick={props.closeMobileMenu}
-           ><h3>About Us</h3></Link> }               
-        </>
+            <Link to='/aboutus'className='nav-links'onClick={props.closeMobileMenu}><h3>About Us</h3></Link> 
+            }               
+            </>
         </div>
     )
 }

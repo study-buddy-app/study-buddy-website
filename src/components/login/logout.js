@@ -27,15 +27,12 @@ const Logout = (props) =>{
 
     return (
         <div>
-             <>
-            {props.authReducer.user ? <Link className='signin' onClick={handleLogout}><h3>Logout</h3></Link>
+            <>
+            {props.authReducer.user ? <Link className='nav-links' onClick={handleLogout}><h3>Logout</h3></Link>
             :
-            <Link     
-            to='/login'
-            className='signin'
-            onClick={props.closeMobileMenu}
-           ><h3>Sign In</h3></Link> }               
-        </>
+            <Link to='/login' className='nav-links'onClick={props.closeMobileMenu}><h3>Sign In</h3></Link>
+            }               
+            </>
         </div>
     )
 }

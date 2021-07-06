@@ -15,11 +15,11 @@ const Loggeddash = (props) =>{
         <div>
           
             {props.authReducer.user && (user.usertype === 'student') ?
-             <Link to='/dashboard' className= 'signin' ><h3>Dashboard</h3></Link>
+             <Link to='/dashboard' className= 'nav-links' onClick={props.closeMobileMenu}><h3>Dashboard</h3></Link>
             : props.authReducer.user && (user.usertype === 'tutor') ? 
-            <Link to='/tutordash' className= 'signin' ><h3>Dashboard</h3></Link>      
+            <Link to='/tutordash' className= 'nav-links' onClick={props.closeMobileMenu}><h3>Dashboard</h3></Link>      
             :
-            <Link to='/'className='signin' onClick={props.closeMobileMenu}><h3>Home</h3></Link>  }
+            <Link to='/'className='nav-links' onClick={props.closeMobileMenu}><h3>Home</h3></Link>  }
                  
           
         </div>

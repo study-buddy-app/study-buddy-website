@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {setBackpack} from '../../redux/backpackReducer'
 import {useEffect} from 'react'
 import './Dashboard.scss'
-import {handleUpload} from './Dashboard'
+
 
 export default function Backpack(props) {
   const [url, setUrl] = useState('')
@@ -12,6 +12,7 @@ export default function Backpack(props) {
         const {backpack} = useSelector((store) => store.backpackReducer)
         const dispatch = useDispatch()
       console.log('backpack',backpack)
+      
         useEffect(() => {
           axios.get('/api/backpack')
             .then((res) => {

@@ -33,9 +33,10 @@ export default function Dashboard(props) {
               console.log(err)
             })
           }, [])
+
         useEffect(() => {
-          axios
-            .get(`/api/session/current/appointment/${user.student_id}`)
+         
+          axios.get(`/api/session/current/appointment/${user.student_id}`)
             .then((appointment) => {
               setMeetup(appointment.data);
             })
@@ -53,10 +54,10 @@ export default function Dashboard(props) {
         }, []);
 
         const handleSubmit = (subject_id) => {
-          // const subject = backpack.find(
-          //   (subject) => subject.subject_id === subject_id
-          // );
-          // console.log(subject_id);
+          const subject = backpack.find(
+            (subject) => subject.subject_id === subject_id
+          );
+          console.log(subject_id);
       
           axios
             .post(`/api/backpack/${user.student_id}`,{subject_id})
@@ -118,9 +119,20 @@ export default function Dashboard(props) {
                             <h1 className='h1'>Hi there {`${user?.username}`} </h1>
                         </div>
                         <br/><br/>
+                        <div className='calander'>
+                        <iframe
+                          src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showTz=0&amp;showCalendars=1&amp;showTitle=0&amp;showPrint=1&amp;showTabs=0"
+                          width="100%"
+                          height="100%"
+                          frameborder="0"
+                          scrolling="no"
+                          title="calendar"
+                        ></iframe>
+                        </div>
+                        <br/><br/>
                         <div className='uploads'>
                             <h3>Upload your paper</h3>
-                            {/* <progress vlaue={progress} min="0" max="100"/> */}
+
                             <br/><br/>
                         <>
                             <form onSubmit= {onSubmit}>
@@ -128,47 +140,33 @@ export default function Dashboard(props) {
                                 <input type ="text" name= "username" placeholder="NAME"/>
                                 <button>upload</button>
                             </form>
+                            <br/> <br/>
                             <ul>
                                 {users.map(user => {
                                     return (
-                                        <li className="li-tag" key={user.name}>
-                                        {/* <img width="100" height="100" src={file.avatar} alt={file.name}/> */}
-                                        <p>{user.name}</p>
-                                        </li>
+                                      <Link className="li-tag"><li>{user.name}</li></Link>
                                     )
-      
                                 })}  
                             </ul>
                          </>
                             <br/><br/>  
                         </div>
                         <br/><br/>
-                        <div className='calander'>
-                        <iframe
-                            src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=MHJwZGxzbWN2aDVsb3BjYzFyc2ZiZ3Y3OThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;showPrint=0&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showTz=1&amp;showTabs=0"
-                            width="100%"
-                            height="100%"
-                            frameborder="0"
-                            scrolling="no"
-                            title="calendar"
-                            ></iframe>
-                        </div>
+ 
                     </div>
                     <div className='block2'>
                         <div className='virtual'>
-                            <h3>virtual meetup</h3>
+                            <h3>see who else is online</h3>
                             <br/><br/>
-                            <button><Link to='/virtualroom'>virtual room</Link></button>
+                            <Link to='/virtualroom'> <button className="button-meetup">virtual room</button></Link>
                         </div> 
                         <br/><br/>
                         <div className="meetup">
-                <h3>In person meetup</h3>
+                <h3>Upcoming Meeting</h3>
 
                 <br />
                 <br />
-                <button>
-                  <Link to="/buddyup">buddy up</Link>
-                </button>
+                
                 {meetup?.map((item) => {
                   let aptDate = new Date(item.event_start);
                   return (
@@ -196,7 +194,11 @@ export default function Dashboard(props) {
                     </table>
                   );
                 })}
+                 <br/><br/>
+                <Link to="/buddyup"><button className="button-meetup">buddy up</button></Link>
               </div>
+              <br/><br/>
+              <TodoApp />
                     </div>
                 </div>
                 <div className='column2'>
@@ -214,7 +216,7 @@ export default function Dashboard(props) {
                                  )
                                 })} 
                     </div>
-                    <TodoApp />
+                 
                   {window.scrollTo(0,0)}
                 </div>
             </div>

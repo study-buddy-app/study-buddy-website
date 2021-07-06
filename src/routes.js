@@ -3,7 +3,8 @@ import Landing from './components/landingPage/Landing'
 import Login from './components/login/Login'
 import Dashboard from './components/dashboard/Dashboard'
 import Profile from './components/dashboard/Profile'
-import Tutorprofile from './components/tutorDash/Tutorprofile'
+// import Tutorprofile from './components/tutorDash/Tutorprofile'
+import Tprofile from './components/tutorDash/Tprofile'
 import SocketApp from '../src/components/VirtualRooms/SocketApp';
 import Registration from './components/studentAuth/Registration'
 import Aboutus from './components/aboutus/Aboutus'
@@ -23,7 +24,8 @@ export default (
         <Route path = '/buddyup' component={Buddy} />
         <Route path= '/stripe' component={StripeContainer}/>
         <Route path= '/profile' component={Profile}/>
-        <Route path= '/tutorprofile' component={Tutorprofile}/>
+        {/* <Route path= '/tutorprofile' component={Tutorprofile}/> */}
+        <Route path= '/tprofile' component={Tprofile}/>
 
     </Switch>
 )

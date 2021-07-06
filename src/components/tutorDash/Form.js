@@ -1,4 +1,5 @@
 import {Component} from "react"
+import './Tutordash.scss'
 
 class Form extends Component {
     constructor() {
@@ -43,6 +44,7 @@ class Form extends Component {
 
       render () {
         return (
+          <div>
             <div className = "form">
               <input
                 value={this.state.startTime}
@@ -64,12 +66,13 @@ class Form extends Component {
                 onChange={(e) => this.handleDay(e.target.value)}
                 placeholder="day"
               />
+              </div>
               <button className = "add"
                 onClick={this.handleAdd}
               >
                 add
                 </button>
-            </div>
+                </div>
             )
       }
       }

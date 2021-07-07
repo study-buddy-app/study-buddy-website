@@ -116,5 +116,7 @@ app.put('/api/subject/tutor/state',tutorCtrl.getTutorsByStateAndSubject)
 app.put('/api/subject/student/virtual',studentCtrl.getVirtualStudentsBySubject)
 //backpack
 app.get('/api/backpack', backpackCtrl.getBackPack)
+app.get('api/tutor/backpack', backpackCtrl.getTutorBackPack)
 app.post('/api/backpack/:subject_id', backpackCtrl.addToBackPack)
+app.post('/api/tutor/backpack/:tutor_id', backpackCtrl.addToTutorBackPack)
 app.delete('/api/backpack/:subject_id', backpackCtrl.deleteSubjectFromBackPack)

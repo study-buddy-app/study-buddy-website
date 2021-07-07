@@ -24,7 +24,7 @@ export default function Backpack(props) {
           }, [dispatch])
       
         const handleDeleteFromBackpack = (subject_id) => {
-          axios.delete(`./api/backpack/${subject_id}`)
+          axios.delete(`/api/backpack/${subject_id}`)
             .then((res) => {
               dispatch(setBackpack(res.data))
             })

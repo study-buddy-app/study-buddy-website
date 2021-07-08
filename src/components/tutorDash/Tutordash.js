@@ -24,8 +24,8 @@ export default function Tutordash(props) {
             console.log('I\'m firing')
             axios.get('/api/tutor/backpack')
               .then((res) => {
-                console.log(res.data)
                 dispatch(setBackpack(res.data))
+                console.log('tutor backpack', res.data)
               }).catch(err => {
                 console.log(err)
               })

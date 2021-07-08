@@ -22,10 +22,10 @@ export default function Tutordash(props) {
   
         useEffect(() => {
             console.log('I\'m firing')
-            axios.get('/api/backpack')
+            axios.get('/api/tutor/backpack')
               .then((res) => {
-                console.log(res.data)
                 dispatch(setBackpack(res.data))
+                console.log('tutor backpack', res.data)
               }).catch(err => {
                 console.log(err)
               })
@@ -52,11 +52,10 @@ export default function Tutordash(props) {
             const subject = backpack.find((subject) => subject.subject_id === subject_id)
             console.log("subject_id", subject_id)
            
-              axios.post(`/api/backpack/${user.tutor_id}`,`${subject_id}`)
+              axios.post(`/api/tutor/backpack/${user.tutor_id}`,{subject_id})
               .then((res) => {
               console.log(res.data, 'this is my data')
                 dispatch(setBackpack(res.data))
-                
               })
               .catch((err) => {
                 console.log(err)

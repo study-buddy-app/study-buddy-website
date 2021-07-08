@@ -4,16 +4,20 @@ import {useSelector, useDispatch} from 'react-redux'
 import {setBackpack} from '../../redux/backpackReducer'
 import {useEffect} from 'react'
 import './Dashboard.scss'
+import session from 'express-session'
 
 
 export default function Backpack(props) {
   const [url, setUrl] = useState('')
 
-        const {backpack} = useSelector((store) => store.backpackReducer)
-        const dispatch = useDispatch()
-      console.log('backpack',backpack)
+      const {backpack} = useSelector((store) => store.backpackReducer)
+      const {user} = useSelector((store)=> store.authReducer)
+      const dispatch = useDispatch()
+      let usertype = user.usertype
+      
       
         useEffect(() => {
+       if(usertype === 'student'){
           axios.get('/api/backpack')
             .then((res) => {
               console.log(res.data)
@@ -21,18 +25,40 @@ export default function Backpack(props) {
             }).catch(err => {
               console.log(err)
             })
+          }
+       if(usertype === 'tutor'){
+          axios.get('/api/tutor/backpack')
+            .then((res) => {
+              console.log(res.data)
+              dispatch(setBackpack(res.data))
+            }).catch(err => {
+              console.log(err)
+            })
+          }
           }, [dispatch])
-      
+        
+        
         const handleDeleteFromBackpack = (subject_id) => {
-          axios.delete(`./api/backpack/${subject_id}`)
+         if(usertype === 'student'){
+          axios.delete(`/api/backpack/${subject_id}`)
             .then((res) => {
               dispatch(setBackpack(res.data))
             })
             .catch(err => {
               console.log(err)
             })
+          }
+          if(usertype === 'tutor'){
+            axios.delete(`/api/backpack/tutor/${subject_id}`)
+            .then((res) => {
+              dispatch(setBackpack(res.data))
+            })
+            .catch(err => {
+              console.log(err)
+            })
+          }
         }
-      console.log(backpack)
+      console.log('usertype', user.usertype)
 
         return (
             <div className ='backpack'>

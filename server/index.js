@@ -20,9 +20,6 @@ const sessionCtrl = require('./controllers/sessionCtrl')
 
 const app = express()
  
-
-
-
 app.use(express.json())
 app.use(session({
   secret: SESSION_SECRET,
@@ -30,9 +27,6 @@ app.use(session({
   saveUninitialized: true,
   cookie: {maxAge: 1000 *60 *60 *24}
 }))
-
-
-
 
 
 massive({
@@ -122,5 +116,8 @@ app.put('/api/subject/tutor/state',tutorCtrl.getTutorsByStateAndSubject)
 app.put('/api/subject/student/virtual',studentCtrl.getVirtualStudentsBySubject)
 //backpack
 app.get('/api/backpack', backpackCtrl.getBackPack)
+app.get('/api/tutor/backpack', backpackCtrl.getTutorBackPack)
 app.post('/api/backpack/:subject_id', backpackCtrl.addToBackPack)
+app.post('/api/tutor/backpack/:tutor_id', backpackCtrl.addToTutorBackPack)
 app.delete('/api/backpack/:subject_id', backpackCtrl.deleteSubjectFromBackPack)
+app.delete('/api/backpack/tutor/:subject_id', backpackCtrl.deleteSubjectFromTutorBackPack)
